@@ -19,5 +19,14 @@ module Fdur
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.app_generators.template_engine :slim
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = "zh-CN"
+    config.i18n.locale = "zh-CN"
+    config.i18n.available_locales = "zh-CN", "en"
+    config.active_record.default_timezone = :local
+    config.time_zone = 'Beijing'
+
   end
 end
