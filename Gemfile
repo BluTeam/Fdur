@@ -40,6 +40,8 @@ gem 'devise'
 gem 'slim-rails'
 
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
+
+gem 'annotate'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
