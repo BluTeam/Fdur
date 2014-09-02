@@ -6,13 +6,20 @@ html lang="#{I18n.locale.to_s}"
     meta name="viewport" content="width=device-width, initial-scale=1"
     title
       | Fdur
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false
+    = javascript_include_tag 'application', 'data-turbolinks-track' => false
     = csrf_meta_tags
 
   body data-page="#{controller_name}-#{action_name}"
     = render "layouts/header"
-    p class="notice"
-      = notice
+    - flash.each do |key, value|
+      #flash_message.container.alert.alert-info.alert-dismissible.text-center role="alert" class="alert-#{key}"
+        button type="button" class="close" data-dismiss="alert"
+          span aria-hidden="true"
+           | &times;
+          span.sr-only
+           | Close
+        = value
     = yield
+    =render "layouts/footer"
 

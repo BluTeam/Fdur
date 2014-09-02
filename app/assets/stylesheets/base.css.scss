@@ -1,3 +1,27 @@
 .bgcolor_red { background-color: pink }
 .bgcolor_blue { background-color: skyblue}
-body {padding-top: 60px}
+
+@mixin opacity_filter ($num:50) {
+  opacity: $num / 100;
+  filter: alpha(opacity=$num);
+}
+
+body { padding-top: 50px }
+
+.header {
+  @include opacity_filter(92);
+}
+
+.footer {
+  background-color: transparent;
+}
+
+.strong {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+
+
+
+
