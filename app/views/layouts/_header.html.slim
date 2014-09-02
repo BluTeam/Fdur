@@ -1,0 +1,15 @@
+nav.navbar.navbar-default.navbar-fixed-top role="navigation"
+  .container
+    .navbar-header
+      a.navbar-brand.navbar-left href="#{root_path}"
+        | MealIt
+    ul.nav.navbar-nav.navbar-left
+    ul.nav.navbar-nav.navbar-right
+      - unless user_signed_in?
+        li
+          a href="#{new_user_session_path}"
+            | 登录
+      - else
+        li
+          a href="#"
+            = current_user

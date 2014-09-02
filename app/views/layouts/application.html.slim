@@ -11,6 +11,7 @@ html lang="#{I18n.locale.to_s}"
     = csrf_meta_tags
 
   body data-page="#{controller_name}-#{action_name}"
+    = render "layouts/header"
     p class="notice"
       = notice
     = yield
