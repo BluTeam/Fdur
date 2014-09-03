@@ -6,11 +6,34 @@
   filter: alpha(opacity=$num);
 }
 
-@mixin margin_auto ($top:0,$bottom:0) {
+@mixin auto_margin ($top:0,$bottom:0) {
   margin: $top auto $bottom auto;
 }
 
-body { padding-top: 50px }
+@mixin auto_padding {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+@mixin gray_bottom_border {
+  border-bottom: 1px solid #CCCCCC;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  padding-top: 50px;
+  height: 100%;
+}
+
+#wrap {
+  display: block;
+  min-height: 100%;
+  height: auto !important;
+  margin: 0 auto -50px auto;
+}
 
 .header {
   @include opacity_filter(92);
@@ -18,6 +41,9 @@ body { padding-top: 50px }
 
 .footer {
   background-color: transparent;
+  margin-bottom: 0;
+  border-right: none;
+  border-left: none;
 }
 
 .strong {

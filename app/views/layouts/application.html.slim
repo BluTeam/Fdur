@@ -12,14 +12,15 @@ html lang="#{I18n.locale.to_s}"
 
   body data-page="#{controller_name}-#{action_name}"
     = render "layouts/header"
-    - flash.each do |key, value|
-      #flash_message.container.alert.alert-info.alert-dismissible.text-center role="alert" class="alert-#{key}"
-        button type="button" class="close" data-dismiss="alert"
-          span aria-hidden="true"
-           | &times;
-          span.sr-only
-           | Close
-        = value
-    = yield
+    #wrap
+      - flash.each do |key, value|
+        #flash_message.container.alert.alert-info.alert-dismissible.text-center role="alert" class="alert-#{key}"
+          button type="button" class="close" data-dismiss="alert"
+            span aria-hidden="true"
+             | &times;
+            span.sr-only
+             | Close
+          = value
+      = yield
     =render "layouts/footer"
 

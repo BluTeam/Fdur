@@ -1,7 +1,36 @@
 body[data-page="sessions-new"] {
   background-image: image-url("boat.jpg");
   background-repeat: repeat;
-  .common_panel{
-    @include margin_auto;
+
+  .top-stand {
+    margin-top: 80px;
+
+    .panel-padding {
+      padding-bottom: 20px;
+
+      .welcome {
+        padding-bottom: 15px;
+        @include gray_bottom_border;
+      }
+
+      .common_panel {
+        background-color: #F5F5F5;
+        border: 1px solid #E4E4E4;
+        margin-top: 10px;
+        @include auto_padding;
+
+        .login_or_sign {
+          @include gray_bottom_border;
+        }
+
+        .button_padding {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  .shadow {
+    margin-top: -22px;
   }
 }
