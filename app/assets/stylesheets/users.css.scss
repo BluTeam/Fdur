@@ -1,4 +1,7 @@
 body[data-page="sessions-new"] {
   background-image: image-url("boat.jpg");
   background-repeat: repeat;
+  .common_panel{
+    @include margin_auto;
+  }
 }
