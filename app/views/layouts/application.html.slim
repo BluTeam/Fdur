@@ -14,13 +14,14 @@ html lang="#{I18n.locale.to_s}"
     = render "layouts/header"
     #wrap
       - flash.each do |key, value|
-        #flash_message.container.alert.alert-info.alert-dismissible.text-center role="alert" class="alert-#{key}"
+        #flash_message.container.alert.alert-warning.alert-dismissible.text-center role="alert" class="alert-#{key}"
           button type="button" class="close" data-dismiss="alert"
             span aria-hidden="true"
              | &times;
             span.sr-only
              | Close
-          = value
+          p.strong14.text-center
+            = value
       = yield
     =render "layouts/footer"
 
