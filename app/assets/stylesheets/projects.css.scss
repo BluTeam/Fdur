@@ -1,0 +1,62 @@
+body[data-page="projects-index"]{
+  .top_stand {
+    margin-top: 50px;
+  }
+
+  .project {
+    box-shadow: 0 2px 4px 0 #bbb;
+    background-color: #f1f1f1;
+    color: #FDFDFD;
+    @include lazy_tansition(margin, 0.2s);
+
+    &:hover {
+      margin-top: -5px;
+      box-shadow: 1px 3px 15px 0 rgb(170, 170, 170);
+    }
+
+    .description {
+      background-color: $projdect_shadow;
+      padding-top: 3px;
+
+      .title {
+        width: 102%;
+        margin-left: -1%;
+        box-shadow: 0 1px 2px 0 $projdect_shadow;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 15px;
+        line-height: 2.6;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+
+
+      .active_milestone {
+        color: #111111;
+        background-color: #fff;
+        min-height: 200px;
+      }
+    }
+    .de_content {
+      background-color: $projdect_shadow;
+      word-break: keep-all;
+      white-space: pre-wrap;
+      text-align: justify;
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+
+    .follow {
+      font-weight: bold;
+      line-height: 2;
+    }
+  }
+
+  .no_bottom {
+    background-color: #f1f1f1;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}

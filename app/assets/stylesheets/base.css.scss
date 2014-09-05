@@ -1,5 +1,7 @@
-.bgcolor_red { background-color: pink }
-.bgcolor_blue { background-color: skyblue}
+.bgcolor_red { background-color: rgb(240, 128, 128); }
+.bgcolor_blue { background-color: #67B4B1; }
+
+$projdect_shadow: #4A525C;
 
 @mixin opacity_filter ($num:50) {
   opacity: $num / 100;
@@ -17,6 +19,13 @@
 
 @mixin gray_bottom_border {
   border-bottom: 1px solid #CCCCCC;
+}
+
+@mixin lazy_tansition ($meta,$time) {
+  transition: $meta $time;
+  -moz-transition: $meta $time;
+  -webkit-transition: $meta $time;
+  -o-transition: $meta $time;
 }
 
 html {
@@ -68,5 +77,9 @@ body {
   margin-right: auto;
 }
 
+.extra_padding {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
 
