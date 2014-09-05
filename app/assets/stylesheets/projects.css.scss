@@ -1,9 +1,11 @@
 body[data-page="projects-index"]{
   .top_stand {
     margin-top: 50px;
+    padding: 0;
   }
 
   .project {
+    margin-bottom: 15px;
     box-shadow: 0 2px 4px 0 #bbb;
     background-color: #f1f1f1;
     color: #FDFDFD;
@@ -11,7 +13,34 @@ body[data-page="projects-index"]{
 
     &:hover {
       margin-top: -5px;
+      margin-bottom: 20px;
       box-shadow: 1px 3px 15px 0 rgb(170, 170, 170);
+    }
+
+    &:active {
+      margin-top: 0;
+    }
+
+    .new_project {
+      display: block;
+      font-size: 50px;
+      color: #666;
+      height: 300px !important;
+      padding-top: 100px;
+      @include lazy_tansition(color, 0.5s);
+      @include lazy_tansition(background, 0.5s);
+
+      &:hover{
+        cursor: pointer;
+        color: $projdect_shadow;
+        background: #ffffff;
+      }
+
+      .content {
+        font-size: 17px;
+        font-weight: bold;
+        line-height: 4;
+      }
     }
 
     .description {
@@ -27,30 +56,28 @@ body[data-page="projects-index"]{
         text-overflow: ellipsis;
         padding: 0 15px;
         line-height: 2.6;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: bold;
       }
 
+      .de_content {
+        background-color: $projdect_shadow;
+        word-break: keep-all;
+        white-space: pre-wrap;
+        text-align: justify;
+        font-size: 13px;
+        padding: 10px 15px;
+      }
 
+      .follow {
+        font-weight: bold;
+        line-height: 2;
+      }
 
       .active_milestone {
         color: #111111;
         background-color: #fff;
-        min-height: 200px;
       }
-    }
-    .de_content {
-      background-color: $projdect_shadow;
-      word-break: keep-all;
-      white-space: pre-wrap;
-      text-align: justify;
-      font-size: 14px;
-      padding: 10px 15px;
-    }
-
-    .follow {
-      font-weight: bold;
-      line-height: 2;
     }
   }
 
