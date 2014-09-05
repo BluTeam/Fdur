@@ -57,9 +57,15 @@ body {
 }
 
 .form_error {
-  margin: 0 auto;
   width: 88%;
   padding: 2px 15px;
+}
+
+.center {
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
