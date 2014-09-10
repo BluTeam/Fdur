@@ -1,4 +1,9 @@
-body[data-page="projects-index"]{
+body[data-page="projects-index"],
+body[data-page="projects-create"]{
+  .project_border {
+    border-radius: 5px;
+  }
+
   .top_stand {
     margin-top: 50px;
     padding: 0;

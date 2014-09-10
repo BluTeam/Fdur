@@ -6,8 +6,8 @@ html lang="#{I18n.locale.to_s}"
     meta name="viewport" content="width=device-width, initial-scale=1"
     title
       | Fdur
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false
-    = javascript_include_tag 'application', 'data-turbolinks-track' => false
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
   body data-page="#{controller_name}-#{action_name}"

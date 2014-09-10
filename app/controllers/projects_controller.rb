@@ -17,14 +17,14 @@ class ProjectsController < ApplicationController
 
   def create
     #@projects = current_user.projects.order(updated_at: :desc).all
-    project = current_user.projects.build project_params
+    @project = current_user.projects.build project_params
     #respond_to do |format|
-      if project.save
+      if @project.save
         flash[:success] = '创建成功'
         redirect_to action: :index
         #format.js
       else
-        flash[:failed]= '创建失败，图片链接格式不正确，看看帮助吧'
+        flash[:danger]= '创建失败'
         #render js: 'alert("图片链接格式不正确，看看帮助吧");'
         render action: :index
       end
