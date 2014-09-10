@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
         #format.js
       else
         flash[:danger]= '创建失败'
+        # TODO: 返回js刷新弹出层
         #render js: 'alert("图片链接格式不正确，看看帮助吧");'
         render action: :index
       end
