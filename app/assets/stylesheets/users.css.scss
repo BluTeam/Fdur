@@ -1,6 +1,7 @@
 body[data-page="registrations-create"],
 body[data-page="registrations-new"],
-body[data-page="sessions-new"] {
+body[data-page="sessions-new"],
+body[data-page="passwords-new"] {
   background-image: image-url("boat.jpg");
   background-repeat: repeat;
 
