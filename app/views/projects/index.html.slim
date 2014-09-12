@@ -7,6 +7,7 @@
           p.content
             | 新的启程让生活更多彩
     .col-sm-6
+      / TODO: 写成render，写好project数据，写好milestone类
       .project
         .thumbnail.no_bottom
           = image_tag 'http://image2.sina.com.cn/ent/x/2006-11-23/ac7833b449ac5759b25a64b4d7d94eb2.JPG', inner_html: 'data-src="holder.js/320px*auto"'
@@ -30,7 +31,7 @@
       | col-md-4
     .col-md-12.col-sm-6
       | col-md-4
-
+/ TODO: 拆成render
 /modal
 #newProjectModal.modal.fade tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
   .modal-dialog.modal-md
@@ -71,5 +72,4 @@
         .modal-footer
           button type="button" class="btn btn-default strong" data-dismiss="modal"
             | 关 闭
-          /TODO: 改成loading..样式的button
           = f.submit "保 存", class: "btn btn-primary strong button_padding"

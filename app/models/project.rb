@@ -22,10 +22,22 @@
 class Project < ActiveRecord::Base
   belongs_to :user
   mount_uploader :iamge, ImageUploader
+
+  before_validation :add_default_information
+
   validates :state, presence: true,
             inclusion: ['open','finished']
 
   validates :is_public, inclusion: [true, false]
   validates :name, presence: true
-  # validates :forks_count, presence: true
+  #validates :forks_count, presence: true
+
+  def add_default_information
+
+    #self.forks_count = 0 if self.forks_count.blank?
+
+    self.state = 'open' if self.state.blank?
+
+  end
+
 end
