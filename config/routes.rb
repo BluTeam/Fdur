@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   #resources :users
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_for :users
+
+  resources :projects
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

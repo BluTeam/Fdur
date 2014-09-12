@@ -1,0 +1,75 @@
+.container.top_stand
+  .col-md-8.col-sm-12
+    .col-sm-6
+      #new_project.project data-toggle="modal" data-target="#newProjectModal"
+        span.new_project.text-center
+          .glyphicon.glyphicon-plus.center
+          p.content
+            | 新的启程让生活更多彩
+    .col-sm-6
+      .project
+        .thumbnail.no_bottom
+          = image_tag 'http://image2.sina.com.cn/ent/x/2006-11-23/ac7833b449ac5759b25a64b4d7d94eb2.JPG', inner_html: 'data-src="holder.js/320px*auto"'
+        .description
+          .title.bgcolor_red
+            | 这是一个标题
+          .de_content
+            | 这是一段说明这是一段说明这是一段说明这是一段说明
+          .extra_padding.follow
+            | &nbsp
+            a.pull-right href="#" title="拷贝"
+              span.glyphicon.glyphicon-tags
+              | &nbsp0
+            a.pull-right href="#" title="收藏"
+              span.glyphicon.glyphicon-fire
+              | &nbsp0
+        .active_milestone
+          | 666
+  .col-md-4.col-sm-12.bgcolor_blue
+    .col-md-12.col-sm-6
+      | col-md-4
+    .col-md-12.col-sm-6
+      | col-md-4
+
+/modal
+#newProjectModal.modal.fade tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-header.bg-primary.project_border
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true"
+            | &times;
+          span.sr-only
+            | Close
+        h4.modal-title#myModalLabel
+          | New Project
+      = form_for(@project, url: projects_path,role: :form) do |f|
+        .modal-body
+          .form-group
+            = f.label '微计划名', for: :project_name
+            = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off
+          .form-group
+            = f.label '描述', for: :project_description
+            = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
+          .form_group
+            = f.label '标题图片', for: :project_image
+            = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+          .radio
+            label
+              = f.radio_button :is_public, true, checked: true
+              span.strong
+                | 公开的微计划
+                span.text-success
+                  | &nbspPublic
+          .radio
+            label
+              = f.radio_button :is_public, false
+              span.strong
+                | 私有的微计划
+                span.text-danger
+                  | &nbspPrivate
+        .modal-footer
+          button type="button" class="btn btn-default strong" data-dismiss="modal"
+            | 关 闭
+          /TODO: 改成loading..样式的button
+          = f.submit "保 存", class: "btn btn-primary strong button_padding"

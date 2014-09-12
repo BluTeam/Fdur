@@ -1,5 +1,7 @@
-.bgcolor_red { background-color: pink }
-.bgcolor_blue { background-color: skyblue}
+.bgcolor_red { background-color: rgb(240, 128, 128); }
+.bgcolor_blue { background-color: #67B4B1; }
+
+$projdect_shadow: #4A525C;
 
 @mixin opacity_filter ($num:50) {
   opacity: $num / 100;
@@ -19,6 +21,13 @@
   border-bottom: 1px solid #CCCCCC;
 }
 
+@mixin lazy_tansition ($meta,$time) {
+  transition: $meta $time;
+  -moz-transition: $meta $time;
+  -webkit-transition: $meta $time;
+  -o-transition: $meta $time;
+}
+
 html {
   height: 100%;
 }
@@ -26,6 +35,10 @@ html {
 body {
   padding-top: 50px;
   height: 100%;
+}
+
+ul {
+  list-style-type: none;
 }
 
 #wrap {
@@ -56,6 +69,25 @@ body {
   font-size: 14px;
 }
 
+.form_error {
+  width: 88%;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px 15px;
+  border-radius: 2px;
+}
 
+.center {
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.extra_padding {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
 

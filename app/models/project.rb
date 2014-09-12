@@ -21,10 +21,11 @@
 
 class Project < ActiveRecord::Base
   belongs_to :user
+  mount_uploader :iamge, ImageUploader
   validates :state, presence: true,
             inclusion: ['open','finished']
 
   validates :is_public, inclusion: [true, false]
   validates :name, presence: true
-  validates :forks_count, presence: true
+  # validates :forks_count, presence: true
 end

@@ -21,10 +21,11 @@
               = f.password_field :password, placeholder: "Password", class: "form-control", autocomplete: "off"
             - if devise_mapping.rememberable?
               .checkbox
-                label.strong
+                label
                   = f.check_box :remember_me
-                  | 记住我
-            = f.submit "登陆", class: "btn btn-success btn-lg strong button_padding"
+                  span.strong
+                    | 记住我
+            = f.submit "登 录", class: "btn btn-success btn-lg strong button_padding pull-right"
           = render "users/shared/links"
         .col-sm-6.right_panel
           div
