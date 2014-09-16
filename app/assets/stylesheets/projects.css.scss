@@ -1,12 +1,11 @@
+body[data-page="projects-show"] {
+
+}
+body[data-page="projects-show"],
 body[data-page="projects-index"],
-body[data-page="projects-create"]{
+body[data-page="projects-create"] {
   .project_border {
     border-radius: 5px;
-  }
-
-  .top_stand {
-    margin-top: 50px;
-    padding: 0;
   }
 
   .project {
@@ -24,6 +23,7 @@ body[data-page="projects-create"]{
 
     &:active {
       margin-top: 0;
+      margin-bottom: 15px;
     }
 
     .new_project {
@@ -88,7 +88,8 @@ body[data-page="projects-create"]{
 
   .no_bottom {
     background-color: #f1f1f1;
-    border-bottom: none;
+    border: none;
+    padding: 0;
     margin-bottom: 0;
   }
 }

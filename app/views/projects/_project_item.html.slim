@@ -1,0 +1,20 @@
+.project
+  .thumbnail.no_bottom
+    a href="#{project_path(p.id)}"
+      = image_tag p.image.normal.url, inner_html: 'data-src="holder.js/320px*auto"'
+  .description
+    a href="#{project_path(p.id)}"
+      .title.bgcolor_red
+        = p.name
+    .de_content
+      = p.description
+    .extra_padding.follow
+      | &nbsp
+      button.pull-right href="#" title="拷贝"
+        span.glyphicon.glyphicon-tags
+        | &nbsp0
+      button.pull-right href="#" title="收藏"
+        span.glyphicon.glyphicon-fire
+        | &nbsp0
+  .active_milestone
+    | 666

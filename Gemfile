@@ -18,6 +18,7 @@ gem 'autoprefixer-rails'
 # gem 'therubyracer',  platforms: :ruby
 
 gem 'carrierwave'
+gem 'mini_magick'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

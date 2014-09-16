@@ -12,6 +12,7 @@
 #  num         :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  forks_count :integer          default(0), not null
 #
 # Indexes
 #

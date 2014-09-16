@@ -16,14 +16,11 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    #@projects = current_user.projects.order(updated_at: :desc).all
     @project = current_user.projects.build project_params
     if @project.save
       flash[:success] = '创建成功'
       redirect_to action: :index
-      #format.js
     else
-      #flash[:danger]= '创建失败'
       render action: :index
     end
   end
@@ -112,7 +109,7 @@ class ProjectsController < ApplicationController
       @milestones_undo = milestones.select {|m| m.state == 'undo'}
       @milestones_doing = milestones.select {|m| m.state == 'doing'}
       @milestones_finished = milestones.select{|m| m.state == 'finished'}
-      @comments = @project.comments
+      # @comments = @project.comments
     end
 
 end

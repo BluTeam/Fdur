@@ -11,18 +11,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902072400) do
+ActiveRecord::Schema.define(version: 20140914074904) do
+
+  create_table "activities", force: true do |t|
+    t.integer  "project_id",         null: false
+    t.integer  "project_state_flag"
+    t.integer  "commits_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["project_id"], name: "index_activities_on_project_id", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.integer  "project_id", null: false
+    t.integer  "user_id",    null: false
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "milestones", force: true do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.text     "reflection"
+    t.string   "image"
+    t.integer  "num"
+    t.string   "state",       null: false
+    t.integer  "project_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "milestones", ["project_id"], name: "index_milestones_on_project_id", using: :btree
+  add_index "milestones", ["state"], name: "index_milestones_on_state", using: :btree
 
   create_table "projects", force: true do |t|
-    t.string   "name",        null: false
+    t.string   "name",                    null: false
     t.string   "image"
     t.text     "description"
-    t.integer  "user_id",     null: false
-    t.boolean  "is_public",   null: false
-    t.string   "state",       null: false
+    t.integer  "user_id",                 null: false
+    t.boolean  "is_public",               null: false
+    t.string   "state",                   null: false
     t.integer  "num"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "forks_count", default: 0, null: false
   end
 
   add_index "projects", ["state"], name: "index_projects_on_state", using: :btree
