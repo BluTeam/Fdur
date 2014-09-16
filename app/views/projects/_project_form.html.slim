@@ -1,0 +1,40 @@
+#newProjectModal.modal.fade tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-header.bg-primary.project_border
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true"
+            | &times;
+          span.sr-only
+            | Close
+        h4.modal-title#myModalLabel
+          | New Project
+      = form_for(@project, url: projects_path,role: :form) do |f|
+        .modal-body
+          .form-group
+            = f.label '微计划名', for: :project_name
+            = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off
+          .form-group
+            = f.label '描述', for: :project_description
+            = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
+          .form_group
+            = f.label '标题图片', for: :project_image
+            = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+          .radio
+            label
+              = f.radio_button :is_public, true, checked: true
+              span.strong
+                | 公开的微计划
+                span.text-success
+                  | &nbspPublic
+          .radio
+            label
+              = f.radio_button :is_public, false
+              span.strong
+                | 私有的微计划
+                span.text-danger
+                  | &nbspPrivate
+        .modal-footer
+          button type="button" class="btn btn-default strong" data-dismiss="modal"
+            | 关 闭
+          = f.submit "保 存", class: "btn btn-primary strong button_padding"

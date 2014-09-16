@@ -1,4 +1,24 @@
 .container.top_stand
-  .col-md-4.col-sm-12
-    = render "project_item", p: @project
   .col-md-8.col-sm-12
+  .col-md-4.col-sm-12
+    .project
+      .thumbnail.no_bottom
+        a href="#{project_path(@project.id)}"
+          = image_tag @project.image.normal.url, inner_html: 'data-src="holder.js/320px*auto"'
+      .description
+        a href="#{project_path(@project.id)}"
+          .title.bgcolor_red
+            = @project.name
+        .de_content
+          = @project.description
+        .extra_padding.follow
+          | &nbsp
+          button.pull-right href="#" title="拷贝"
+            span.glyphicon.glyphicon-tags
+            | &nbsp0
+          button.pull-right href="#" title="收藏"
+            span.glyphicon.glyphicon-fire
+            | &nbsp0
+      .active_milestone
+        | 666
+

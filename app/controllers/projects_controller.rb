@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @projects = current_user.projects.order(updated_at: :desc)
     @project = current_user.projects.build project_params
     if @project.save
       flash[:success] = '创建成功'

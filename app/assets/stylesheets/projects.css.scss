@@ -1,7 +1,71 @@
 body[data-page="projects-show"] {
+  .project {
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px 0 #bbb;
+    background-color: #f1f1f1;
+    color: #FDFDFD;
+    @include lazy_tansition(margin, 0.2s);
 
+    .new_project {
+      display: block;
+      font-size: 50px;
+      color: #666;
+      height: 300px !important;
+      padding-top: 100px;
+      @include lazy_tansition(color, 0.5s);
+      @include lazy_tansition(background, 0.5s);
+
+      &:hover{
+        cursor: pointer;
+        color: $projdect_shadow;
+        background: #ffffff;
+      }
+
+      .content {
+        font-size: 17px;
+        font-weight: bold;
+        line-height: 4;
+      }
+    }
+
+    .description {
+      background-color: $projdect_shadow;
+      padding-top: 3px;
+
+      .title {
+        width: 102%;
+        margin-left: -1%;
+        box-shadow: 0 1px 2px 0 $projdect_shadow;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 15px;
+        line-height: 2.6;
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      .de_content {
+        background-color: $projdect_shadow;
+        word-break: keep-all;
+        white-space: pre-wrap;
+        text-align: justify;
+        font-size: 13px;
+        padding: 10px 15px;
+      }
+
+      .follow {
+        font-weight: bold;
+        line-height: 2;
+      }
+
+      .active_milestone {
+        color: #111111;
+        background-color: #fff;
+      }
+    }
+  }
 }
-body[data-page="projects-show"],
 body[data-page="projects-index"],
 body[data-page="projects-create"] {
   .project_border {
