@@ -45,6 +45,9 @@ gem 'slim-rails'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
 
 gem 'annotate'
+
+gem 'awesome_nested_set'
+gem "the_sortable_tree", path: "vendor/the_sortable_tree-master"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

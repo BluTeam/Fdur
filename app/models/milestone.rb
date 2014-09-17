@@ -21,6 +21,9 @@
 #
 
 class Milestone < ActiveRecord::Base
+  acts_as_nested_set
+
+  include TheSortableTree::Scopes
   belongs_to :project, :foreign_key => :project_id
 
   before_validation :set_default_information

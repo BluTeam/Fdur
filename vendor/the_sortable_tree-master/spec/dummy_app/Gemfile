@@ -1,0 +1,40 @@
+source 'http://rubygems.org'
+
+gem 'rails', '~> 4.1.0'
+gem 'sqlite3'
+
+gem 'json'
+gem 'haml'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+gem 'quiet_assets'
+
+gem 'awesome_nested_set', github: "collectiveidea/awesome_nested_set"
+gem 'the_sortable_tree', path: '../../'
+
+group :assets do
+  gem 'uglifier'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+end
+
+group :development, :test do
+  gem 'faker'
+  gem 'pry'
+
+  gem 'rspec'
+  gem 'rspec-core'
+  gem 'rspec-rails'
+  gem 'rspec-mocks'
+  gem 'rspec-expectations'
+
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end
+
+group :test do
+  gem 'factory_girl'
+  gem 'database_cleaner'
+end

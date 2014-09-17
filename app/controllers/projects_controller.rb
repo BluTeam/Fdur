@@ -1,5 +1,6 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
+  include TheSortableTreeController::Rebuild
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :fork, :follow, :comment]
   before_action :set_current_project, only: [:update, :destroy]
