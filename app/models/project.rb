@@ -15,7 +15,11 @@
 #  updated_at  :datetime
 #  forks_count :integer          default(0), not null
 #
-
+# Indexes
+#
+#  index_projects_on_state    (state)
+#  index_projects_on_user_id  (user_id)
+#
 
 class Project < ActiveRecord::Base
 

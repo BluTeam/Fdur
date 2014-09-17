@@ -3,7 +3,9 @@ body[data-page="registrations-new"],
 body[data-page="sessions-new"],
 body[data-page="passwords-new"],
 body[data-page="passwords-edit"],
-body[data-page="confirmations-new"]{
+body[data-page="passwords-create"],
+body[data-page="confirmations-new"],
+body[data-page="confirmations-create"],{
   background-image: image-url("boat.jpg");
   background-repeat: repeat;
 
