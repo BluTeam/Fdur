@@ -22,6 +22,7 @@
         | 666
   .col-md-8.col-sm-12
     - if @milestones
+      /TODO：编辑删除状态改变功能，样待完成，milestones分类展示
       ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_milestones_url}"
         span.list-group-item.disabled
           | 里程杯

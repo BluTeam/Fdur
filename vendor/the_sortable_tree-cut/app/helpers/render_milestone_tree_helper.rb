@@ -15,7 +15,7 @@ module RenderMilestoneTreeHelper
       def render_node(h, options)
         @h, @options = h, options
         node = options[:node]
-
+        # TODO：图画放大弹窗，编辑弹窗
         "
           <li class='list-group-item public' data-node-id='#{ node.id }'>
             <div class='item'>
