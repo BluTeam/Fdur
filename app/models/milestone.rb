@@ -13,6 +13,10 @@
 #  project_id  :integer          not null
 #  created_at  :datetime
 #  updated_at  :datetime
+#  parent_id   :integer
+#  lft         :integer
+#  rgt         :integer
+#  depth       :integer
 #
 # Indexes
 #
@@ -36,6 +40,10 @@ class Milestone < ActiveRecord::Base
 
   #VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif))|()/
   #validates :image, format: {with: VALID_IMAGE_REGEX}
+
+  def title
+    self.name
+  end
 
   private
 

@@ -14,5 +14,10 @@
 //= require bootstrap-sprockets
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
+
+//= require jquery.ui.nestedSortable
+//= require sortable_tree/initializer
+
 //= require_tree .

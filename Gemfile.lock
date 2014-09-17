@@ -11,7 +11,7 @@ GIT
       polyamorous (~> 1.1)
 
 PATH
-  remote: vendor/the_sortable_tree-master
+  remote: vendor/the_sortable_tree-cut
   specs:
     the_sortable_tree (2.5.0)
       rails (>= 3.1)
@@ -89,6 +89,8 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (5.0.0)
+      railties (>= 3.2.16)
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -194,6 +196,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  jquery-ui-rails
   mini_magick
   mysql2
   pry

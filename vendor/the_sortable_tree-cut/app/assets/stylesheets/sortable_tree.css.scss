@@ -1,0 +1,102 @@
+.sortable_tree{
+
+  li {
+    padding: 0;
+    list-style: none outside none;
+  }
+
+  a{
+    color:#000;
+    font-size:10pt;
+    font-weight:normal;
+    text-decoration:none;
+    line-height: 150%;
+    margin-left:30px;
+    margin-right:120px;
+    display:block;
+    &:hover{ text-decoration: underline; }
+  }
+
+  h4{
+    margin-left: 30px;
+
+    a{
+      color: #333;
+      font-size: 14px;
+      margin-left: 0;
+      &:hover{ background: #eee; }
+    }
+  }
+
+  p{
+    margin-right: 75px;
+    padding: 5px;
+  }
+
+  .handle{
+    background: transparent image-url("iconza/icons/move.png");
+    background-position: center center;
+
+    width: 16px;
+    height: 16px;
+    margin: 3px 10px 0 0;
+    float: left;
+    cursor: move;
+
+    &:hover{ background: transparent image-url("iconza/icons/red_move.png"); }
+  }
+
+  .item{
+    padding: 5px;
+    border-radius: 3px;
+    color: #f1f1f1;
+    font-size: 15px;
+    & > p.time {
+      font-size: 11px;
+    }
+  }
+
+  .placeholder {
+    height: 80px;
+    background-color: #f1f1f1;
+    border: 1px dashed #67B4B1;
+  }
+
+  .ui-nestedSortable-error {
+    height: 80px;
+    background: #FAA;
+    color: #F08080;
+  }
+
+  .controls{
+    position: absolute;
+    bottom: 1px; right: 10px;
+
+    a{
+      width: 20px;
+      height: 20px;
+      display: block;
+
+      float: left;
+      padding: 5px;
+      cursor: pointer;
+      position: relative;
+
+      margin: 0 0 5px 5px;
+      overflow: hidden; zoom: 1;
+
+      &.new{
+        background: transparent image-url("iconza/icons/add.png") no-repeat scroll center center;
+        &:hover{ background: transparent image-url("iconza/icons/red_add.png") no-repeat scroll center center; }
+      }
+      &.edit{
+        background: transparent image-url("iconza/icons/edit.png") no-repeat scroll center center;
+        &:hover{ background: transparent image-url("iconza/icons/red_edit.png") no-repeat scroll center center; }
+      }
+      &.delete{
+        background: transparent image-url("iconza/icons/delete.png") no-repeat scroll center center;
+        &:hover{ background: transparent image-url("iconza/icons/red_delete.png") no-repeat scroll center center; }
+      }
+    }
+  }
+}

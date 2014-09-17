@@ -1,5 +1,4 @@
 .container.top_stand
-  .col-md-8.col-sm-12
   .col-md-4.col-sm-12
     .project
       .thumbnail.no_bottom
@@ -7,7 +6,7 @@
           = image_tag @project.image.normal.url, inner_html: 'data-src="holder.js/320px*auto"'
       .description
         a href="#{project_path(@project.id)}"
-          .title.bgcolor_red
+          .title class="#{@project.is_public ? "public" : "private"}"
             = @project.name
         .de_content
           = @project.description
@@ -21,4 +20,13 @@
             | &nbsp0
       .active_milestone
         | 666
+  .col-md-8.col-sm-12
+    - if @milestones
+      ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_milestones_url}"
+        span.list-group-item.disabled
+          | 里程杯
+        = milestone_tree @milestones
+
+
+
 

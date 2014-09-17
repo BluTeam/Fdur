@@ -65,6 +65,13 @@ body[data-page="projects-show"] {
       }
     }
   }
+
+  .milestones {
+
+    & > li {
+      font-size: 20px;
+    }
+  }
 }
 body[data-page="projects-index"],
 body[data-page="projects-create"] {

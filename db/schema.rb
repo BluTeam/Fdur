@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914074904) do
+ActiveRecord::Schema.define(version: 20140917101402) do
 
   create_table "activities", force: true do |t|
     t.integer  "project_id",         null: false
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 20140914074904) do
     t.integer  "project_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
   end
 
   add_index "milestones", ["project_id"], name: "index_milestones_on_project_id", using: :btree

@@ -1,6 +1,5 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
-  include TheSortableTreeController::Rebuild
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :fork, :follow, :comment]
   before_action :set_current_project, only: [:update, :destroy]
@@ -107,10 +106,10 @@ class ProjectsController < ApplicationController
     end
 
     def classify_milestones_and_comments
-      milestones =  @project.milestones.order(updated_at: :desc)
-      @milestones_undo = milestones.select {|m| m.state == 'undo'}
-      @milestones_doing = milestones.select {|m| m.state == 'doing'}
-      @milestones_finished = milestones.select{|m| m.state == 'finished'}
+      @milestones =  @project.milestones.nested_set.all if @project
+      # @milestones_undo = milestones.select {|m| m.state == 'undo'}
+      # @milestones_doing = milestones.select {|m| m.state == 'doing'}
+      # @milestones_finished = milestones.select{|m| m.state == 'finished'}
       # @comments = @project.comments
     end
 

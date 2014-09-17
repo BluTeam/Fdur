@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :projects
+
+  resources :milestones do
+    collection do
+      post :rebuild
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -22,6 +22,7 @@ gem 'mini_magick'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jquery-turbolinks'
@@ -47,7 +48,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
 gem 'annotate'
 
 gem 'awesome_nested_set'
-gem "the_sortable_tree", path: "vendor/the_sortable_tree-master"
+gem "the_sortable_tree", path: "vendor/the_sortable_tree-cut"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
