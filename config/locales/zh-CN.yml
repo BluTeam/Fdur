@@ -98,6 +98,9 @@ zh-CN:
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
+      wrong_size: "文件错误 (should be %{file_size})"
+      size_too_small: "文件太小 (should be at least %{file_size})"
+      size_too_big: "文件太大 (限制大小为 %{file_size})"
       accepted: 必须是可被接受的
       blank: 内容不能为空
       confirmation: 与确认值不匹配

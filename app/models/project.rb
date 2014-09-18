@@ -41,6 +41,7 @@ class Project < ActiveRecord::Base
   validates :is_public, inclusion: [true, false]
   validates :name, presence: true
   validates :forks_count, presence: true
+  validate :file_size
 
   def fork_from o_project, user_id
 
@@ -79,5 +80,9 @@ class Project < ActiveRecord::Base
     end
   end
 
-
+  def file_size
+    if image.file.size.to_f/(1000*1000) > user.upload_limit.to_f
+      errors.add(:file, "You cannot upload a file greater than #{user.upload_limit.to_f}MB")
+    end
+  end
 end
