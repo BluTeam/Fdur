@@ -79,6 +79,17 @@ body[data-page="projects-create"] {
     border-radius: 5px;
   }
 
+  @mixin project_link {
+    & > a {
+      text-decoration: none;
+      color: #f1f1f1;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
   .project {
     margin-bottom: 15px;
     box-shadow: 0 2px 4px 0 #bbb;
@@ -123,6 +134,8 @@ body[data-page="projects-create"] {
       background-color: $projdect_shadow;
       padding-top: 3px;
 
+      @include project_link;
+
       .title {
         width: 102%;
         margin-left: -1%;
@@ -148,6 +161,27 @@ body[data-page="projects-create"] {
       .follow {
         font-weight: bold;
         line-height: 2;
+
+        & > span > a.follows {
+          text-decoration: none;
+          color: pink;
+          font-size: 16px;
+
+          &:hover{
+            color: #F08080;
+            cursor: pointer;
+          }
+        }
+        & > span > a.forks {
+          text-decoration: none;
+          color: greenyellow;
+          font-size: 16px;
+
+          &:hover{
+            color: yellow;
+            cursor: pointer;
+          }
+        }
       }
 
       .active_milestone {

@@ -8,6 +8,11 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
+# Indexes
+#
+#  index_follows_on_project_id  (project_id)
+#  index_follows_on_user_id     (user_id)
+#
 
 class Follow < ActiveRecord::Base
   belongs_to :project

@@ -1,18 +1,26 @@
 .container.top_stand
-  .col-md-8.col-sm-12
+  .col-md-8.col-sm-12.except_padding
     .col-sm-6
       #new_project.project data-toggle="modal" data-target="#newProjectModal"
         span.new_project.text-center
           .glyphicon.glyphicon-plus.center
           p.content
             | 新的启程让生活更多彩
+      - @projects.each_with_index do |p, index|
+        -if index % 3 == 2
+          = render "project_item",p: p
     .col-sm-6
-      - @projects.each do |p|
-        = render "project_item",p: p
-  .col-md-4.col-sm-12.bgcolor_blue
+      - @projects.each_with_index do |p, index|
+        -if index % 3 == 0
+          = render "project_item",p: p
+  .col-md-4.col-sm-12.except_padding
     .col-md-12.col-sm-6
-      | col-md-4
+      - @projects.each_with_index do |p, index|
+        -if index % 6 == 1
+          = render "project_item",p: p
     .col-md-12.col-sm-6
-      | col-md-4
+      - @projects.each_with_index do |p, index|
+        -if index % 6 == 4
+          = render "project_item",p: p
 = render "project_form",project: @project
 

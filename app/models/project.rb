@@ -63,11 +63,6 @@ class Project < ActiveRecord::Base
 
   end
 
-
-  def followed_count
-    self.follows.count
-  end
-
   private
 
   def add_default_information

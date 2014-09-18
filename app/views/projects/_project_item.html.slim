@@ -1,20 +1,20 @@
 .project
   .thumbnail.no_bottom
     a href="#{project_path(p.id)}"
-      = image_tag p.image.normal.url, inner_html: 'data-src="holder.js/320px*auto"'
+      = image_tag p.image.normal.url, data: {src: "holder.js/320px*auto"}, alt: "/support-loading.gif"
   .description
     a href="#{project_path(p.id)}"
-      .title class="#{@project.is_public ? "public" : "private"}"
+      .title class="#{p.is_public ? "public" : "private"}"
         = p.name
     .de_content
       = p.description
     .extra_padding.follow
       | &nbsp
-      button.pull-right href="#" title="拷贝"
-        span.glyphicon.glyphicon-tags
-        | &nbsp0
-      button.pull-right href="#" title="收藏"
-        span.glyphicon.glyphicon-fire
-        | &nbsp0
+      span.pull-right href="#" title="拷贝"
+        a.glyphicon.glyphicon-tags.forks
+        | &nbsp&nbsp#{ p.forks_count }
+      span.pull-right href="#" title="收藏" style="margin-right: 10px;"
+        a.glyphicon.glyphicon-heart.follows
+        | &nbsp&nbsp#{ p.follows.count }
   .active_milestone
     | 666
