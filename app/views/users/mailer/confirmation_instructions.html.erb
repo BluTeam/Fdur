@@ -1,5 +1,28 @@
-<p>你好 <%= @email %>!</p>
+<!-- <p>你好 <%= @email %>!</p>
 
 <p>You can confirm your account email through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+ -->
+
+ <table border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #DDDDDD;">
+  <tr>
+    <td height="60" style="background-color:#333333;padding:0 10px 0 10px;border-bottom:1px solid #DDDDDD;font-family:Arial;color:#BDBDBD;">
+     <div style="height:30px;width:200px;"><h2>MealIt</h2></div>
+    </td>
+  </tr>
+  <tr>
+  	<td height="500" valign="top" background="http://byuik.img42.wal8.com/img42/435562_20140918134333/141101904843.jpg" style="background-repeat:no-repeat">
+      <div style="color:#505050;font-family:Arial;font-size:14px;line-height:300%;text-align:left;">
+        <div style="height:80px;width:200px;margin:30px auto;"><h1 class="h1">欢迎加入米er</h1></div>
+        <div style="height:400px;width:220px;float:right;">
+        <strong>尊敬的</strong><strong><%= @email %></strong>:
+        <p>你已经在米er注册了一个新账号，点击下面链接完成最后一步，你就可以和小伙伴们在米er愉快的玩耍了！</p>
+        <%= link_to '验证我的账号', confirmation_url(@resource, confirmation_token: @token) %>
+        <br/>
+        有任何问题，请<a href="#">联系我们</a>
+        </div>
+      </div>
+  	</td>
+  </tr>
+</table>
