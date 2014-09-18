@@ -38,9 +38,6 @@ class Milestone < ActiveRecord::Base
   validates :state, presence: true,
             inclusion: ['undo','doing','finished']
 
-  #VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif))|()/
-  #validates :image, format: {with: VALID_IMAGE_REGEX}
-
   def title
     self.name
   end
@@ -48,7 +45,6 @@ class Milestone < ActiveRecord::Base
   private
 
   def set_default_information
-    self.name = '未命名' if self.name.blank?
 
     self.state = 'undo' if self.state.blank?
 

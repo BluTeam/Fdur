@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_for :users
 
-  resources :projects
-
-  resources :milestones do
-    collection do
-      post :rebuild
+  resources :projects do
+    resources :milestones do
+      collection do
+        post :rebuild
+      end
     end
   end
   # Example of regular route:

@@ -21,12 +21,22 @@ module RenderMilestoneTreeHelper
             <div class='item'>
               <i class='handle'></i>
               <p>#{ show_link }</p>
-              #{ controls }
+              #{ show_description }
               <p class='time'>更新时间： #{ node.updated_at.strftime("%y/%m/%d %X") }</p>
+              #{ controls }
             </div>
             #{ children }
           </li>
         "
+      end
+
+      def show_description
+        node = options[:node]
+        unless node.description.blank?
+          "<p>#{ node.description }</p>"
+        else
+          ""
+        end
       end
 
       def show_link
@@ -39,13 +49,14 @@ module RenderMilestoneTreeHelper
       def controls
         node = options[:node]
 
-        edit_path = h.url_for(:controller => options[:klass].pluralize, :action => :edit, :id => node)
-        destroy_path = h.url_for(:controller => options[:klass].pluralize, :action => :destroy, :id => node)
-
         "
           <div class='controls'>
-            #{ h.link_to '', edit_path, :class => :edit }
-            #{ h.link_to '', destroy_path, :class => :delete, :method => :delete, :data => { :confirm => 'Are you sure?' } }
+            <a id='edit_milestone' class='edit' data-toggle='modal' data-target='#editMilestoneModal#{node.id}'>
+              <span class='glyphicon glyphicon-pencil'></span>
+            </a>
+            <a href='/projects/#{node.project.id}/milestones/#{node.id}' class='delete' method='delete' data-confirm='Are you sure?'>
+              <span class='glyphicon glyphicon-remove'></span>
+            </a>
           </div>
         "
       end

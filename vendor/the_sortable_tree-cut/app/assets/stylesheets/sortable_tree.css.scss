@@ -1,5 +1,11 @@
 .sortable_tree{
 
+  @mixin milestone_button{
+    color: #f1f1f1;
+    font-size: 16px;
+    &:hover{ color: #ffffff; font-weight: bold }
+  }
+
   li {
     padding: 0;
     list-style: none outside none;
@@ -49,21 +55,22 @@
   .item{
     padding: 5px;
     border-radius: 3px;
-    color: #f1f1f1;
+    color: #ffffff;
+    font-weight: bold;
     font-size: 15px;
     & > p.time {
-      font-size: 11px;
+      font-size: 10px;
     }
   }
 
   .placeholder {
-    height: 80px;
+    height: 100px;
     background-color: #f1f1f1;
     border: 1px dashed #67B4B1;
   }
 
   .ui-nestedSortable-error {
-    height: 80px;
+    height: 100px;
     background: #FAA;
     color: #F08080;
   }
@@ -73,9 +80,9 @@
     bottom: 1px; right: 10px;
 
     a{
-      width: 20px;
-      height: 20px;
+      width: 24px;
       display: block;
+      outline: none;
 
       float: left;
       padding: 5px;
@@ -86,16 +93,13 @@
       overflow: hidden; zoom: 1;
 
       &.new{
-        background: transparent image-url("iconza/icons/add.png") no-repeat scroll center center;
-        &:hover{ background: transparent image-url("iconza/icons/red_add.png") no-repeat scroll center center; }
+        @include milestone_button
       }
-      &.edit{
-        background: transparent image-url("iconza/icons/edit.png") no-repeat scroll center center;
-        &:hover{ background: transparent image-url("iconza/icons/red_edit.png") no-repeat scroll center center; }
+      &.edit {
+        @include milestone_button
       }
       &.delete{
-        background: transparent image-url("iconza/icons/delete.png") no-repeat scroll center center;
-        &:hover{ background: transparent image-url("iconza/icons/red_delete.png") no-repeat scroll center center; }
+        @include milestone_button
       }
     }
   }

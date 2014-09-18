@@ -1,9 +1,13 @@
 #encoding: utf-8
 class MilestonesController < ApplicationController
   include TheSortableTreeController::Rebuild
-  before_action :set_project, except: [:rebuild]
-  before_action :set_milestone, only: [:destroy, :ajax_update, :update]
-  before_action :milestone_params, only: [:create, :update]
+  before_action :set_project, except: [:rebuild, :edit]
+  before_action :set_milestone, only: [:destroy, :update, :index]
+  before_action :milestone_params, only: [:create, :update, :index]
+
+  def index
+
+  end
 
   def create
     milestone = @project.milestones.build milestone_params
@@ -17,36 +21,28 @@ class MilestonesController < ApplicationController
     end
   end
 
-  def ajax_update
-    p = params.permit(:state)
-    if @milestone.update(p)
-      classify_milestones
-      render 'reload_milestones'
-    else
-      render js: 'alert("error!")'
-    end
-  end
-
   def update
     if @milestone.update(milestone_params)
-      classify_milestones
-      render 'reload_milestones'
+      flash[:success] = '里程碑更新成功'
+      redirect_to controller: :projects, action: :show, id: @project.id
     else
-      render js: 'alert("图片格式不正确！")'
+      classify_milestones_and_comments
+      flash[:failed] = '里程碑更新失败'
+      redirect_to controller: :projects, action: :show, id: @project.id
     end
   end
 
-  #def destroy
-  #  @milestone.destroy
-  #  flash[:success] = '删除成功'
-  #  redirect_to @project
-  #end
+  def destroy
+    @milestone.destroy
+    flash[:success] = '删除成功'
+    redirect_to @project
+  end
 
 
   private
 
   def milestone_params
-    params.require(:milestone).permit(:name,:image,:state,:reflection)
+    params.require(:milestone).permit(:name,:image,:state,:reflection,:description)
   end
 
   def set_project

@@ -16,7 +16,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # TODO: 图片上传文件大小验证
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
     ActionController::Base.helpers.asset_path "default.png"

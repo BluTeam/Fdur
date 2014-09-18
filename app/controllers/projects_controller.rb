@@ -3,7 +3,6 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :fork, :follow, :comment]
   before_action :set_current_project, only: [:update, :destroy]
-  before_action :find_current_user
   before_action :comment_params, only: [:comment]
 
   def index
@@ -99,10 +98,6 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name,:description,:is_public,:image)
-    end
-
-    def find_current_user
-      @user = current_user
     end
 
     def classify_milestones_and_comments
