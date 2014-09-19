@@ -17,4 +17,21 @@
         a.glyphicon.glyphicon-heart.follows
         | &nbsp&nbsp#{ p.follows.count }
   .active_milestone
-    | 666
+    - unless (last_milestone = p.milestones.order(updated_at: :desc).first).nil?
+      p.small.last_time
+        | 最近更新:
+      p.milestone_title
+        = last_milestone.title
+      p.small.last_time
+        = last_milestone.updated_at.strftime("%y/%m/%d %H:%M")
+  .comments
+    - unless p.comments.blank?
+      - p.comments.order(created_at: :desc).limit(5).each do |c|
+        p.comment
+          = c.content
+    - else
+      p.comment
+        | 暂无评论
+    p.all_comments
+      a.btn.btn-success.btn-xs.public
+        | 查看全部

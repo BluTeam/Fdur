@@ -58,11 +58,6 @@ body[data-page="projects-show"] {
         font-weight: bold;
         line-height: 2;
       }
-
-      .active_milestone {
-        color: #111111;
-        background-color: #fff;
-      }
     }
   }
 
@@ -92,7 +87,7 @@ body[data-page="projects-create"] {
 
   .project {
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px 0 #bbb;
+    box-shadow: 0 0 4px 0 #bbb;
     background-color: #f1f1f1;
     color: #FDFDFD;
     @include lazy_tansition(margin, 0.2s);
@@ -183,10 +178,44 @@ body[data-page="projects-create"] {
           }
         }
       }
+    }
 
-      .active_milestone {
-        color: #111111;
-        background-color: #fff;
+    .active_milestone {
+      padding: 10px 15px 4px 15px;
+      background-color: #f1f1f1;
+      color: #444;
+      border-bottom: 1px solid #e6e6e6;
+
+      .last_time {
+        color: #666;
+      }
+
+      .milestone_title {
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .comments {
+      background-color: #fff;
+      font-size: 13px;
+      color: #666;
+
+      .comment {
+        border-bottom: 1px solid #e6e6e6;
+        word-break: keep-all;
+        white-space: pre-wrap;
+        text-align: justify;
+        margin: 0 10px;
+        padding: 10px 0;
+      }
+
+      .all_comments {
+        line-height: 40px;
+        & > a {margin-left: 290px}
+        & > a:hover{background-color: #67B4B1}
       }
     }
   }
