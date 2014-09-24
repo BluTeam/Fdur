@@ -27,7 +27,9 @@
 
   .col-md-8.col-sm-12
     - if @milestones
-      /TODO：编辑删除状态改变功能，样待完成，milestones分类展示
+      /TODO: 新建编辑milestone
+      /TODO：改变状态为两个，完成时提交一个表单请求，要求写入心得
+      /TODO: 写一个tap组件，分四个tab这里，未完成、完成、总览、评论
       ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
         span.list-group-item.disabled
           | 里程碑
