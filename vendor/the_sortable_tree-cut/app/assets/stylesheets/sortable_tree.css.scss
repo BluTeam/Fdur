@@ -7,7 +7,7 @@
   }
 
   li {
-    padding: 0;
+    padding: 10px 0 0 0;
     list-style: none outside none;
   }
 
@@ -34,22 +34,29 @@
     }
   }
 
-  p{
+  p {
     margin-right: 75px;
     padding: 5px;
   }
 
-  .handle{
-    background: transparent image-url("iconza/icons/move.png");
-    background-position: center center;
+  .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
+  .handle{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 10px;
+    color: yellow;
     width: 16px;
     height: 16px;
-    margin: 3px 10px 0 0;
-    float: left;
     cursor: move;
 
-    &:hover{ background: transparent image-url("iconza/icons/red_move.png"); }
+    &:hover{ color: orange }
   }
 
   .item{

@@ -19,8 +19,10 @@ module RenderMilestoneTreeHelper
         "
           <li class='list-group-item public' data-node-id='#{ node.id }'>
             <div class='item'>
-              <i class='handle'></i>
-              <p>#{ show_link }</p>
+              <i class='handle'>
+                <span class='glyphicon glyphicon-th-list'></span>
+              </i>
+              <p class='title'>#{ show_link }</p>
               #{ show_description }
               <p class='time'>更新时间： #{ node.updated_at.strftime("%y/%m/%d %X") }</p>
               #{ controls }

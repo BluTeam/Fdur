@@ -18,7 +18,7 @@
             = f.label '微计划名', for: :project_name
             span.nil
               | *
-            = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off
+            = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80
           .form-group
             = f.label '描述', for: :project_description
             = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off

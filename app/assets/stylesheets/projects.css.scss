@@ -44,6 +44,7 @@ body[data-page="projects-update"]{
   .description {
     background-color: $projdect_shadow;
     padding-top: 3px;
+    padding-bottom: 5px;
 
     @include project_link;
 
@@ -176,6 +177,7 @@ body[data-page="projects-create"] {
     .description {
       background-color: $projdect_shadow;
       padding-top: 3px;
+      padding-bottom: 3px;
 
       @include project_link;
 
