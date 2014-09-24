@@ -7,18 +7,26 @@
             | &times;
           span.sr-only
             | Close
-        h4.modal-title#myModalLabel
-          | New Project
-      = form_for(@project, url: projects_path,role: :form) do |f|
+        h4.modal-title#projectModalLabel
+          - if type == 'edit'
+            | Edit Project
+          - else
+            | New Project
+      = form_for(@project, role: :form) do |f|
         .modal-body
           .form-group
             = f.label '微计划名', for: :project_name
+            span.nil
+              | *
             = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off
           .form-group
             = f.label '描述', for: :project_description
             = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
           .form_group
             = f.label '标题图片', for: :project_image
+            br
+            .thumbnail
+              = image_tag @project.image.normal.url, style: "max-width: 300px; max-height: 300px"
             = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
           .radio
             label

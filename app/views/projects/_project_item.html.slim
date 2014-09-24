@@ -10,11 +10,11 @@
       = p.description
     .extra_padding.follow
       | &nbsp
-      span.pull-right href="#" title="拷贝"
-        a.glyphicon.glyphicon-tags.forks
+      span.pull-right title="拷贝"
+        a.glyphicon.glyphicon-tags.forks href="javascript:void(0)"
         | &nbsp&nbsp#{ p.forks_count }
-      span.pull-right href="#" title="收藏" style="margin-right: 10px;"
-        a.glyphicon.glyphicon-heart.follows
+      span.pull-right title="收藏" style="margin-right: 10px;"
+        a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
         | &nbsp&nbsp#{ p.follows.count }
   .active_milestone
     - unless (last_milestone = p.milestones.order(updated_at: :desc).first).nil?

@@ -28,9 +28,9 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       flash[:success] = '修改成功'
-      redirect_to action: 'show'
+      redirect_to action: :show
     else
-      flash[:failed]= '编辑失败，图片链接格式不正确，看看帮助吧'
+      flash[:failed] = '编辑失败'
       redirect_to action: :show
     end
   end
@@ -56,11 +56,11 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
-  #def destroy
-  #  @project.destroy
-  #  flash[:success] = '删除成功'
-  #  redirect_to projects_url
-  #end
+  def destroy
+    @project.destroy
+    flash[:success] = '删除成功'
+    redirect_to projects_url
+  end
 
   def comment
     comment = comment_params

@@ -1,7 +1,19 @@
-body[data-page="projects-show"] {
+@mixin project_link {
+  & > a {
+    text-decoration: none;
+    color: #f1f1f1;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+body[data-page="projects-show"],
+body[data-page="projects-update"]{
   .project {
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px 0 #bbb;
+    box-shadow: 0 0 4px 0 #bbb;
     background-color: #f1f1f1;
     color: #FDFDFD;
     @include lazy_tansition(margin, 0.2s);
@@ -27,36 +39,76 @@ body[data-page="projects-show"] {
         line-height: 4;
       }
     }
+  }
 
-    .description {
+  .description {
+    background-color: $projdect_shadow;
+    padding-top: 3px;
+
+    @include project_link;
+
+    .title {
+      width: 102%;
+      margin-left: -1%;
+      box-shadow: 0 1px 2px 0 $projdect_shadow;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 15px;
+      line-height: 2.6;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .de_content {
       background-color: $projdect_shadow;
-      padding-top: 3px;
+      word-break: keep-all;
+      white-space: pre-wrap;
+      text-align: justify;
+      font-size: 13px;
+      padding: 10px 15px;
+    }
 
-      .title {
-        width: 102%;
-        margin-left: -1%;
-        box-shadow: 0 1px 2px 0 $projdect_shadow;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding: 0 15px;
-        line-height: 2.6;
-        font-size: 15px;
-        font-weight: bold;
+    .follow {
+      font-weight: bold;
+      line-height: 2;
+
+      & > span > a.follows {
+        text-decoration: none;
+        color: pink;
+        font-size: 16px;
+
+        &:hover{
+          color: #F08080;
+          cursor: pointer;
+        }
       }
 
-      .de_content {
-        background-color: $projdect_shadow;
-        word-break: keep-all;
-        white-space: pre-wrap;
-        text-align: justify;
-        font-size: 13px;
-        padding: 10px 15px;
+      & > span > a.forks {
+        text-decoration: none;
+        color: greenyellow;
+        font-size: 16px;
+
+        &:hover{
+          color: yellow;
+          cursor: pointer;
+        }
       }
 
-      .follow {
-        font-weight: bold;
-        line-height: 2;
+      & > span > a.edit, a.delete {
+        text-decoration: none;
+        color: lightcyan;
+        font-size: 16px;
+
+        &:hover{
+          color: #67B4B1;
+          cursor: pointer;
+        }
+      }
+
+      & > span.cut {
+        font-size: 20px;
+        margin-top: -10px;
       }
     }
   }
@@ -67,22 +119,18 @@ body[data-page="projects-show"] {
       font-size: 20px;
     }
   }
+
+  .no_bottom {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
 }
 body[data-page="projects-index"],
 body[data-page="projects-create"] {
   .project_border {
     border-radius: 5px;
-  }
-
-  @mixin project_link {
-    & > a {
-      text-decoration: none;
-      color: #f1f1f1;
-
-      &:hover {
-        color: #ffffff;
-      }
-    }
   }
 
   .project {

@@ -2,30 +2,35 @@
   .col-md-4.col-sm-12
     .project
       .thumbnail.no_bottom
-        a href="#{project_path(@project.id)}"
+        a href="javascript:void(0)"
           = image_tag @project.image.normal.url, inner_html: 'data-src="holder.js/320px*auto"'
       .description
-        a href="#{project_path(@project.id)}"
+        a href="javascript:void(0)"
           .title class="#{@project.is_public ? "public" : "private"}"
             = @project.name
         .de_content
           = @project.description
         .extra_padding.follow
           | &nbsp
-          button.pull-right href="#" title="拷贝"
-            span.glyphicon.glyphicon-tags
-            | &nbsp0
-          button.pull-right href="#" title="收藏"
-            span.glyphicon.glyphicon-fire
-            | &nbsp0
-      .active_milestone
-        | 666
+          span.pull-right title="删除"
+            a.glyphicon.glyphicon-remove.delete data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href="#{project_path @project}" rel='nofollow'
+          span.pull-right title="编辑" style="margin-right: 10px;"
+            a#new_project.glyphicon.glyphicon-pencil.edit data-toggle="modal" data-target="#newProjectModal"
+          span.pull-right.cut style="margin-right: 15px;"
+            | |
+          span.pull-right title="拷贝" style="margin-right: 15px;"
+            a.glyphicon.glyphicon-tags.forks href="javascript:void(0)"
+            | &nbsp&nbsp#{ @project.forks_count }
+          span.pull-right title="收藏" style="margin-right: 10px;"
+            a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
+            | &nbsp&nbsp#{ @project.follows.count }
+
   .col-md-8.col-sm-12
     - if @milestones
       /TODO：编辑删除状态改变功能，样待完成，milestones分类展示
       ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
         span.list-group-item.disabled
-          | 里程杯
+          | 里程碑
         = milestone_tree @milestones
       - @milestones.each do |m|
         .modal.fade id="editMilestoneModal#{m.id}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
@@ -69,6 +74,7 @@
                     | 关 闭
                   = f.submit "保 存", class: "btn btn-primary strong button_padding"
 
+= render "project_form", type: 'edit'
 
 
 

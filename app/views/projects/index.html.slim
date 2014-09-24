@@ -22,5 +22,5 @@
       - @projects.each_with_index do |p, index|
         -if index % 6 == 4
           = render "project_item",p: p
-= render "project_form",project: @project
+= render "project_form", type: 'new'
 
