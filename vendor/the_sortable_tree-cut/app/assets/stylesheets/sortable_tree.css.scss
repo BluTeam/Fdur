@@ -7,7 +7,7 @@
   }
 
   li {
-    padding: 10px 0 0 0;
+    padding: 5px 0 0 0;
     list-style: none outside none;
   }
 
@@ -67,6 +67,7 @@
     font-size: 15px;
     & > p.time {
       font-size: 10px;
+      margin-bottom: 5px;
     }
   }
 
@@ -92,7 +93,6 @@
       outline: none;
 
       float: left;
-      padding: 5px;
       cursor: pointer;
       position: relative;
 
@@ -100,13 +100,13 @@
       overflow: hidden; zoom: 1;
 
       &.new{
-        @include milestone_button
+        @include milestone_button;
       }
       &.edit {
-        @include milestone_button
+        @include milestone_button;
       }
       &.delete{
-        @include milestone_button
+        @include milestone_button;
       }
     }
   }
