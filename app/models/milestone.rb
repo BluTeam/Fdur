@@ -29,7 +29,7 @@ class Milestone < ActiveRecord::Base
 
   include TheSortableTree::Scopes
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, MilestoneUploader
 
   belongs_to :project, :foreign_key => :project_id
 

@@ -1,11 +1,12 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :fork, :follow, :comment]
+  before_action :set_project, only: [:show, :fork, :follow, :comment, :update_milestone]
   before_action :set_current_project, only: [:update, :destroy, :create_milestone]
   before_action :comment_params, only: [:comment]
 
-  before_action :milestone_params, only: [:create_milestone]
+  before_action :set_milestone, only: [:update_milestone]
+  before_action :milestone_params, only: [:create_milestone, :update_milestone]
 
   # projects
 
@@ -61,6 +62,19 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update_milestone
+    if @milestone.update(milestone_params)
+      flash[:success] = '里程碑更新成功'
+      redirect_to project_path(@project)
+    else
+      classify_milestones_and_comments
+      flash[:danger] = '里程碑更新失败'
+      redirect_to project_path(@project)
+    end
+  end
+
+  # fork && follow
+
   def fork
     if @project.user != current_user
       temp = @project.forks_count + 1
@@ -103,15 +117,16 @@ class ProjectsController < ApplicationController
       @project = Project.where(id: params[:id]).first
     end
 
+    def set_milestone
+      @milestone = @project.milestones.where(id: params[:milestone_id]).first
+    end
+
     def comment_params
       params.require(:comment).permit(:content)
     end
 
     def set_current_project
       @project = current_user.projects.where(id: params[:id]).first
-      unless @project
-        redirect_to '/404.html'
-      end
     end
 
     def project_params

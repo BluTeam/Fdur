@@ -11,7 +11,8 @@
 
 body[data-page="projects-show"],
 body[data-page="projects-update"],
-body[data-page="projects-create_milestone"]{
+body[data-page="projects-create_milestone"],
+body[data-page="projects-update_milestone"]{
   .project {
     margin-bottom: 15px;
     box-shadow: 0 0 4px 0 #bbb;

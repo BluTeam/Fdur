@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     member do
       post :create_milestone
+      patch :update_milestone
     end
   end
   # Example of regular route:

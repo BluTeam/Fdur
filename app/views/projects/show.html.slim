@@ -39,9 +39,9 @@
           span.list-group-item.disabled
             a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
               | + 新建
-        /- @milestones.each do |m|
-        /  = render "milestone_item", m: m
-= render "milestone_item"
+        - @milestones.each do |m|
+          = render "milestone_form", m: m
+= render "milestone_form", m: @milestone
 = render "project_form", type: 'edit'
 
 

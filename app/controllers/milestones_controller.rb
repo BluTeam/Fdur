@@ -47,16 +47,10 @@ class MilestonesController < ApplicationController
 
   def set_project
     @project = current_user.projects.where(id: params[:project_id]).first
-    unless @project
-      redirect_to '/404.html'
-    end
   end
 
   def set_milestone
     @milestone = @project.milestones.where(id: params[:id]).first
-    unless @milestone
-      redirect_to '/404.html'
-    end
   end
 
   def classify_milestones_and_comments
