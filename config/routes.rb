@@ -10,10 +10,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :projects do
-    resources :milestones do
+    resource :milestones, only: [:destroy] do
       collection do
         post :rebuild
       end
+    end
+    member do
+      post :create_milestone
     end
   end
   # Example of regular route:

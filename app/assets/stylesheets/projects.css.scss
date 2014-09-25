@@ -10,7 +10,8 @@
 }
 
 body[data-page="projects-show"],
-body[data-page="projects-update"]{
+body[data-page="projects-update"],
+body[data-page="projects-create_milestone"]{
   .project {
     margin-bottom: 15px;
     box-shadow: 0 0 4px 0 #bbb;
@@ -115,9 +116,10 @@ body[data-page="projects-update"]{
   }
 
   .milestones {
-
-    & > li {
-      font-size: 20px;
+    .disabled {
+      color: #666;
+      font-size: 15px;
+      font-weight: bold;
     }
   }
 

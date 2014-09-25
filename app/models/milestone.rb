@@ -28,6 +28,9 @@ class Milestone < ActiveRecord::Base
   acts_as_nested_set
 
   include TheSortableTree::Scopes
+
+  mount_uploader :image, ImageUploader
+
   belongs_to :project, :foreign_key => :project_id
 
   before_validation :set_default_information
@@ -37,7 +40,7 @@ class Milestone < ActiveRecord::Base
   validates :name, presence: true
   # TODO: 状态改为两个
   validates :state, presence: true,
-            inclusion: ['undo','doing','finished']
+            inclusion: ['undo','finished']
 
   def title
     self.name
@@ -49,13 +52,6 @@ class Milestone < ActiveRecord::Base
 
     self.state = 'undo' if self.state.blank?
 
-    self.image = '' if self.image.nil?
-
-    unless self.image.match /http:\/\/[\s\S]*.(jpg|png|gif)/
-      self.image = ''
-    end
-
-    #self.image = 'default' if self.image.blank?
   end
 
   def set_default_activity

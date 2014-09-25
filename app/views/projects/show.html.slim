@@ -27,56 +27,21 @@
             | &nbsp&nbsp#{ @project.follows.count }
 
   .col-md-8.col-sm-12
-    - if @milestones
-      /TODO: 新建编辑milestone
-      /TODO：改变状态为两个，完成时提交一个表单请求，要求写入心得
-      /TODO: 写一个tap组件，分四个tab这里，未完成、完成、总览、评论
-      ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
-        span.list-group-item.disabled
-          | 里程碑
-        = milestone_tree @milestones
-      - @milestones.each do |m|
-        .modal.fade id="editMilestoneModal#{m.id}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
-          .modal-dialog.modal-md
-            .modal-content
-              .modal-header.bg-primary.project_border
-                button.close type="button" data-dismiss="modal"
-                  span aria-hidden="true"
-                    | &times;
-                  span.sr-only
-                    | Close
-                h4.modal-title#myModalLabel
-                  | New Project
-              = form_for(m, url: project_milestone_path(@project, m), role: :form) do |f|
-                .modal-body
-                  .form-group
-                    = f.label '标题', for: :project_name
-                    = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80
-                  .form-group
-                    = f.label '描述', for: :project_description
-                    = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
-                  .form_group
-                    = f.label '里程碑图片', for: :project_image
-                    = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
-                  /.radio
-                  /  label
-                  /    = f.radio_button :is_public, true, checked: true
-                  /    span.strong
-                  /      | 公开的微计划
-                  /      span.text-success
-                  /        | &nbspPublic
-                  /.radio
-                  /  label
-                  /    = f.radio_button :is_public, false
-                  /    span.strong
-                  /      | 私有的微计划
-                  /      span.text-danger
-                  /        | &nbspPrivate
-                .modal-footer
-                  button type="button" class="btn btn-default strong" data-dismiss="modal"
-                    | 关 闭
-                  = f.submit "保 存", class: "btn btn-primary strong button_padding"
-
+    .milestones
+      - if @milestones
+        /TODO: 新建编辑milestone
+        /TODO：改变状态为两个，完成时提交一个表单请求，要求写入心得
+        /TODO: 写一个tap组件，分四个tab这里，未完成、完成、总览、评论
+        ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
+          span.list-group-item.disabled
+            | 里程碑
+          = milestone_tree @milestones
+          span.list-group-item.disabled
+            a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
+              | + 新建
+        /- @milestones.each do |m|
+        /  = render "milestone_item", m: m
+= render "milestone_item"
 = render "project_form", type: 'edit'
 
 

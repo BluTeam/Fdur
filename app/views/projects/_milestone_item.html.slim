@@ -1,0 +1,44 @@
+- m = @milestone if m.nil?
+.modal.fade id="editMilestoneModal#{m.id unless m.id.nil?}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-header.bg-primary.project_border
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true"
+            | &times;
+          span.sr-only
+            | Close
+        h4.modal-title#myModalLabel
+          | New Milestone
+      - if m.id.nil?
+        = form_for(m, url: create_milestone_project_path(@project.id), role: :form) do |f|
+          .modal-body
+            .form-group
+              = f.label '标题', for: :project_name
+              = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80
+            .form-group
+              = f.label '描述', for: :project_description
+              = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
+            .form_group
+              = f.label '里程碑图片', for: :project_image
+              = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+          .modal-footer
+            button type="button" class="btn btn-default strong" data-dismiss="modal"
+              | 关 闭
+            = f.submit "保 存", class: "btn btn-primary strong button_padding"
+      - else
+        = form_for(m, url: project_milestone_path(@project, m), role: :form) do |f|
+          .modal-body
+            .form-group
+              = f.label '标题', for: :project_name
+              = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80
+            .form-group
+              = f.label '描述', for: :project_description
+              = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
+            .form_group
+              = f.label '里程碑图片', for: :project_image
+              = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+          .modal-footer
+            button type="button" class="btn btn-default strong" data-dismiss="modal"
+              | 关 闭
+            = f.submit "保 存", class: "btn btn-primary strong button_padding"

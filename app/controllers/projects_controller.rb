@@ -2,8 +2,12 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :fork, :follow, :comment]
-  before_action :set_current_project, only: [:update, :destroy]
+  before_action :set_current_project, only: [:update, :destroy, :create_milestone]
   before_action :comment_params, only: [:comment]
+
+  before_action :milestone_params, only: [:create_milestone]
+
+  # projects
 
   def index
     @projects = current_user.projects.order(updated_at: :desc)
@@ -12,6 +16,7 @@ class ProjectsController < ApplicationController
 
   def show
     classify_milestones_and_comments
+    @milestone = @project.milestones.build
   end
 
   def create
@@ -21,6 +26,7 @@ class ProjectsController < ApplicationController
       flash[:success] = '创建成功'
       redirect_to action: :index
     else
+      flash[:danger] = '创建失败'
       render action: :index
     end
   end
@@ -30,8 +36,28 @@ class ProjectsController < ApplicationController
       flash[:success] = '修改成功'
       redirect_to action: :show
     else
-      flash[:failed] = '编辑失败'
+      flash[:danger] = '编辑失败'
       redirect_to action: :show
+    end
+  end
+
+  def destroy
+    @project.destroy
+    flash[:success] = '删除成功'
+    redirect_to projects_url
+  end
+
+  # milestones
+
+  def create_milestone
+    @milestone = @project.milestones.build milestone_params
+    if @milestone.save
+      flash[:success] = '创建成功'
+      redirect_to project_path(@project)
+    else
+      classify_milestones_and_comments
+      flash[:danger]= '创建失败'
+      render action: :show
     end
   end
 
@@ -54,12 +80,6 @@ class ProjectsController < ApplicationController
     end
     flash[:success] = '收藏成功'
     redirect_to @project
-  end
-
-  def destroy
-    @project.destroy
-    flash[:success] = '删除成功'
-    redirect_to projects_url
   end
 
   def comment
@@ -87,7 +107,6 @@ class ProjectsController < ApplicationController
       params.require(:comment).permit(:content)
     end
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_current_project
       @project = current_user.projects.where(id: params[:id]).first
       unless @project
@@ -95,9 +114,12 @@ class ProjectsController < ApplicationController
       end
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name,:description,:is_public,:image)
+    end
+
+    def milestone_params
+      params.require(:milestone).permit(:name,:image,:state,:reflection,:description)
     end
 
     def classify_milestones_and_comments
