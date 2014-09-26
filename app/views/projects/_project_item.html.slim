@@ -1,7 +1,7 @@
 .project
   .thumbnail.no_bottom
     a href="#{project_path(p.id)}"
-      = image_tag p.image.normal.url, data: {src: "holder.js/320px*auto"}, alt: "/support-loading.gif"
+      = image_tag p.image.normal.url, alt: "/support-loading.gif"
   .description
     a href="#{project_path(p.id)}"
       .title class="#{p.is_public ? "public" : "private"}"

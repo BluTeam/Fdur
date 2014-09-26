@@ -34,6 +34,13 @@
     }
   }
 
+  p.milestone_description {
+    font-size: 13px;
+    word-break: keep-all;
+    white-space: pre-wrap;
+    text-align: justify;
+  }
+
   p {
     margin-right: 75px;
     padding: 5px;

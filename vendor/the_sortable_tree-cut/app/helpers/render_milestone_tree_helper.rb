@@ -32,10 +32,17 @@ module RenderMilestoneTreeHelper
         "
       end
 
+      def show_pic
+        node = options[:node]
+        unless node.image.blank?
+          "<p id='original' data-toggle='modal' data-target='imageOriginalModal'><img src='#{ node.image.normal.url }' alt='/support-loading.gif'></p>"
+        end
+      end
+
       def show_description
         node = options[:node]
         unless node.description.blank?
-          "<p>#{ node.description }</p>"
+          "<p class='milestone_description'>#{ node.description }</p>"
         else
           ""
         end

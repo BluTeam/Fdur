@@ -4,7 +4,7 @@
     .project
       .thumbnail.no_bottom
         a href="javascript:void(0)"
-          = image_tag @project.image.normal.url, inner_html: 'data-src="holder.js/320px*auto"'
+          = image_tag @project.image.normal.url, alt: "/support-loading.gif"
       .description
         a href="javascript:void(0)"
           .title class="#{@project.is_public ? "public" : "private"}"
