@@ -1,5 +1,5 @@
 .container.top_stand
-  .col-md-4.col-sm-12
+  .col-md-4.col-sm-4.col-sm-12
     /TODO: 返回错误时，通过地址传参，弹出窗口
     .project
       .thumbnail.no_bottom
@@ -26,7 +26,7 @@
             a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
             | &nbsp&nbsp#{ @project.follows.count }
 
-  .col-md-8.col-sm-12
+  .col-md-8.col-sm-8.col-sm-12
     .milestones
       - if @milestones
         /TODO: 新建编辑milestone
@@ -35,8 +35,10 @@
         #all.Tags-content.Tag-show
           ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
             span.list-group-item.disabled
-              | 里程碑
-              span.milestone_tags
+              .col-lg-2.col-md-2.col-sm-2.hidden-xs.except_padding
+                | 里程碑
+              .col-lg-6.col-md-5.col-sm-5.hidden-xs.except_padding
+              .col-lg-4.col-md-5.col-sm-5.col-xs-12.except_padding
                 a.Tags.Tag-selected data-flag="#all"
                   | 总 览
                 a.Tags data-flag="#undo"

@@ -117,12 +117,9 @@ body[data-page="projects-update_milestone"]{
   }
 
   .milestones {
-    .milestone_tags {
-      display: inline-block;
-      float: right;
-    }
 
     .disabled {
+      min-height: 40px;
       color: #666;
       font-size: 15px;
       font-weight: bold;
@@ -272,8 +269,8 @@ body[data-page="projects-create"] {
 
       .all_comments {
         line-height: 40px;
-        & > a {margin-left: 290px}
-        & > a:hover{background-color: #67B4B1}
+        & > a { margin-left: 78% }
+        & > a:hover{ background-color: #67B4B1 }
       }
     }
   }
