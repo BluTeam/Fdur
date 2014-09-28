@@ -24,6 +24,7 @@ module RenderMilestoneTreeHelper
               </i>
               <p class='title'>#{ show_link }</p>
               #{ show_description }
+              #{ show_pic }
               <p class='time'>更新时间： #{ node.updated_at.strftime("%y/%m/%d %X") }</p>
               #{ controls }
             </div>
@@ -35,7 +36,7 @@ module RenderMilestoneTreeHelper
       def show_pic
         node = options[:node]
         unless node.image.blank?
-          "<p id='original' data-toggle='modal' data-target='imageOriginalModal'><img src='#{ node.image.normal.url }' alt='/support-loading.gif'></p>"
+          "<p><img src='#{ node.image.normal.url }' alt='/support-loading.gif'  id='original' data-toggle='modal' data-target='#imageOriginalModal#{node.id}'></p>"
         end
       end
 

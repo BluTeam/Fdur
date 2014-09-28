@@ -41,8 +41,6 @@
               | + 新建
         - @milestones.each do |m|
           = render "milestone_form", m: m
+          = render "original_image", m: m
 = render "milestone_form", m: @milestone
 = render "project_form", type: 'edit'
-
-
-
