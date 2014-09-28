@@ -35,7 +35,7 @@ class MilestonesController < ApplicationController
   def destroy
     @milestone.destroy
     flash[:success] = '删除成功'
-    redirect_to @project
+    redirect_to project_path @project.id
   end
 
 
@@ -50,7 +50,7 @@ class MilestonesController < ApplicationController
   end
 
   def set_milestone
-    @milestone = @project.milestones.where(id: params[:id]).first
+    @milestone = @project.milestones.where(id: params[:format]).first
   end
 
   def classify_milestones_and_comments

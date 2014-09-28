@@ -38,7 +38,6 @@ class Milestone < ActiveRecord::Base
   #after_update :set_new_activity
 
   validates :name, presence: true
-  # TODO: 状态改为两个
   validates :state, presence: true,
             inclusion: ['undo','finished']
 

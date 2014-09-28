@@ -1,0 +1,30 @@
+ol.list-group.sortable_tree
+  span.list-group-item.disabled
+    | 里程碑
+    a.Tags data-flag="#all"
+      | 总览
+    a.Tags data-flag="#undo"
+      | 未完成
+    a.Tags data-flag="#finished"
+      | 已完成
+    a.Tags data-flag="#comments"
+      | 评论
+  - milestones.each do |m|
+    li.list-group-item class="#{m.state}"
+      .item
+        p.title
+          = m.title
+        p.milestone_description
+          = m.description
+        p
+          = image_tag m.image.small.url
+        p.time
+          = m.updated_at.strftime("%y/%m/%d %X")
+        .controls
+          a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}'
+            span.glyphicon.glyphicon-pencil
+          a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow'
+            span.glyphicon.glyphicon-remove
+  span.list-group-item.disabled
+    a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
+        | + 新建

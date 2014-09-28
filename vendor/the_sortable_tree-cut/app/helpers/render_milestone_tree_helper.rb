@@ -15,9 +15,8 @@ module RenderMilestoneTreeHelper
       def render_node(h, options)
         @h, @options = h, options
         node = options[:node]
-        # TODO：图画放大弹窗，编辑弹窗
         "
-          <li class='list-group-item public' data-node-id='#{ node.id }'>
+          <li class='list-group-item #{ node.state }' data-node-id='#{ node.id }'>
             <div class='item'>
               <i class='handle'>
                 <span class='glyphicon glyphicon-th-list'></span>
@@ -25,7 +24,7 @@ module RenderMilestoneTreeHelper
               <p class='title'>#{ show_link }</p>
               #{ show_description }
               #{ show_pic }
-              <p class='time'>更新时间： #{ node.updated_at.strftime("%y/%m/%d %X") }</p>
+              <p class='time'>更新时间： #{ node.updated_at.strftime("%y年%m月%d日 %H:%M") }</p>
               #{ controls }
             </div>
             #{ children }
@@ -36,7 +35,7 @@ module RenderMilestoneTreeHelper
       def show_pic
         node = options[:node]
         unless node.image.blank?
-          "<p><img src='#{ node.image.normal.url }' alt='/support-loading.gif'  id='original' data-toggle='modal' data-target='#imageOriginalModal#{node.id}'></p>"
+          "<p><img src='#{ node.image.small.url }' alt='/support-loading.gif'  id='original' data-toggle='modal' data-target='#imageOriginalModal#{node.id}'></p>"
         end
       end
 
@@ -64,7 +63,7 @@ module RenderMilestoneTreeHelper
             <a id='edit_milestone' class='edit' data-toggle='modal' data-target='#editMilestoneModal#{node.id}'>
               <span class='glyphicon glyphicon-pencil'></span>
             </a>
-            <a href='/projects/#{node.project.id}/milestones/#{node.id}' class='delete' method='delete' data-confirm='Are you sure?'>
+            <a class='delete' data-method='delete' data-confirm='确定删除该里程碑?' href='/projects/#{node.project.id}/milestones.#{node.id}' rel='nofollow'>
               <span class='glyphicon glyphicon-remove'></span>
             </a>
           </div>

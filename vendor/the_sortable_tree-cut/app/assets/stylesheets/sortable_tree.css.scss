@@ -1,9 +1,9 @@
 .sortable_tree{
 
   @mixin milestone_button{
-    color: #f1f1f1;
+//    color: #f1f1f1;
     font-size: 16px;
-    &:hover{ color: #ffffff; font-weight: bold }
+//    &:hover{ color: #ffffff; font-weight: bold }
   }
 
   li {
@@ -11,27 +11,40 @@
     list-style: none outside none;
   }
 
-  & li > a {
-    color:#000;
-    font-size:10pt;
-    font-weight:normal;
-    text-decoration:none;
-    line-height: 150%;
-    margin-left:30px;
-    margin-right:120px;
-    display:block;
-    &:hover{ text-decoration: underline; }
+  li.undo {
+    color: #4A525C;
+
+//    & > .item > .handle {
+//      color: #F08080;
+//    }
+
+    & > .item > .controls > a {
+      color: #666666;
+
+      &:hover{
+        color: #4A525C;
+      }
+    }
+  }
+
+  li.finished {
+    color: #ffffff;
+
+//    & > .item > .handle {
+//      color: yellow;
+//    }
+
+    & > .item > .controls > a {
+      color: #f1f1f1;
+
+      &:hover{
+        color: #ffffff;
+      }
+    }
   }
 
   h4{
     margin-left: 30px;
-
-    a{
-      color: #333;
-      font-size: 14px;
-      margin-left: 0;
-      &:hover{ background: #eee; }
-    }
   }
 
   p.milestone_description {
@@ -58,18 +71,14 @@
     top: 0;
     right: 0;
     font-size: 10px;
-    color: yellow;
     width: 16px;
     height: 16px;
     cursor: move;
-
-    &:hover{ color: orange }
   }
 
   .item{
     padding: 5px;
     border-radius: 3px;
-    color: #ffffff;
     font-weight: bold;
     font-size: 15px;
     & > p.time {

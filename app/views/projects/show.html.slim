@@ -32,13 +32,109 @@
         /TODO: 新建编辑milestone
         /TODO：改变状态为两个，完成时提交一个表单请求，要求写入心得
         /TODO: 写一个tap组件，分四个tab这里，未完成、完成、总览、评论
-        ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
-          span.list-group-item.disabled
-            | 里程碑
-          = milestone_tree @milestones
-          span.list-group-item.disabled
-            a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-              | + 新建
+        #all.Tags-content.Tag-show
+          ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
+            span.list-group-item.disabled
+              | 里程碑
+              span.milestone_tags
+                a.Tags.Tag-selected data-flag="#all"
+                  | 总 览
+                a.Tags data-flag="#undo"
+                  | 未完成
+                a.Tags data-flag="#finished"
+                  | 已完成
+                a.Tags data-flag="#comments"
+                  | 评 论
+            = milestone_tree @milestones
+            span.list-group-item.disabled
+              a.btn.btn-info.strong#new_milestone.public data-toggle='modal' data-target='#editMilestoneModal'
+                | + 新建
+        #undo.Tags-content
+          ol.list-group.sortable_tree
+            span.list-group-item.disabled
+              | 里程碑
+              span.milestone_tags
+                a.Tags data-flag="#all"
+                  | 总 览
+                a.Tags data-flag="#undo"
+                  | 未完成
+                a.Tags data-flag="#finished"
+                  | 已完成
+                a.Tags data-flag="#comments"
+                  | 评 论
+            - @milestones_undo.each do |m|
+              li.list-group-item class="#{m.state}"
+                .item
+                  p.title
+                    = m.title
+                  - unless m.description.blank?
+                    p.milestone_description
+                      = m.description
+                  - unless m.image.blank?
+                    p
+                      = image_tag m.image.small.url
+                  p.time
+                    | 更新时间：
+                    = m.updated_at.strftime("%y年%m月%d日 %H:%M")
+                  .controls
+                    a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}'
+                      span.glyphicon.glyphicon-pencil
+                    a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow'
+                      span.glyphicon.glyphicon-remove
+            span.list-group-item.disabled
+              a.btn.btn-info.strong#new_milestone.public data-toggle='modal' data-target='#editMilestoneModal'
+                | + 新建
+        #finished.Tags-content
+          ol.list-group.sortable_tree
+            span.list-group-item.disabled
+              | 里程碑
+              span.milestone_tags
+                a.Tags data-flag="#all"
+                  | 总 览
+                a.Tags data-flag="#undo"
+                  | 未完成
+                a.Tags data-flag="#finished"
+                  | 已完成
+                a.Tags data-flag="#comments"
+                  | 评 论
+            - @milestones_finished.each do |m|
+              li.list-group-item class="#{m.state}"
+                .item
+                  p.title
+                    = m.title
+                  - unless m.description.blank?
+                    p.milestone_description
+                      = m.description
+                  - unless m.image.blank?
+                    p
+                      = image_tag m.image.small.url
+                  p.time
+                    | 更新时间：
+                    = m.updated_at.strftime("%y年%m月%d日 %H:%M")
+                  .controls
+                    a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}'
+                      span.glyphicon.glyphicon-pencil
+                    a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow'
+                      span.glyphicon.glyphicon-remove
+            span.list-group-item.disabled
+              a.btn.btn-info.strong#new_milestone.public data-toggle='modal' data-target='#editMilestoneModal'
+                | + 新建
+        #comments.Tags-content
+          ol.list-group
+            span.list-group-item.disabled
+              | 里程碑
+              span.milestone_tags
+                a.Tags data-flag="#all"
+                  | 总 览
+                a.Tags data-flag="#undo"
+                  | 未完成
+                a.Tags data-flag="#finished"
+                  | 已完成
+                a.Tags data-flag="#comments"
+                  | 评 论
+            span.list-group-item.disabled
+              a.btn.btn-info.strong#new_milestone.public data-toggle='modal' data-target='#editMilestoneModal'
+                | + 新建
         - @milestones.each do |m|
           = render "milestone_form", m: m
           = render "original_image", m: m
