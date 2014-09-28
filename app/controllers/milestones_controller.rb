@@ -1,6 +1,6 @@
 #encoding: utf-8
 class MilestonesController < ApplicationController
-  include TheSortableTreeController::Rebuild
+  include TheSortableTreeController::ReversedRebuild
   before_action :set_project, except: [:rebuild, :edit]
   before_action :set_milestone, only: [:destroy, :update, :index]
   before_action :milestone_params, only: [:create, :update, :index]

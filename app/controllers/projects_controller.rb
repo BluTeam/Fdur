@@ -138,9 +138,9 @@ class ProjectsController < ApplicationController
     end
 
     def classify_milestones_and_comments
-      @milestones =  @project.milestones.nested_set.all if @project
-      @milestones_undo = @project.milestones.where(state: 'undo').order(:lft).all
-      @milestones_finished = @project.milestones.where(state: 'finished').order(:lft).all
+      @milestones =  @project.milestones.reversed_nested_set.all if @project
+      @milestones_undo = @project.milestones.where(state: 'undo').order(lft: :desc).all
+      @milestones_finished = @project.milestones.where(state: 'finished').order(lft: :desc).all
       # @comments = @project.comments
     end
 
