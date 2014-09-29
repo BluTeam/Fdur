@@ -60,6 +60,7 @@ module RenderMilestoneTreeHelper
 
         "
           <div class='controls'>
+            #{ play_or_return }
             <a id='edit_milestone' class='edit' data-toggle='modal' data-target='#editMilestoneModal#{node.id}'>
               <span class='glyphicon glyphicon-pencil'></span>
             </a>
@@ -68,6 +69,23 @@ module RenderMilestoneTreeHelper
             </a>
           </div>
         "
+      end
+
+      def play_or_return
+        node = options[:node]
+        if node.state == "undo"
+          "
+            <a id='play_milestone' class='edit' data-toggle='modal' data-target='#playMilestoneModal#{node.id}'>
+              <span class='glyphicon glyphicon-play'></span>
+            </a>
+          "
+        elsif node.state == "finished"
+          "
+            <a id='return_milestone' class='edit' data-toggle='modal' data-target='#returnMilestoneModal#{node.id}'>
+              <span class='glyphicon glyphicon-repeat'></span>
+            </a>
+          "
+        end
       end
 
       def children

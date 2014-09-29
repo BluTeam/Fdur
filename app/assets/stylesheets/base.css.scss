@@ -1,16 +1,8 @@
 .private { background-color: #F08080; }
-.public { background-color: #67B4B1; }
+.public { background-color: #56b7e3; }
 .undo { background-color: #ffffff }
 .finished { background-color: #4A525C }
 
-a.public {
-  border: #33CC00;
-
-  &:hover {
-    border: #009966;
-    background-color: #339900;
-  }
-}
 li.finished { border-top: 1px solid #4A525C }
 $projdect_shadow: #4A525C;
 
@@ -137,7 +129,7 @@ ul {
   &:hover {
     text-decoration: none;
     padding-top: 13px;
-    padding-bottom: 13px;
+    padding-bottom: 11px;
     background-color: #4A525C;
     color: #f1f1f1;
     box-shadow: 0 1px 2px 0 #ccc;
@@ -156,7 +148,7 @@ ul {
 
 .Tag-selected {
   padding-top: 13px;
-  padding-bottom: 13px;
+  padding-bottom: 11px;
   background-color: #4A525C;
   color: #ffffff;
   box-shadow: 0 1px 2px 0 #ccc;

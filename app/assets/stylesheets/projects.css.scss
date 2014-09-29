@@ -9,6 +9,13 @@
   }
 }
 
+.project_border {
+  border-radius: 2px;
+  background-image: linear-gradient(to bottom, #6cc0e7 0, #56b7e3 100%);
+  background-repeat: repeat-x;
+  color: #ffffff;
+}
+
 body[data-page="projects-show"],
 body[data-page="projects-update"],
 body[data-page="projects-create_milestone"],
@@ -104,7 +111,7 @@ body[data-page="projects-update_milestone"]{
         font-size: 16px;
 
         &:hover{
-          color: #67B4B1;
+          color: #56b7e3;
           cursor: pointer;
         }
       }
@@ -135,9 +142,6 @@ body[data-page="projects-update_milestone"]{
 }
 body[data-page="projects-index"],
 body[data-page="projects-create"] {
-  .project_border {
-    border-radius: 5px;
-  }
 
   .project {
     margin-bottom: 15px;
@@ -271,7 +275,7 @@ body[data-page="projects-create"] {
         line-height: 40px;
 
         & > a { margin-left: 79% }
-        & > a:hover{ background-color: #67B4B1 }
+        & > a:hover{ background-color: #56b7e3 }
       }
     }
   }
