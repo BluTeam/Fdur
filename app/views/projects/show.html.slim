@@ -25,7 +25,28 @@
           span.pull-right title="收藏" style="margin-right: 10px;"
             a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
             | &nbsp&nbsp#{ @project.follows.count }
-
+    / JiaThis Button BEGIN
+    - if @project.is_public?
+      .jiathis_style_32x32
+        a.jiathis_button_qzone
+        a.jiathis_button_tsina
+        a.jiathis_button_tqq
+        a.jiathis_button_weixin
+        a.jiathis_button_renren
+        a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"
+      javascript:
+        var jiathis_config={
+          url: window.location.href,
+          summary:"#{@project.description}",
+          title:"小伙伴在 Beacon 分享了他的微计划 -- #{@project.name} ",
+          ralateuid:{
+            "tsina":"xcccccx"
+          },
+          shortUrl:false,
+          hideMore:true
+        }
+      = javascript_include_tag 'http://v3.jiathis.com/code/jia.js', charset: 'utf-8', 'data-turbolinks-track' => false
+    / JiaThis Button END
   .col-md-8.col-sm-8.col-sm-12
     .milestones
       - if @milestones
