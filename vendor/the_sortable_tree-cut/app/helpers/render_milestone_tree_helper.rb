@@ -22,8 +22,9 @@ module RenderMilestoneTreeHelper
                 <span class='glyphicon glyphicon-th-list'></span>
               </i>
               <p class='title'>#{ show_link }</p>
-              #{ show_description }
               #{ show_pic }
+              #{ show_description }
+              #{ show_reflection }
               <p class='time'>更新时间： #{ node.updated_at.strftime("%y年%m月%d日 %H:%M") }</p>
               #{ controls }
             </div>
@@ -42,9 +43,18 @@ module RenderMilestoneTreeHelper
       def show_description
         node = options[:node]
         unless node.description.blank?
-          "<p class='milestone_description'>#{ node.description }</p>"
+          "
+            <p class='milestone_description'>描述：#{ node.description }</p>
+          "
         else
           ""
+        end
+      end
+
+      def show_reflection
+        node = options[:node]
+        if node.state == 'finished' && !node.reflection.blank?
+          "<p class='milestone_description'>心得：#{ node.reflection }</p>"
         end
       end
 
@@ -61,10 +71,10 @@ module RenderMilestoneTreeHelper
         "
           <div class='controls'>
             #{ play_or_return }
-            <a id='edit_milestone' class='edit' data-toggle='modal' data-target='#editMilestoneModal#{node.id}'>
+            <a id='edit_milestone' class='edit' data-toggle='modal' data-target='#editMilestoneModal#{node.id}' title='编辑'>
               <span class='glyphicon glyphicon-pencil'></span>
             </a>
-            <a class='delete' data-method='delete' data-confirm='确定删除该里程碑?' href='/projects/#{node.project.id}/milestones.#{node.id}' rel='nofollow'>
+            <a class='delete' data-method='delete' data-confirm='确定删除该里程碑?' href='/projects/#{node.project.id}/milestones.#{node.id}' rel='nofollow' title='删除'>
               <span class='glyphicon glyphicon-remove'></span>
             </a>
           </div>
@@ -75,13 +85,13 @@ module RenderMilestoneTreeHelper
         node = options[:node]
         if node.state == "undo"
           "
-            <a id='play_milestone' class='edit' data-toggle='modal' data-target='#playMilestoneModal#{node.id}'>
-              <span class='glyphicon glyphicon-play'></span>
+            <a id='play_milestone' class='edit' data-toggle='modal' data-target='#playMilestoneModal#{node.id}' title='完成'>
+              <span class='glyphicon glyphicon-ok'></span>
             </a>
           "
         elsif node.state == "finished"
           "
-            <a id='return_milestone' class='edit' data-toggle='modal' data-target='#returnMilestoneModal#{node.id}'>
+            <a id='return_milestone' class='edit' data-confirm='重做将删除心得，确定要这样做吗？' href='/projects/#{node.project.id}/return_milestone?milestone_id=#{node.id}' data-method='post' title='重做'>
               <span class='glyphicon glyphicon-repeat'></span>
             </a>
           "

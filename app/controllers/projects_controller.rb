@@ -1,12 +1,12 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :fork, :follow, :comment, :update_milestone]
+  before_action :set_project, only: [:show, :fork, :follow, :comment, :update_milestone, :play_milestone, :return_milestone]
   before_action :set_current_project, only: [:update, :destroy, :create_milestone]
   before_action :comment_params, only: [:comment]
 
-  before_action :set_milestone, only: [:update_milestone]
-  before_action :milestone_params, only: [:create_milestone, :update_milestone]
+  before_action :set_milestone, only: [:update_milestone, :play_milestone, :return_milestone]
+  before_action :milestone_params, only: [:create_milestone, :update_milestone, :play_milestone]
 
   # projects
 
@@ -67,7 +67,29 @@ class ProjectsController < ApplicationController
       flash[:success] = '里程碑更新成功'
       redirect_to project_path(@project)
     else
-      classify_milestones_and_comments
+      flash[:danger] = '里程碑更新失败'
+      redirect_to project_path(@project)
+    end
+  end
+
+  def play_milestone
+    @milestone.state = 'finished'
+    if @milestone.update(milestone_params)
+      flash[:success] = '里程碑更新成功'
+      redirect_to project_path(@project)
+    else
+      flash[:danger] = '里程碑更新失败'
+      redirect_to project_path(@project)
+    end
+  end
+
+  def return_milestone
+    @milestone.state = 'undo'
+    @milestone.reflection = ''
+    if @milestone.save
+      flash[:success] = '里程碑更新成功'
+      redirect_to project_path(@project)
+    else
       flash[:danger] = '里程碑更新失败'
       redirect_to project_path(@project)
     end
