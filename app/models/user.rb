@@ -35,4 +35,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects, dependent: :destroy
+  has_many :follows, dependent: :destroy
 end

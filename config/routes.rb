@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_for :users
 
+  resources :activities, only: [:index]
   resources :projects do
     resource :milestones, only: [:destroy] do
       collection do
