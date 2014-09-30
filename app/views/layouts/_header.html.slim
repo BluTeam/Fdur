@@ -11,9 +11,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top.header role="navigation"
         | MealIt
     .collapse.navbar-collapse id="collapse-header"
       ul.nav.navbar-nav.navbar-left
+        li class="#{ "active" if (controller_name == 'activities' && action_name == 'index')}"
+          = link_to '动态', activities_path, class: :strong
         - if user_signed_in?
-          li class="#{ "active" if (controller_name == 'activities' && action_name == 'index')}"
-            = link_to '动态', activities_path, class: :strong
           li class="#{ "active" if (controller_name == 'projects' && action_name == 'index')}"
             = link_to '微计划', projects_path, class: :strong
       ul.nav.navbar-nav.navbar-right
