@@ -20,6 +20,15 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  upload_limit           :integer          default(1)
+#  avatar                 :string(255)
+#  name                   :string(255)
+#  sex                    :string(255)
+#  birthday               :date
+#  introduction           :text
+#  address                :string(255)
+#  qq                     :string(255)
+#  telephone              :string(255)
+#  profession             :string(255)
 #
 # Indexes
 #

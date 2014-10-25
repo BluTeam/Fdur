@@ -1,0 +1,21 @@
+= javascript_inculde_tag "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"
+#editUserModal.modal.fade tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-header.user_border
+        #avatar_img.center
+          = image_tag @user.avatar.small.url ,style: "width:90px;height:100px;"
+      = form_for(@user, url: detail_update_user_path, role: :form) do |u|
+        .modal-body 
+          .form-group
+            = u.label '昵称', for: :user_name
+            = u.text_field :name, autofocus: true, placeholder: "User Name", class: "form-control", autocomplete: :off
+          .form-group
+            = u.label '性别', for: :user_sex
+            = u.select :sex, (User::SEX_TYPES), {}, {class:  "form-control"}
+          .form-group
+            = u.label '出生日期', for: :user_birthday
+            #datetimepicker.input-append date
+             = u.text_field :birthday, autofocus: true, placeholder: "User Name", class: "form-control", autocomplete: :off
+        .modal-footer
+          = u.submit "保 存" 

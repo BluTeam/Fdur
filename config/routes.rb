@@ -20,6 +20,12 @@ Rails.application.routes.draw do
       patch :update_milestone
     end
   end
+  resources :users, except: [:new , :index] do
+    member do
+      get :detail
+      patch :detail_update
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

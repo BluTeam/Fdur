@@ -20,7 +20,6 @@ nav.navbar.navbar-inverse.navbar-fixed-top.header role="navigation"
             = link_to '登录', new_user_session_path, class: :strong
         - else
           li
-            a href="#"
-              = current_user.email
+            = link_to "#{current_user.email}",detail_user_path(current_user.id)
           li
             = link_to '登出', destroy_user_session_path, class: :strong, method: :delete

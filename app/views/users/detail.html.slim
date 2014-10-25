@@ -1,0 +1,78 @@
+.container.top_stand
+  .col-xs-12.col-sm-12.col-md-8
+    .user_info_pannel
+      ul.nav.nav-tabs#myTab role="tablist"
+        li.active
+          a href="#personal_info" role="tab" data-toggle="tab"
+            | 个人资料
+        li
+          a href="#avatar" role="tab" data-toggle="tab"
+            | 头像设置
+        li
+          a href="#security_setting" role="tab" data-toggle="tab"
+            | 安全设置
+      .info_content.tab-content
+        .tab-pane.active#personal_info
+          .title_line
+          p.title
+            | 基本信息
+          #info
+            .row
+              p.col-sm-2
+                | 登录名
+              p.col-sm-10
+                = @user.email
+            .row
+              p.col-sm-2
+                | 昵称
+              p.col-sm-10
+                =@user.name
+            .row
+              p.col-sm-2
+                | 性别
+              p.col-sm-10
+                =@user.sex
+            .row
+              p.col-sm-2
+                | 出生日期
+              p.col-sm-10
+                =@user.birthday
+            .row
+              p.col-sm-2
+                | 职业介绍
+              p.col-sm-10
+                =@user.profession
+            .row
+              p.col-sm-2
+                | 个人简介
+              p.col-sm-10
+                =@user.introduction
+          .title_line
+          p.title
+            | 联系信息
+          #info 
+            .row
+              p.col-sm-2
+                | 所在地
+              p.col-sm-10
+                =@user.address
+            .row
+              p.col-sm-2
+                | QQ
+              p.col-sm-10
+                =@user.qq
+            .row
+              p.col-sm-2
+                | 电话
+              p.col-sm-10  
+                =@user.telephone
+            #button_row
+              a.btn.btn-info.strong.pull-right data-toggle="modal" data-target="#editUserModal"
+                | 编辑
+        .tab-pane#avatar
+          = image_tag @user.avatar.large.url 
+        .tab-pane#security_setting
+           
+  .col-xs-12.col-sm-12.col-md-4
+
+=render "user_form"
