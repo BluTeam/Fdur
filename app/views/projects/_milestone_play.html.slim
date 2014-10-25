@@ -1,0 +1,20 @@
+.modal.fade id="playMilestoneModal#{m.id}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-header.project_border
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true"
+            | &times;
+          span.sr-only
+            | Close
+        h4.modal-title#myModalLabel
+          | Congratulation
+      = form_for(m, url: play_milestone_project_path(@project, milestone_id: m.id), role: :form) do |f|
+        .modal-body
+          .form-group
+            = f.label '心得：', for: :milestone_reflection
+            = f.text_area :reflection, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
+        .modal-footer
+          button type="button" class="btn btn-default strong" data-dismiss="modal"
+            | 关 闭
+          = f.submit "完 成", class: "btn btn-primary strong button_padding"

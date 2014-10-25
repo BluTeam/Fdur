@@ -72,7 +72,7 @@ class Project < ActiveRecord::Base
 
   def create_default_milestone
     if self.milestones.blank?
-      self.milestones.create name: "创建了新计划——#{self.name}", state: 'finished'
+      self.milestones.create name: "创建了新计划--#{self.name}", state: 'finished'
     end
   end
 

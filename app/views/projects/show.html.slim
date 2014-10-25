@@ -25,7 +25,28 @@
           span.pull-right title="收藏" style="margin-right: 10px;"
             a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
             | &nbsp&nbsp#{ @project.follows.count }
-
+    / JiaThis Button BEGIN
+    - if @project.is_public?
+      .jiathis_style_32x32
+        a.jiathis_button_qzone
+        a.jiathis_button_tsina
+        a.jiathis_button_tqq
+        a.jiathis_button_weixin
+        a.jiathis_button_renren
+        a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"
+      javascript:
+        var jiathis_config={
+          url: window.location.href,
+          summary:"#{@project.description}",
+          title:"小伙伴在 Beacon 分享了他的微计划 -- #{@project.name} ",
+          ralateuid:{
+            "tsina":"xcccccx"
+          },
+          shortUrl:false,
+          hideMore:true
+        }
+      = javascript_include_tag 'http://v3.jiathis.com/code/jia.js', charset: 'utf-8', 'data-turbolinks-track' => false
+    / JiaThis Button END
   .col-md-8.col-sm-8.col-sm-12
     .milestones
       - if @milestones
@@ -71,19 +92,20 @@
                 .item
                   p.title
                     = m.title
-                  - unless m.description.blank?
-                    p.milestone_description
-                      = m.description
                   - unless m.image.blank?
                     p
                       = image_tag m.image.small.url
+                  - unless m.description.blank?
+                    p.milestone_description
+                      | 描述：
+                      = m.description
                   p.time
                     | 更新时间：
                     = m.updated_at.strftime("%y年%m月%d日 %H:%M")
                   .controls
-                    a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}'
+                    a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}' title='编辑'
                       span.glyphicon.glyphicon-pencil
-                    a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow'
+                    a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow' title='删除'
                       span.glyphicon.glyphicon-remove
             span.list-group-item.disabled
               a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
@@ -108,19 +130,24 @@
                 .item
                   p.title
                     = m.title
-                  - unless m.description.blank?
-                    p.milestone_description
-                      = m.description
                   - unless m.image.blank?
                     p
                       = image_tag m.image.small.url
+                  - unless m.description.blank?
+                    p.milestone_description
+                      | 描述：
+                      = m.description
+                  - unless m.reflection.blank?
+                    p.milestone_description
+                      | 心得：
+                      = m.reflection
                   p.time
                     | 更新时间：
                     = m.updated_at.strftime("%y年%m月%d日 %H:%M")
                   .controls
-                    a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}'
+                    a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}' title='编辑'
                       span.glyphicon.glyphicon-pencil
-                    a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow'
+                    a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow' title='删除'
                       span.glyphicon.glyphicon-remove
             span.list-group-item.disabled
               a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
@@ -146,5 +173,6 @@
         - @milestones.each do |m|
           = render "milestone_form", m: m
           = render "original_image", m: m
+          = render "milestone_play", m: m
 = render "milestone_form", m: @milestone
 = render "project_form", type: 'edit'

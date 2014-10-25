@@ -85,7 +85,7 @@ body[data-page="projects-update_milestone"]{
 
       & > span > a.follows {
         text-decoration: none;
-        color: pink;
+        color: lightcyan;
         font-size: 16px;
 
         &:hover{
@@ -96,7 +96,7 @@ body[data-page="projects-update_milestone"]{
 
       & > span > a.forks {
         text-decoration: none;
-        color: greenyellow;
+        color: lightcyan;
         font-size: 16px;
 
         &:hover{
@@ -140,6 +140,8 @@ body[data-page="projects-update_milestone"]{
     margin-bottom: 0;
   }
 }
+
+body[data-page="activities-index"],
 body[data-page="projects-index"],
 body[data-page="projects-create"] {
 
@@ -218,7 +220,7 @@ body[data-page="projects-create"] {
 
         & > span > a.follows {
           text-decoration: none;
-          color: pink;
+          color: lightcyan;
           font-size: 16px;
 
           &:hover{
@@ -228,7 +230,7 @@ body[data-page="projects-create"] {
         }
         & > span > a.forks {
           text-decoration: none;
-          color: greenyellow;
+          color: lightcyan;
           font-size: 16px;
 
           &:hover{

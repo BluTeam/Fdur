@@ -13,13 +13,15 @@
         = form_for(m, url: create_milestone_project_path(@project.id), role: :form) do |f|
           .modal-body
             .form-group
-              = f.label '标题', for: :project_name
+              = f.label '标题', for: :milestone_name
+              span.nil
+                | *
               = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80
             .form-group
-              = f.label '描述', for: :project_description
+              = f.label '描述', for: :milestone_description
               = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
             .form_group
-              = f.label '里程碑图片', for: :project_image
+              = f.label '里程碑图片', for: :milestone_image
               = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
           .modal-footer
             button type="button" class="btn btn-default strong" data-dismiss="modal"
@@ -29,13 +31,19 @@
         = form_for(m, url: update_milestone_project_path(@project, milestone_id: m.id), role: :form) do |f|
           .modal-body
             .form-group
-              = f.label '标题', for: :project_name
+              = f.label '标题', for: :milestone_name
+              span.nil
+                | *
               = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80
             .form-group
-              = f.label '描述', for: :project_description
+              = f.label '描述', for: :milestone_description
               = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
+            - if m.state == 'finished'
+              .form-group
+                = f.label '心得', for: :milestone_description
+                = f.text_area :reflection, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
             .form_group
-              = f.label '里程碑图片', for: :project_image
+              = f.label '里程碑图片', for: :milestone_image
               - unless m.image.blank?
                 br
                   .thumbnail style="margin-bottom: 0"

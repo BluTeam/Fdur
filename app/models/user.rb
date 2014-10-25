@@ -43,8 +43,11 @@ class User < ActiveRecord::Base
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
   SEX_TYPES=["保密","男","女"]
   validates :sex, :inclusion => SEX_TYPES
   has_many :projects, dependent: :destroy
-  mount_uploader :avatar, AvatarUploader
+  has_many :follows, dependent: :destroy
+
 end

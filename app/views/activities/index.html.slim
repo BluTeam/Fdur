@@ -1,0 +1,19 @@
+.container.top_stand
+  .col-md-8.col-sm-12.except_padding
+    .col-sm-6
+      - @activities.each_with_index do |a, index|
+        -if index % 3 == 0
+          = render "projects/project_item",p: a.project
+    .col-sm-6
+      - @activities.each_with_index do |a, index|
+        -if index % 3 == 1
+          = render "projects/project_item",p: a.project
+  .col-md-4.col-sm-12.except_padding
+    .col-md-12.col-sm-6
+      - @activities.each_with_index do |a, index|
+        -if index % 6 == 2
+          = render "projects/project_item",p: a.project
+    .col-md-12.col-sm-6
+      - @activities.each_with_index do |a, index|
+        -if index % 6 == 5
+          = render "projects/project_item",p: a.project

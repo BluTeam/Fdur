@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_for :users
 
+  resources :activities, only: [:index]
   resources :projects do
     resource :milestones, only: [:destroy] do
       collection do
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
     member do
       post :create_milestone
       patch :update_milestone
+      patch :play_milestone
+      post :return_milestone
     end
   end
   resources :users, except: [:new , :index] do
