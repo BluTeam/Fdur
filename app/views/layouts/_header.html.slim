@@ -21,7 +21,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top.header role="navigation"
           li
             = link_to '登录', new_user_session_path, class: :strong
         - else
-          li
-            = link_to "#{current_user.email}",detail_user_path(current_user.id)
+          li style="margin-top:10px;"
+
+            = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;"
+            = link_to "#{current_user.email}",detail_user_path(current_user.id),style: "display:inline;"
           li
             = link_to '登出', destroy_user_session_path, class: :strong, method: :delete

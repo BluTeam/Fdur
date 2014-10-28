@@ -1,31 +1,11 @@
-h1
-  | hello world
-.container.bgcolor_red
-  | aaa
-.container.bgcolor_blue
-  | bbb
-br
-
-.container
-  .row
-    .col-md-8.col-sm-12.bgcolor_red
-      .col-sm-6
-        | col-md-8
-      .col-sm-6
-        | col-md-8
-    .col-md-4.col-sm-12.bgcolor_blue
-      .col-md-12.col-sm-6
-        | col-md-4
-      .col-md-12.col-sm-6
-        | col-md-4
-
-.container
-  p.text-justify
-    | kjklsdajif kjsaidjfek kjskdnaklfie kljlksajdifjie kljsaidjfiekn kjslidajfl;kjea jliajdljafklea jijsladjfie ;liajelfkdnaklfie kljlksajdifjie kljsaidjfiekn kjslidajfl;kjea jliajdljafklea
-      jikdnaklfie kljlksajdifjie kljsaidjfiekn kjslidajfl;kjea jliajdljafklea ji
-    br
-    | kjklsdajif kjsaidjfek kjskdnaklfie kljlksajdifjie kljsaidjfiekn kjslidajfl;kjea jliajdljafklea jijsladjfie ;liajelfkdnaklfie kljlksajdifjie kljsaidjfiekn kjslidajfl;kjea jliajdljafklea
-      jikdnaklfie kljlksajdifjie kljsaidjfiekn kjslidajfl;kjea jliajdljafklea ji
-br
-
-span.glyphicon.glyphicon-search
+#datetimepicker2.input-append
+  input data-format="yyyy-MM-dd" type="text"
+  span.add-on
+    i data-time-icon="icon-time" data-date-icon="icon-calendar"
+      span.glyphicon.glyphicon-calendar
+javascript:
+  $(function() {
+    $('#datetimepicker2').datetimepicker({
+      pickTime: false
+    });
+  });        

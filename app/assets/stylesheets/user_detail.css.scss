@@ -31,9 +31,41 @@ body[data-page="users-detail"]{
   background-image: linear-gradient(to bottom, #6cc0e7 0, #56b7e3 100%);
   background-repeat: repeat-x;
   color: #ffffff;
-  height:120px;
+  height:148px;
   }
   #avatar_img{
    margin: 0 auto;
+  }
+  .dropdown-menu{
+    z-index: 2000;
+  }
+  .add-on{
+    padding:5px;
+    background-color: #D9D9D9;
+  }
+  .img_content{
+    margin-top:20px;
+  }
+  #upload_btn{
+    margin-top:100px;
+  }
+  .avatar_btn{
+    display:none;
+  }
+  #user_avatar{
+    display:none;
+  }
+  .switch_span{
+    padding:5px;
+  }
+  .upload_content{
+    border: 1px solid #e4e4e4;
+    background-color:#f5f5f5;
+    padding:20px;
+  }
+  #follow_content{
+    border:1px solid #dddddd;
+    height: 200px;
+    background-color:#ffffff
   }
 }

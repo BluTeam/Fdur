@@ -20,4 +20,6 @@
 //= require jquery.ui.nestedSortable
 //= require sortable_tree/initializer
 
+//= require bootstrap-datetimepicker.min.js
+//= require bootstrap-switch.min.js
 //= require_tree .

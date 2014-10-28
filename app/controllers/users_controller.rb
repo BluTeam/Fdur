@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
-
-  before_action :user_params, only: [:update]
+  before_action :authenticate_user!, only: [:detail_update]
+  before_action :user_params, only: [:detail_update]
 
   def detail
     @user = User.find(params[:id])
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    params.require(:user).permit(:name)
-    params.require(:user).permit(:sex)
+    params.require(:user).permit(:name, :sex, :birthday, :profession, :introduction, :address, :qq, :telephone, :avatar)
   end
 end

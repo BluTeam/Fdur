@@ -40,12 +40,12 @@
             .row
               p.col-sm-2
                 | 职业介绍
-              p.col-sm-10
+              p.col-sm-10.no-over
                 =@user.profession
             .row
               p.col-sm-2
                 | 个人简介
-              p.col-sm-10
+              p.col-sm-10.no-over
                 =@user.introduction
           .title_line
           p.title
@@ -54,7 +54,7 @@
             .row
               p.col-sm-2
                 | 所在地
-              p.col-sm-10
+              p.col-sm-10.no-over
                 =@user.address
             .row
               p.col-sm-2
@@ -63,16 +63,61 @@
                 =@user.qq
             .row
               p.col-sm-2
-                | 电话
+                | 手机号码
               p.col-sm-10  
                 =@user.telephone
             #button_row
               a.btn.btn-info.strong.pull-right data-toggle="modal" data-target="#editUserModal"
                 | 编辑
         .tab-pane#avatar
-          = image_tag @user.avatar.large.url 
+          .title_line
+          p.title
+            | 修改头像
+          .row#info
+            .col-xs-12.col-sm-7.col-md-7
+              span.help-block
+              | 你上传的头像将会自动生成三种尺寸头像，请注意中小尺寸的头像是否清晰。
+              .img_content
+                .img_content_left.pull-left
+                  = image_tag @user.avatar.large.url, style: "width:180px;height:180px;"
+                  span.help-block
+                    | 大尺寸头像，180×180像素
+                .img_content_right.pull-right
+                  .img_content_right_top style="width:60px"
+                    = image_tag @user.avatar.mid.url, style: "width:50px;height:50px;"
+                    span.help-block
+                    | 50×50(中)
+                  .img_content_right_bottom style="width:60px;display:block;margin-top:70px;"
+                    = image_tag @user.avatar.small.url, style: "width:30px;height:30px;"
+                    span.help-block
+                      | 30×30(小)
+            .col-xs-12.col-sm-1.col-md-1
+            .col-xs-12.col-sm-4.col-md-4.upload_content
+              span.help-block
+                | 仅支持jpg，jpeg，png格式图片(使用高质量图片，生成高清头像)
+              = form_for(@user, url: detail_update_user_path, role: :form) do |u|
+                .form-group
+                  = u.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+                = u.submit "保存", class: "btn btn-primary strong button_padding btn-lg avatar_btn pull-right"
+                .btn.btn-primary.strong.button_padding.btn-lg#upload_btn.pull-right
+                  | 上传头像
         .tab-pane#security_setting
-           
+          .title_line
+          p.title
+            | 隐私设置
+          #info.row
+            span.col-sm-6.col-xs-6.switch_span
+              | 是否隐藏个人信息
+            .col-sm-6.col-xs-6.switch
+              input type="checkbox" id="myswitch" 
+          .title_line
+          p.title
+            | 修改密码
+          #info
+            p style="line-height:30px;"
+              | 尊敬的用户，为了你的账户安全，如果你需要修改密码，需登出账户，在忘记密码页面输入你的e- mail，我们将会发送邮件至你的邮箱，接下来点击指定链接即可修改密码。
+            p.pull-right
+              = link_to '登出', destroy_user_session_path, class: :strong, method: :delete
   .col-xs-12.col-sm-12.col-md-4
-
+    #follow_content
 =render "user_form"

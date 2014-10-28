@@ -1,21 +1,46 @@
-= javascript_inculde_tag "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"
 #editUserModal.modal.fade tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
   .modal-dialog.modal-md
     .modal-content
       .modal-header.user_border
         #avatar_img.center
-          = image_tag @user.avatar.small.url ,style: "width:90px;height:100px;"
+          = image_tag @user.avatar.large.url ,style: "width:130px;height:130px;", class: "img-rounded"
       = form_for(@user, url: detail_update_user_path, role: :form) do |u|
         .modal-body 
           .form-group
             = u.label '昵称', for: :user_name
-            = u.text_field :name, autofocus: true, placeholder: "User Name", class: "form-control", autocomplete: :off
+            = u.text_field :name, autofocus: true, maxlength: 10, placeholder: "最多输入10个字符", class: "form-control", autocomplete: :off
           .form-group
             = u.label '性别', for: :user_sex
             = u.select :sex, (User::SEX_TYPES), {}, {class:  "form-control"}
           .form-group
             = u.label '出生日期', for: :user_birthday
-            #datetimepicker.input-append date
-             = u.text_field :birthday, autofocus: true, placeholder: "User Name", class: "form-control", autocomplete: :off
+            #datetimepicker.input-append
+              = u.text_field :birthday, data: {format: "yyyy-MM-dd"}
+              span.add-on
+                i data-time-icon="icon-time" data-date-icon="icon-calendar"
+                  span.glyphicon.glyphicon-calendar
+              javascript:
+                $(function() {
+                  $('#datetimepicker').datetimepicker({
+                    pickTime: false
+                  });
+                });  
+          .form-group
+            = u.label '职业介绍', for: :user_profession
+            = u.text_field :profession, maxlength: 80, placeholder: "最多输入80个字符", class: "form-control", autocomplete: :off     
+          .form-group
+            = u.label '个人简介', for: :user_introduction
+            = u.text_area :introduction, maxlength: 200, placeholder: "最多输入200个字符", class: "form-control", autocomplete: :off 
+          .form-group
+            = u.label '所在地', for: :user_address
+            = u.text_field :address, maxlength: 80, placeholder: "最多输入80个字符", class: "form-control", autocomplete: :off  
+          .form-group
+            = u.label 'QQ', for: :user_qq, style: "text-transform: uppercase;"
+            = u.text_field :qq, class: "form-control", autocomplete: :off 
+          .form-group
+            = u.label '手机号码', for: :user_telephone
+            = u.text_field :telephone, class: "form-control", autocomplete: :off         
         .modal-footer
-          = u.submit "保 存" 
+          button type="button" class="btn btn-default strong" data-dismiss="modal"
+            | 关 闭
+          = u.submit "保 存", class: "btn btn-primary strong button_padding"
