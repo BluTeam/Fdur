@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929073641) do
+ActiveRecord::Schema.define(version: 20141028081215) do
 
   create_table "activities", force: true do |t|
     t.integer  "project_id",         null: false
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(version: 20140929073641) do
 
   add_index "projects", ["state"], name: "index_projects_on_state", using: :btree
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
+
+  create_table "user_follows", force: true do |t|
+    t.string   "user_self_id"
+    t.string   "user_add_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  
-  before_action :authenticate_user!, only: [:detail_update]
+
+  before_action :authenticate_user!, only: [:detail, :detail_update]
   before_action :user_params, only: [:detail_update]
 
   def detail
