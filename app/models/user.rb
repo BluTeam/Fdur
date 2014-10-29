@@ -45,9 +45,17 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  before_validation :set_default_sex
+
   SEX_TYPES=["保密","男","女"]
   validates :sex, :inclusion => SEX_TYPES
   has_many :projects, dependent: :destroy
   has_many :follows, dependent: :destroy
+
+  private
+
+  def set_default_sex
+    self.sex = "保密" if self.sex.nil?
+  end
 
 end
