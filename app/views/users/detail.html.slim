@@ -67,7 +67,7 @@
               p.col-sm-10  
                 =@user.telephone
             #button_row
-              a.btn.btn-info.strong.pull-right data-toggle="modal" data-target="#editUserModal"
+              a.btn.btn-primary.strong.pull-right data-toggle="modal" data-target="#editUserModal"
                 | 编辑
         .tab-pane#avatar
           .title_line
@@ -97,19 +97,25 @@
                 | 仅支持jpg，jpeg，png格式图片(使用高质量图片，生成高清头像)
               = form_for(@user, url: detail_update_user_path, role: :form) do |u|
                 .form-group
-                  = u.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
+                  = u.file_field :avatar, accept: 'image/png,image/gif,image/jpeg'
                 = u.submit "保存", class: "btn btn-primary strong button_padding btn-lg avatar_btn pull-right"
-                .btn.btn-primary.strong.button_padding.btn-lg#upload_btn.pull-right
-                  | 上传头像
+              .btn.btn-primary.strong.button_padding.btn-lg#upload_btn.pull-right
+                | 上传头像
         .tab-pane#security_setting
           .title_line
           p.title
             | 隐私设置
-          #info.row
-            span.col-sm-6.col-xs-6.switch_span
-              | 是否隐藏个人信息
-            .col-sm-6.col-xs-6.switch
-              input type="checkbox" id="myswitch" 
+          #info
+            .row
+              span.col-sm-6.col-xs-6.switch_span
+                | 个人信息是否可见
+              .col-sm-6.col-xs-6.switch
+                input type="checkbox" id="myswitch1" class="myswitch" checked="true"
+            .row
+              span.col-sm-6.col-xs-6.switch_span
+                | 好友信息是否可见
+              .col-sm-6.col-xs-6.switch
+                input type="checkbox" id="myswitch2" class="myswitch" checked="true"
           .title_line
           p.title
             | 修改密码
@@ -120,4 +126,7 @@
               = link_to '登出', destroy_user_session_path, class: :strong, method: :delete
   .col-xs-12.col-sm-12.col-md-4
     #follow_content
+      .list_title
+        p
+          | 好友列表
 =render "user_form"

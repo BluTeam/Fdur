@@ -46,15 +46,16 @@ body[data-page="users-detail"]{
   .img_content{
     margin-top:20px;
   }
+  #user_avatar{
+    display:none;
+  }
   #upload_btn{
     margin-top:100px;
   }
   .avatar_btn{
     display:none;
   }
-  #user_avatar{
-    display:none;
-  }
+ 
   .switch_span{
     padding:5px;
   }
@@ -63,9 +64,10 @@ body[data-page="users-detail"]{
     background-color:#f5f5f5;
     padding:20px;
   }
-  #follow_content{
-    border:1px solid #dddddd;
-    height: 200px;
-    background-color:#ffffff
+  .list_title{
+    background-color:#428bca;
+    border:1px solid #357ebd;
+    color:#ffffff;
+    padding:10px 10px 2px 10px;
   }
 }
