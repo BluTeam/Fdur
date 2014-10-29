@@ -22,7 +22,7 @@
 #  upload_limit           :integer          default(1)
 #  avatar                 :string(255)
 #  name                   :string(255)
-#  sex                    :string(255)
+#  sex                    :string(255)      default("保密")
 #  birthday               :date
 #  introduction           :text
 #  address                :string(255)

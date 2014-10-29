@@ -64,10 +64,22 @@ body[data-page="users-detail"]{
     background-color:#f5f5f5;
     padding:20px;
   }
-  .list_title{
+  .content_title{
     background-color:#428bca;
     border:1px solid #357ebd;
     color:#ffffff;
     padding:10px 10px 2px 10px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .list_content{
+    height:680px;
+    background-color:#ffffff;
+    border-left:1px solid #dddddd;
+    border-right:1px solid #dddddd;
+    border-bottom:1px solid #dddddd;
+  }
+  .no_radius{
+    border-radius: 0;  
   }
 }

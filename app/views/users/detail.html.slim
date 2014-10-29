@@ -1,5 +1,5 @@
 .container.top_stand
-  .col-xs-12.col-sm-12.col-md-8
+  .col-xs-12.col-sm-8.col-md-8
     .user_info_pannel
       ul.nav.nav-tabs#myTab role="tablist"
         li.active
@@ -124,9 +124,14 @@
               | 尊敬的用户，为了你的账户安全，如果你需要修改密码，需登出账户，在忘记密码页面输入你的e- mail，我们将会发送邮件至你的邮箱，接下来点击指定链接即可修改密码。
             p.pull-right
               = link_to '登出', destroy_user_session_path, class: :strong, method: :delete
-  .col-xs-12.col-sm-12.col-md-4
+  .col-xs-12.col-sm-8.col-md-4
     #follow_content
-      .list_title
+      .content_title
         p
           | 好友列表
+      .input-group
+        input type="text" class="form-control no_radius" id="search_user" 
+        .input-group-addon.no_radius
+          span.glyphicon.glyphicon-search
+      .list_content
 =render "user_form"
