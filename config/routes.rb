@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #resources :users
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_for :users
-
+  get '/infoshow/:id', to: 'infoshow#show'
   resources :activities, only: [:index]
   resources :projects do
     resource :milestones, only: [:destroy] do

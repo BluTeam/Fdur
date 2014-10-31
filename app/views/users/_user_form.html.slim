@@ -2,8 +2,8 @@
   .modal-dialog.modal-md
     .modal-content
       .modal-header.user_border
-        #avatar_img.center
-          = image_tag @user.avatar.large.url ,style: "width:130px;height:130px;", class: "img-rounded"
+        #avatar_img.center.img_box
+          = image_tag @user.avatar.large.url ,style: "width:130px;height:130px;", class: "img-circle"
       = form_for(@user, url: detail_update_user_path, role: :form) do |u|
         .modal-body 
           .form-group
@@ -27,10 +27,10 @@
                 });  
           .form-group
             = u.label '职业介绍', for: :user_profession
-            = u.text_field :profession, maxlength: 80, placeholder: "最多输入80个字符", class: "form-control", autocomplete: :off     
+            = u.text_area :profession, maxlength: 100, placeholder: "最多输入80个字符", class: "form-control", autocomplete: :off     
           .form-group
-            = u.label '个人简介', for: :user_introduction
-            = u.text_area :introduction, maxlength: 200, placeholder: "最多输入200个字符", class: "form-control", autocomplete: :off 
+            = u.label '一句话介绍自己', for: :user_introduction
+            = u.text_area :introduction, maxlength: 50, placeholder: "最多输入50个字符", class: "form-control", autocomplete: :off 
           .form-group
             = u.label '所在地', for: :user_address
             = u.text_field :address, maxlength: 80, placeholder: "最多输入80个字符", class: "form-control", autocomplete: :off  
@@ -43,4 +43,4 @@
         .modal-footer
           button type="button" class="btn btn-default strong" data-dismiss="modal"
             | 关 闭
-          = u.submit "保 存", class: "btn btn-primary strong button_padding"
+          = u.submit "保 存", class: "btn btn-info button_padding"

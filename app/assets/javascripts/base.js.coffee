@@ -27,3 +27,11 @@ $(document).ready ->
     $(flag).addClass('Tag-show')
     $('a[data-flag=' + flag + ']').addClass('Tag-selected')
 
+# newTags
+
+  $('.newTags').click ->
+    $('.newTags').removeClass('newTag-selected')
+    $('.newTags-content').removeClass('newTag-show')
+    flag = $(this).attr('data-flag')
+    $(flag).addClass('newTag-show')
+    $('a[data-flag=' + flag + ']').addClass('newTag-selected')

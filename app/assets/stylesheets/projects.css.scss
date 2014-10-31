@@ -19,7 +19,9 @@
 body[data-page="projects-show"],
 body[data-page="projects-update"],
 body[data-page="projects-create_milestone"],
-body[data-page="projects-update_milestone"]{
+body[data-page="projects-update_milestone"],
+body[data-page="infoshow-show"]
+{
   .project {
     margin-bottom: 15px;
     box-shadow: 0 0 4px 0 #bbb;
@@ -143,8 +145,9 @@ body[data-page="projects-update_milestone"]{
 
 body[data-page="activities-index"],
 body[data-page="projects-index"],
-body[data-page="projects-create"] {
-
+body[data-page="projects-create"],
+body[data-page="infoshow-show"]
+{
   .project {
     margin-bottom: 15px;
     box-shadow: 0 0 4px 0 #bbb;

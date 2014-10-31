@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 20141028081215) do
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "user_follows", force: true do |t|
-    t.string   "user_self_id"
-    t.string   "user_add_id"
+    t.integer  "self_id"
+    t.integer  "add_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

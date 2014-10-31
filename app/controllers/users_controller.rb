@@ -4,11 +4,7 @@ class UsersController < ApplicationController
   before_action :user_params, only: [:detail_update]
 
   def detail
-    @user = User.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
+    @user = current_user
   end
 
   def detail_update
@@ -21,10 +17,10 @@ class UsersController < ApplicationController
     end
   end
 
-
   private 
 
   def user_params
     params.require(:user).permit(:name, :sex, :birthday, :profession, :introduction, :address, :qq, :telephone, :avatar)
   end
+
 end

@@ -22,4 +22,5 @@
 
 //= require bootstrap-datetimepicker.min.js
 //= require bootstrap-switch.min.js
+//= require uploadPreview.min.js
 //= require_tree .

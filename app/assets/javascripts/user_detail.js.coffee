@@ -16,13 +16,10 @@ $(document).ready ->
     tmp =$(@).val()
     $(@).val tmp.replace /\D|^0/g,'' 
   .css "ime-mode", "disabled" 
+  $("#user_avatar").uploadPreview({ Img: "ImgPr_large", Width: 180, Height: 180 });
+  $("#user_avatar").uploadPreview({ Img: "ImgPr_mid", Width: 50, Height: 50 });
+  $("#user_avatar").uploadPreview({ Img: "ImgPr_small", Width: 30, Height: 30 });
   $("#upload_btn").click ->
     $("#user_avatar").click()
-  $("#avatar_btn").click ->
-    $(@).css "display", "none"
-    $("#upload_btn").css "display", "block"
-    $("#upload_btn").css "margin-top", "100px"
   $("#user_avatar").change ->
-    $("#upload_btn").css "display", "none"
-    $(".avatar_btn").css "display", "block"
-    $(".avatar_btn").css "margin-top", "100px"
+    $("#save_btn").removeAttr("disabled")

@@ -26,7 +26,7 @@
             = f.label '标题图片', for: :project_image
             br
             .thumbnail
-              = image_tag @project.image.normal.url, style: "max-width: 300px; max-height: 300px"
+              = image_tag @project.image.normal.url, style: "max-width: 300px; max-height: 300px",id: "ImgPr_project"
             = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
           .radio
             label
@@ -45,4 +45,4 @@
         .modal-footer
           button type="button" class="btn btn-default strong" data-dismiss="modal"
             | 关 闭
-          = f.submit "保 存", class: "btn btn-primary strong button_padding"
+          = f.submit "保 存", class: "btn btn-info strong button_padding"
