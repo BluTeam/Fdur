@@ -52,6 +52,24 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :follows, dependent: :destroy
 
+  def not_nil_name
+    self.name || self.email
+  end
+
+  def fork_project o_project
+    forked = nil
+    self.transaction do
+      forked = self.projects.build name: o_project.name, description: o_project.description, is_public: :false
+      forked.image = o_project.image
+      o_project.milestones.each do |m|
+        f_m = forked.milestones.new name: m.name, description: m.description, state: 'undo'
+        f_m.image = m.image
+      end
+      forked.save
+    end
+    forked
+  end
+
   private
 
   def set_default_sex

@@ -3,6 +3,20 @@
 .undo { background-color: #ffffff }
 .finished { background-color: #4A525C }
 
+.project_border {
+  border-radius: 3px;
+  background-image: linear-gradient(to bottom, #6cc0e7 0, #56b7e3 100%);
+  background-repeat: repeat-x;
+  color: #ffffff;
+}
+
+.warning_border {
+  border-radius: 3px;
+  background-image: linear-gradient(to bottom, #f0ad4e 0, #ec971f 100%);
+  background-repeat: repeat-x;
+  color: #ffffff;
+}
+
 li.finished { border-top: 1px solid #4A525C }
 $projdect_shadow: #4A525C;
 
@@ -130,7 +144,7 @@ ul {
     text-decoration: none;
     padding-top: 13px;
     padding-bottom: 11px;
-    background-color: #4A525C;
+    background-color: #56b7e3;
     color: #f1f1f1;
     box-shadow: 0 1px 2px 0 #ccc;
   }

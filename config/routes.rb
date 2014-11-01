@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       end
     end
     member do
+      post :fork
       post :create_milestone
       patch :update_milestone
       patch :play_milestone

@@ -101,8 +101,7 @@ class ProjectsController < ApplicationController
     if @project.user != current_user
       temp = @project.forks_count + 1
       @project.update!(forks_count: temp)
-      new_project = Project.new
-      new_project.fork_from @project,current_user.id
+      new_project = current_user.fork_project @project
       flash[:success] = '拷贝成功，已加入您的私有微计划'
       redirect_to new_project
     end

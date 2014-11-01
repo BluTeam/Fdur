@@ -4,28 +4,34 @@
       /TODO: 返回错误时，通过地址传参，弹出窗口
       .project
         .thumbnail.no_bottom
-          a href="javascript:void(0)"
-            = image_tag @project.image.normal.url, alt: "/support-loading.gif"
+          = image_tag @project.image.normal.url, alt: "/support-loading.gif"
         .description
-          a href="javascript:void(0)"
-            .title class="#{@project.is_public ? "public" : "private"}"
-              = @project.name
+          .title class="#{@project.is_public ? "public" : "private"}"
+            = @project.name
           .de_content
             = @project.description
           .extra_padding.follow
             | &nbsp
-            span.pull-right title="删除"
-              a.glyphicon.glyphicon-remove.delete data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href="#{project_path @project}" rel='nofollow'
-            span.pull-right title="编辑" style="margin-right: 10px;"
-              a#new_project.glyphicon.glyphicon-pencil.edit data-toggle="modal" data-target="#newProjectModal"
-            span.pull-right.cut style="margin-right: 15px;"
-              | |
-            span.pull-right title="拷贝" style="margin-right: 15px;"
-              a.glyphicon.glyphicon-tags.forks href="javascript:void(0)"
-              | &nbsp&nbsp#{ @project.forks_count }
-            span.pull-right title="收藏" style="margin-right: 10px;"
-              a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
-              | &nbsp&nbsp#{ @project.follows.count }
+            - if @project.user == current_user
+              span.pull-right title="删除"
+                a.glyphicon.glyphicon-remove.delete data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href="#{project_path @project}" rel='nofollow'
+              span.pull-right title="编辑" style="margin-right: 10px;"
+                a#new_project.glyphicon.glyphicon-pencil.edit data-toggle="modal" data-target="#newProjectModal"
+              span.pull-right.cut style="margin-right: 15px;"
+                | |
+              span.pull-right title="拷贝" style="margin-right: 15px;"
+                span.forked.glyphicon.glyphicon-tags
+                | &nbsp&nbsp#{ @project.forks_count }
+              span.pull-right title="收藏" style="margin-right: 10px;"
+                span.followed.glyphicon.glyphicon-heart
+                | &nbsp&nbsp#{ @project.follows.count }
+            - else
+              span.pull-right title="拷贝" style="margin-right: 15px;"
+                a.glyphicon.glyphicon-tags.forks data-toggle='modal' data-target='#forkForm'
+                | &nbsp&nbsp#{ @project.forks_count }
+              span.pull-right title="收藏" style="margin-right: 10px;"
+                a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
+                | &nbsp&nbsp#{ @project.follows.count }
       / JiaThis Button BEGIN
       - if @project.is_public?
         .jiathis_style_32x32
@@ -168,12 +174,14 @@
                       | 已完成
                     a.Tags data-flag="#comments"
                       | 评 论
-              span.list-group-item.disabled
-                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                  | + 新建
+              - if @project.user == current_user
+                span.list-group-item.disabled
+                  a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
+                    | + 新建
           - @milestones.each do |m|
             = render "milestone_form", m: m
             = render "original_image", m: m
             = render "milestone_play", m: m
 = render "milestone_form", m: @milestone
 = render "project_form", type: 'edit'
+= render "fork_form", p: @project

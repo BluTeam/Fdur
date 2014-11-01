@@ -9,48 +9,27 @@
   }
 }
 
-.project_border {
-  border-radius: 2px;
-  background-image: linear-gradient(to bottom, #6cc0e7 0, #56b7e3 100%);
-  background-repeat: repeat-x;
-  color: #ffffff;
-}
-
 body[data-page="projects-show"],
 body[data-page="projects-update"],
 body[data-page="projects-create_milestone"],
 body[data-page="projects-update_milestone"],
 body[data-page="users-show"]
 {
+
+  #forkForm {
+    .content {
+
+    }
+  }
+
   .project {
     margin-bottom: 15px;
     box-shadow: 0 0 4px 0 #bbb;
     background-color: #f1f1f1;
     color: #FDFDFD;
     @include lazy_tansition(margin, 0.2s);
-
-    .new_project {
-      display: block;
-      font-size: 50px;
-      color: #666;
-      height: 300px !important;
-      padding-top: 100px;
-      @include lazy_tansition(color, 0.5s);
-      @include lazy_tansition(background, 0.5s);
-
-      &:hover{
-        cursor: pointer;
-        color: $projdect_shadow;
-        background: #ffffff;
-      }
-
-      .content {
-        font-size: 17px;
-        font-weight: bold;
-        line-height: 4;
-      }
-    }
   }
+
 
   .description {
     background-color: $projdect_shadow;
@@ -102,7 +81,7 @@ body[data-page="users-show"]
         font-size: 16px;
 
         &:hover{
-          color: yellow;
+          color: #56b7e3;
           cursor: pointer;
         }
       }
@@ -127,6 +106,7 @@ body[data-page="users-show"]
 
   .milestones {
     .disabled {
+      background-color: #f1f1f1;
       min-height: 40px;
       color: #666;
       font-size: 15px;
@@ -221,25 +201,14 @@ body[data-page="users-show"]
         font-weight: bold;
         line-height: 2;
 
-        & > span > a.follows {
-          text-decoration: none;
-          color: lightcyan;
+        .followed {
           font-size: 16px;
-
-          &:hover{
-            color: #F08080;
-            cursor: pointer;
-          }
+          color: #F08080;
         }
-        & > span > a.forks {
-          text-decoration: none;
-          color: lightcyan;
-          font-size: 16px;
 
-          &:hover{
-            color: yellow;
-            cursor: pointer;
-          }
+        .forked {
+          font-size: 16px;
+          color: #56b7e3;
         }
       }
     }

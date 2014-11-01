@@ -33,7 +33,7 @@ class Project < ActiveRecord::Base
 
   before_validation :add_default_information
 
-  after_save :create_default_milestone
+  after_create :create_default_milestone
 
   validates :state, presence: true,
             inclusion: ['open','finished']
@@ -44,24 +44,6 @@ class Project < ActiveRecord::Base
   # TODO: 自定以validate，按用户权限来分上传限制
   validates :image, file_size: { maximum: 1.0.megabytes.to_i }
 
-  def fork_from o_project, user_id
-
-    self.name = o_project.name
-    self.image = o_project.image
-    self.description = o_project.description
-    self.is_public = false
-    self.user_id = user_id
-    self.save!
-
-    o_project.milestones.each do |m|
-      unless m == o_project.milestones.order(updated_at: :desc).last
-        self.milestones.create name: m.name, state: 'undo'
-      end
-    end
-
-    self.milestones.order(updated_at: :desc).last.update name: "拷贝了计划——#{o_project.name}", state: 'finished'
-
-  end
 
   private
 
@@ -72,7 +54,7 @@ class Project < ActiveRecord::Base
 
   def create_default_milestone
     if self.milestones.blank?
-      self.milestones.create name: "创建了新计划--#{self.name}", state: 'finished'
+      self.milestones.create name: "创建新计划--#{self.name}", state: 'finished'
     end
   end
 

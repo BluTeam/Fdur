@@ -1,0 +1,19 @@
+#forkForm.modal.fade tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-header.warning_border
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true"
+            | &times;
+          span.sr-only
+            | Close
+        h4.modal-title#myModalLabel
+          p
+            = "是否拷贝微计划 \"#{p.name}\" 到您的私有计划中，"
+          p
+            = "并设置所有里程碑为未完成状态？"
+      = form_for(p, url: fork_project_path(p), role: :form, method: :post) do |f|
+        .modal-footer
+          button type="button" class="btn btn-default strong" data-dismiss="modal"
+            | 取 消
+          = f.submit "拷 贝", class: "btn btn-warning strong"
