@@ -16,10 +16,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @projects = find_user.projects.order(updated_at: :desc)
+    @user = find_user
+  end
+
   private 
 
   def user_params
     params.require(:user).permit(:name, :sex, :birthday, :profession, :introduction, :address, :qq, :telephone, :avatar)
+  end
+
+  def find_user
+    @user=User.where(id: params[:id]).first
   end
 
 end

@@ -1,5 +1,8 @@
 $(document).ready ->
   if $('body').is('[data-page="users-detail"]') || $('body').is('[data-page="registrations-update"]')
+    avatar_large=$("#ImgPr_large").attr("src")
+    avatar_mid=$("#ImgPr_mid").attr("src")
+    avatar_small=$("#ImgPr_small").attr("src")
     $(".myswitch").bootstrapSwitch();
     $("#user_qq")
     .keyup ->
@@ -23,10 +26,15 @@ $(document).ready ->
     $("#upload_btn").click ->
       $("#user_avatar").click()
     $("#user_avatar").change ->
-      $("#save_btn").removeAttr("disabled")
-
+      if $(@).val() == ""
+        $("#ImgPr_large").attr "src", avatar_large
+        $("#ImgPr_mid").attr "src", avatar_mid 
+        $("#ImgPr_small").attr "src", avatar_small  
+        $("#save_btn").attr "disabled", "disabled"
+      else
+        $("#save_btn").removeAttr("disabled")
   if $('body').is('[data-page="registrations-update"]')
     $('a#safe').click()
     $('[data-target="#passwordModal"]').click()
-
+  
 

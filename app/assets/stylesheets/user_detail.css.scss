@@ -1,6 +1,6 @@
 body[data-page="users-detail"],
 body[data-page="registrations-update"],
-body[data-page="infoshow-show"]
+body[data-page="users-show"]
 {
   .user_info_pannel{
     background-color: #ffffff;
@@ -71,5 +71,33 @@ body[data-page="infoshow-show"]
   }
   .glyphicon:hover{
     cursor:pointer;
+  }
+}
+body[data-page="users-show"]{
+  .top_box{
+  padding:20px;
+  background-image: linear-gradient(to bottom, #6cc0e7 0, #56b7e3 100%);
+  background-repeat: repeat-x;
+  color:white;
+}
+  .user_name{
+    font-size: 20px;
+  }
+  .mid_tag{
+    background-color:#ffffff;
+    border: 1px solid #dddddd;
+  }
+  #main_page{
+    background-color:#ffffff;
+    border: 1px solid #dddddd;
+    margin-top: 20px;
+  }
+  #personal_info{
+    margin-top: 20px;
+  }
+  #personal_box{
+    padding: 0 40px 40px 40px;
+    background-color:#ffffff;
+    border:1px solid #dddddd;
   }
 }

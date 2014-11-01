@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   #resources :users
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_for :users, controllers: { registrations: 'users/registrations' }
-
-  get '/infoshow/:id', to: 'infoshow#show'
   resources :activities, only: [:index]
   resources :projects do
     resource :milestones, only: [:destroy] do
@@ -26,9 +24,11 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show] do
     member do
-      get :detail
       patch :detail_update
     end
+    collection do
+      get :detail
+    end  
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
