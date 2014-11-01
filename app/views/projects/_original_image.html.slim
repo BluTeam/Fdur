@@ -1,16 +1,5 @@
 .modal.fade id="imageOriginalModal#{m.id}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
   .modal-dialog.modal-lg
     .modal-content
-      /.modal-header.project_border
-      /  button.close type="button" data-dismiss="modal"
-      /    span aria-hidden="true"
-      /      | &times;
-      /    span.sr-only
-      /      | Close
-      /  h4.modal-title#myModalLabel
-      /    | 原图
       .modal-body.low_padding
         = image_tag m.image.url, style: "width: 100%"
-      /.modal-footer
-      /  button type="button" class="btn btn-default strong" data-dismiss="modal"
-      /    | 关 闭

@@ -1,178 +1,179 @@
 .container.top_stand
-  .col-md-4.col-sm-4.col-sm-12
-    /TODO: 返回错误时，通过地址传参，弹出窗口
-    .project
-      .thumbnail.no_bottom
-        a href="javascript:void(0)"
-          = image_tag @project.image.normal.url, alt: "/support-loading.gif"
-      .description
-        a href="javascript:void(0)"
-          .title class="#{@project.is_public ? "public" : "private"}"
-            = @project.name
-        .de_content
-          = @project.description
-        .extra_padding.follow
-          | &nbsp
-          span.pull-right title="删除"
-            a.glyphicon.glyphicon-remove.delete data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href="#{project_path @project}" rel='nofollow'
-          span.pull-right title="编辑" style="margin-right: 10px;"
-            a#new_project.glyphicon.glyphicon-pencil.edit data-toggle="modal" data-target="#newProjectModal"
-          span.pull-right.cut style="margin-right: 15px;"
-            | |
-          span.pull-right title="拷贝" style="margin-right: 15px;"
-            a.glyphicon.glyphicon-tags.forks href="javascript:void(0)"
-            | &nbsp&nbsp#{ @project.forks_count }
-          span.pull-right title="收藏" style="margin-right: 10px;"
-            a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
-            | &nbsp&nbsp#{ @project.follows.count }
-    / JiaThis Button BEGIN
-    - if @project.is_public?
-      .jiathis_style_32x32
-        a.jiathis_button_qzone
-        a.jiathis_button_tsina
-        a.jiathis_button_tqq
-        a.jiathis_button_weixin
-        a.jiathis_button_renren
-        a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"
-      javascript:
-        var jiathis_config={
-          url: window.location.href,
-          summary:"#{@project.description}",
-          title:"小伙伴在 Beacon 分享了他的微计划 -- #{@project.name} ",
-          ralateuid:{
-            "tsina":"xcccccx"
-          },
-          shortUrl:false,
-          hideMore:true
-        }
-      = javascript_include_tag 'http://v3.jiathis.com/code/jia.js', charset: 'utf-8', 'data-turbolinks-track' => false
-    / JiaThis Button END
-  .col-md-8.col-sm-8.col-sm-12
-    .milestones
-      - if @milestones
-        /TODO: 新建编辑milestone
-        /TODO：改变状态为两个，完成时提交一个表单请求，要求写入心得
-        /TODO: 写一个tap组件，分四个tab这里，未完成、完成、总览、评论
-        #all.Tags-content.Tag-show
-          ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
-            span.list-group-item.disabled
-              .col-lg-2.col-md-2.col-sm-2.hidden-xs.except_padding
-                | 里程碑
-              .col-lg-6.col-md-5.col-sm-5.hidden-xs.except_padding
-              .col-lg-4.col-md-5.col-sm-5.col-xs-12.except_padding
-                a.Tags.Tag-selected data-flag="#all"
-                  | 总 览
-                a.Tags data-flag="#undo"
-                  | 未完成
-                a.Tags data-flag="#finished"
-                  | 已完成
-                a.Tags data-flag="#comments"
-                  | 评 论
-            = milestone_tree @milestones
-            span.list-group-item.disabled
-              a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                | + 新建
-        #undo.Tags-content
-          ol.list-group.sortable_tree
-            span.list-group-item.disabled
-              .col-lg-2.col-md-2.col-sm-2.hidden-xs.except_padding
-                | 里程碑
-              .col-lg-6.col-md-5.col-sm-5.hidden-xs.except_padding
-              .col-lg-4.col-md-5.col-sm-5.col-xs-12.except_padding
-                a.Tags.Tag-selected data-flag="#all"
-                  | 总 览
-                a.Tags data-flag="#undo"
-                  | 未完成
-                a.Tags data-flag="#finished"
-                  | 已完成
-                a.Tags data-flag="#comments"
-                  | 评 论
-            - @milestones_undo.each do |m|
-              li.list-group-item class="#{m.state}"
-                .item
-                  p.title
-                    = m.title
-                  - unless m.image.blank?
-                    p
-                      = image_tag m.image.small.url
-                  - unless m.description.blank?
-                    p.milestone_description
-                      | 描述：
-                      = m.description
-                  p.time
-                    | 更新时间：
-                    = m.updated_at.strftime("%y年%m月%d日 %H:%M")
-                  .controls
-                    a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}' title='编辑'
-                      span.glyphicon.glyphicon-pencil
-                    a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow' title='删除'
-                      span.glyphicon.glyphicon-remove
-            span.list-group-item.disabled
-              a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                | + 新建
-        #finished.Tags-content
-          ol.list-group.sortable_tree
-            span.list-group-item.disabled
-              .col-lg-2.col-md-2.col-sm-2.hidden-xs.except_padding
-                | 里程碑
-              .col-lg-6.col-md-5.col-sm-5.hidden-xs.except_padding
-              .col-lg-4.col-md-5.col-sm-5.col-xs-12.except_padding
-                a.Tags.Tag-selected data-flag="#all"
-                  | 总 览
-                a.Tags data-flag="#undo"
-                  | 未完成
-                a.Tags data-flag="#finished"
-                  | 已完成
-                a.Tags data-flag="#comments"
-                  | 评 论
-            - @milestones_finished.each do |m|
-              li.list-group-item class="#{m.state}"
-                .item
-                  p.title
-                    = m.title
-                  - unless m.image.blank?
-                    p
-                      = image_tag m.image.small.url
-                  - unless m.description.blank?
-                    p.milestone_description
-                      | 描述：
-                      = m.description
-                  - unless m.reflection.blank?
-                    p.milestone_description
-                      | 心得：
-                      = m.reflection
-                  p.time
-                    | 更新时间：
-                    = m.updated_at.strftime("%y年%m月%d日 %H:%M")
-                  .controls
-                    a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}' title='编辑'
-                      span.glyphicon.glyphicon-pencil
-                    a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow' title='删除'
-                      span.glyphicon.glyphicon-remove
-            span.list-group-item.disabled
-              a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                | + 新建
-        #comments.Tags-content
-          ol.list-group
-            span.list-group-item.disabled
-              .col-lg-2.col-md-2.col-sm-2.hidden-xs.except_padding
-                | 里程碑
-              .col-lg-6.col-md-5.col-sm-5.hidden-xs.except_padding
-              .col-lg-4.col-md-5.col-sm-5.col-xs-12.except_padding
-                a.Tags.Tag-selected data-flag="#all"
-                  | 总 览
-                a.Tags data-flag="#undo"
-                  | 未完成
-                a.Tags data-flag="#finished"
-                  | 已完成
-                a.Tags data-flag="#comments"
-                  | 评 论
-            span.list-group-item.disabled
-              a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                | + 新建
-        - @milestones.each do |m|
-          = render "milestone_form", m: m
-          = render "original_image", m: m
-          = render "milestone_play", m: m
+  .row
+    .col-md-4.col-sm-4.col-xs-12
+      /TODO: 返回错误时，通过地址传参，弹出窗口
+      .project
+        .thumbnail.no_bottom
+          a href="javascript:void(0)"
+            = image_tag @project.image.normal.url, alt: "/support-loading.gif"
+        .description
+          a href="javascript:void(0)"
+            .title class="#{@project.is_public ? "public" : "private"}"
+              = @project.name
+          .de_content
+            = @project.description
+          .extra_padding.follow
+            | &nbsp
+            span.pull-right title="删除"
+              a.glyphicon.glyphicon-remove.delete data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href="#{project_path @project}" rel='nofollow'
+            span.pull-right title="编辑" style="margin-right: 10px;"
+              a#new_project.glyphicon.glyphicon-pencil.edit data-toggle="modal" data-target="#newProjectModal"
+            span.pull-right.cut style="margin-right: 15px;"
+              | |
+            span.pull-right title="拷贝" style="margin-right: 15px;"
+              a.glyphicon.glyphicon-tags.forks href="javascript:void(0)"
+              | &nbsp&nbsp#{ @project.forks_count }
+            span.pull-right title="收藏" style="margin-right: 10px;"
+              a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
+              | &nbsp&nbsp#{ @project.follows.count }
+      / JiaThis Button BEGIN
+      - if @project.is_public?
+        .jiathis_style_32x32
+          a.jiathis_button_qzone
+          a.jiathis_button_tsina
+          a.jiathis_button_tqq
+          a.jiathis_button_weixin
+          a.jiathis_button_renren
+          a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"
+        javascript:
+          var jiathis_config={
+            url: window.location.href,
+            summary:"#{@project.description}",
+            title:"小伙伴在 Beacon 分享了他的微计划 -- #{@project.name} ",
+            ralateuid:{
+              "tsina":"xcccccx"
+            },
+            shortUrl:false,
+            hideMore:true
+          }
+        = javascript_include_tag 'http://v3.jiathis.com/code/jia.js', charset: 'utf-8', 'data-turbolinks-track' => false
+      / JiaThis Button END
+    .col-md-8.col-sm-8.col-xs-12
+      .milestones
+        - if @milestones
+          /TODO: 新建编辑milestone
+          /TODO：改变状态为两个，完成时提交一个表单请求，要求写入心得
+          /TODO: 写一个tap组件，分四个tab这里，未完成、完成、总览、评论
+          #all.Tags-content.Tag-show
+            ol.list-group.sortable_tree data-max_levels=1 data-rebuild_url="#{rebuild_project_milestones_url(@project)}"
+              span.list-group-item.disabled
+                .row
+                  .pull-left.extra_padding.hidden-xs
+                    | 里程碑
+                  .pull-right
+                    a.Tags.Tag-selected data-flag="#all"
+                      | 总 览
+                    a.Tags data-flag="#undo"
+                      | 未完成
+                    a.Tags data-flag="#finished"
+                      | 已完成
+                    a.Tags data-flag="#comments"
+                      | 评 论
+              = milestone_tree @milestones
+              span.list-group-item.disabled
+                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
+                  | + 新建
+          #undo.Tags-content
+            ol.list-group.sortable_tree
+              span.list-group-item.disabled
+                .row
+                  .pull-left.extra_padding.hidden-xs
+                    | 里程碑
+                  .pull-right
+                    a.Tags.Tag-selected data-flag="#all"
+                      | 总 览
+                    a.Tags data-flag="#undo"
+                      | 未完成
+                    a.Tags data-flag="#finished"
+                      | 已完成
+                    a.Tags data-flag="#comments"
+                      | 评 论
+              - @milestones_undo.each do |m|
+                li.list-group-item class="#{m.state}"
+                  .item
+                    p.title
+                      = m.title
+                    - unless m.image.blank?
+                      p
+                        = image_tag m.image.small.url
+                    - unless m.description.blank?
+                      p.milestone_description
+                        | 描述：
+                        = m.description
+                    p.time
+                      | 更新时间：
+                      = m.updated_at.strftime("%y年%m月%d日 %H:%M")
+                    .controls
+                      a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}' title='编辑'
+                        span.glyphicon.glyphicon-pencil
+                      a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow' title='删除'
+                        span.glyphicon.glyphicon-remove
+              span.list-group-item.disabled
+                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
+                  | + 新建
+          #finished.Tags-content
+            ol.list-group.sortable_tree
+              span.list-group-item.disabled
+                .row
+                  .pull-left.extra_padding.hidden-xs
+                    | 里程碑
+                  .pull-right
+                    a.Tags.Tag-selected data-flag="#all"
+                      | 总 览
+                    a.Tags data-flag="#undo"
+                      | 未完成
+                    a.Tags data-flag="#finished"
+                      | 已完成
+                    a.Tags data-flag="#comments"
+                      | 评 论
+              - @milestones_finished.each do |m|
+                li.list-group-item class="#{m.state}"
+                  .item
+                    p.title
+                      = m.title
+                    - unless m.image.blank?
+                      p
+                        = image_tag m.image.small.url
+                    - unless m.description.blank?
+                      p.milestone_description
+                        | 描述：
+                        = m.description
+                    - unless m.reflection.blank?
+                      p.milestone_description
+                        | 心得：
+                        = m.reflection
+                    p.time
+                      | 更新时间：
+                      = m.updated_at.strftime("%y年%m月%d日 %H:%M")
+                    .controls
+                      a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}' title='编辑'
+                        span.glyphicon.glyphicon-pencil
+                      a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow' title='删除'
+                        span.glyphicon.glyphicon-remove
+              span.list-group-item.disabled
+                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
+                  | + 新建
+          #comments.Tags-content
+            ol.list-group
+              span.list-group-item.disabled
+                .row
+                  .pull-left.extra_padding.hidden-xs
+                    | 里程碑
+                  .pull-right
+                    a.Tags.Tag-selected data-flag="#all"
+                      | 总 览
+                    a.Tags data-flag="#undo"
+                      | 未完成
+                    a.Tags data-flag="#finished"
+                      | 已完成
+                    a.Tags data-flag="#comments"
+                      | 评 论
+              span.list-group-item.disabled
+                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
+                  | + 新建
+          - @milestones.each do |m|
+            = render "milestone_form", m: m
+            = render "original_image", m: m
+            = render "milestone_play", m: m
 = render "milestone_form", m: @milestone
 = render "project_form", type: 'edit'

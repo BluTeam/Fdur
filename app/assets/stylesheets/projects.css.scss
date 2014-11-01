@@ -172,8 +172,9 @@ body[data-page="infoshow-show"]
       color: #666;
       height: 300px !important;
       padding-top: 100px;
-      @include lazy_tansition(color, 0.5s);
-      @include lazy_tansition(background, 0.5s);
+      background-color: #fdfdfd;
+      @include lazy_tansition(color, 0.2s);
+      @include lazy_tansition(background, 0.2s);
 
       &:hover{
         cursor: pointer;
