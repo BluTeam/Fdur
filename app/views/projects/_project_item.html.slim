@@ -10,13 +10,12 @@
       = p.description
     .extra_padding.follow
       .row.extra_padding
-        - if p.user == current_user
-          span.pull-right title="拷贝"
-            span.forked.glyphicon.glyphicon-tags href="javascript:void(0)"
-            | &nbsp&nbsp#{ p.forks_count }
-          span.pull-right title="收藏" style="margin-right: 10px;"
-            span.followed.glyphicon.glyphicon-heart href="javascript:void(0)"
-            | &nbsp&nbsp#{ p.follows.count }
+        span.pull-right title="拷贝"
+          span.forked.glyphicon.glyphicon-tags href="javascript:void(0)"
+          | &nbsp&nbsp#{ p.forks_count }
+        span.pull-right title="收藏" style="margin-right: 10px;"
+          span.followed.glyphicon.glyphicon-heart href="javascript:void(0)"
+          | &nbsp&nbsp#{ p.follows.count }
   - unless (last_milestone = p.milestones.order(updated_at: :desc).first).nil?
     .active_milestone
       p.small.last_time

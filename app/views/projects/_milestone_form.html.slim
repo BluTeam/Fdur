@@ -22,9 +22,9 @@
               = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
             .form_group
               = f.label '里程碑图片', for: :milestone_image
-                br
-                .thumbnail style="margin-bottom: 0;#{ "display: none;" if m.image.blank?}" id="milestone_imgbox"
-                  = image_tag m.image.normal.url, style: "max-width: 300px; max-height: 300px",id: "ImgPr_milestone"
+                /br
+                /.thumbnail style="margin-bottom: 0;#{ "display: none;" if m.image.blank?}" id="milestone_imgbox"
+                /  = image_tag m.image.normal.url, style: "max-width: 300px; max-height: 300px",id: "ImgPr_milestone"
               = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control",data:{flag:"milestone_image"}
           .modal-footer
             button type="button" class="btn btn-default strong" data-dismiss="modal"
