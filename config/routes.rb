@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   #resources :users
   #devise_for :users, controllers: { sessions: 'users/sessions' }
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
   get '/infoshow/:id', to: 'infoshow#show'
   resources :activities, only: [:index]
   resources :projects do
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
       post :return_milestone
     end
   end
-  resources :users, except: [:new , :index] do
+  resources :users, only: [:show] do
     member do
       get :detail
       patch :detail_update

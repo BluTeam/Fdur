@@ -9,7 +9,7 @@
           a href="#avatar" role="tab" data-toggle="tab"
             | 头像设置
         li
-          a href="#security_setting" role="tab" data-toggle="tab"
+          a#safe href="#security_setting" role="tab" data-toggle="tab"
             | 安全设置
       .info_content.tab-content
         .tab-pane.active#personal_info
@@ -21,32 +21,32 @@
               p.col-sm-2
                 | 登录名
               p.col-sm-10
-                = @user.email
+                = current_user.email
             .row.info_row
               p.col-sm-2
                 | 昵称
               p.col-sm-10
-                =@user.name
+                =current_user.name
             .row.info_row
               p.col-sm-2
                 | 性别
               p.col-sm-10
-                =@user.sex
+                =current_user.sex
             .row.info_row
               p.col-sm-2
                 | 出生日期
               p.col-sm-10
-                =@user.birthday
+                =current_user.birthday
             .row.info_row
               p.col-sm-2
                 | 职业介绍
               p.col-sm-10.no-over
-                =@user.profession
+                =current_user.profession
             .row.info_row
               p.col-sm-2
                 | 介绍自己
               p.col-sm-10.no-over
-                =@user.introduction
+                =current_user.introduction
           .title_line
           p.title
             | 联系信息
@@ -55,17 +55,17 @@
               p.col-sm-2
                 | 所在地
               p.col-sm-10.no-over
-                =@user.address
+                =current_user.address
             .row.info_row
               p.col-sm-2
                 | QQ
               p.col-sm-10
-                =@user.qq
+                =current_user.qq
             .row.info_row
               p.col-sm-2
                 | 手机号码
               p.col-sm-10  
-                =@user.telephone
+                =current_user.telephone
             #button_row
               a.btn.btn-info.pull-right data-toggle="modal" data-target="#editUserModal"
                 | 编辑
@@ -82,18 +82,18 @@
               .img_content
                 .img_content_left.pull-left
                   div
-                    = image_tag @user.avatar.large.url, style: "width:180px;height:180px;", id: "ImgPr_large"
+                    = image_tag current_user.avatar.large.url, style: "width:180px;height:180px;", id: "ImgPr_large"
                   span.help-block
                     | 大尺寸头像，180×180像素
                 .img_content_right.pull-right
                   .img_content_right_top style="width:60px"
                     div
-                      = image_tag @user.avatar.mid.url, style: "width:50px;height:50px;", id: "ImgPr_mid"
+                      = image_tag current_user.avatar.mid.url, style: "width:50px;height:50px;", id: "ImgPr_mid"
                     span.help-block
                     | 50×50(中)
                   .img_content_right_bottom style="width:60px;display:block;margin-top:70px;"
                     div
-                      = image_tag @user.avatar.small.url, style: "width:30px;height:30px;", id: "ImgPr_small"
+                      = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;", id: "ImgPr_small"
                     span.help-block
                       | 30×30(小)
             .col-xs-12.col-sm-1.col-md-1
@@ -101,7 +101,7 @@
               .upload_content
                 span.help-block
                   | 仅支持jpg，jpeg，png格式图片(使用高质量图片，生成高清头像)
-                = form_for(@user, url: detail_update_user_path, role: :form) do |u|
+                = form_for(current_user, url: detail_update_user_path(current_user), role: :form) do |u|
                   .form-group
                     = u.file_field :avatar, accept: 'image/png,image/gif,image/jpeg',style: "position:absolute; top:-300000px;"
                   = u.submit "保存", class: "btn btn-info  btn-block ", style: "margin-top:160px;", disabled: "disabled",id: "save_btn"
@@ -124,14 +124,14 @@
           p.title
             | 修改密码
           #info
-            p style="line-height:30px;"
-              | 尊敬的用户，为了你的账户安全，如果你需要修改密码，需登出账户，在忘记密码页面输入你的e- mail，我们将会发送邮件至你的邮箱，接下来点击指定链接即可修改密码。
             p.pull-right
-              = link_to '登出', destroy_user_session_path, class: :strong, method: :delete
+              a.btn.btn-info.pull-right data-toggle="modal" data-target="#passwordModal"
+                | 修改该密码
   .col-xs-12.col-sm-8.col-md-4
     #follow_content
       .content_title
         span
           | 关注列表
       .list_content
-=render "user_form"
+= render "users/user_form"
+= render "users/password_from"

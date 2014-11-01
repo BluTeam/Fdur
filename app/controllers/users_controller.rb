@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :user_params, only: [:detail_update]
 
   def detail
-    @user = current_user
   end
 
   def detail_update

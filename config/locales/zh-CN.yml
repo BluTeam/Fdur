@@ -111,7 +111,7 @@ zh-CN:
       greater_than: 必须大于 %{count}
       greater_than_or_equal_to: 必须大于或等于 %{count}
       inclusion: 不包含于列表中
-      invalid: 内容格式无效
+      invalid: 内容不正确
       less_than: 必须小于 %{count}
       less_than_or_equal_to: 必须小于或等于 %{count}
       not_a_number: 不是数字
