@@ -64,6 +64,14 @@ body[data-page="users-show"]
       font-weight: bold;
       line-height: 2;
 
+      .followed {
+        color: #F08080 !important;
+      }
+
+      .forked {
+        color: #56b7e3 !important;
+      }
+
       & > span > a.follows {
         text-decoration: none;
         color: lightcyan;
@@ -198,6 +206,22 @@ body[data-page="users-show"]
       }
 
       .follow {
+        p {line-height: 1.2em; margin-bottom: 5px}
+
+         a.avatar {
+           display: inline-block;
+           text-decoration: none;
+           max-width: 190px;
+           color: #ffffff;
+           white-space: nowrap;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           cursor: pointer;
+           &:hover {
+             color: lightblue;
+           }
+        }
+
         font-weight: bold;
         line-height: 2;
 

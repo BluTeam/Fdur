@@ -35,3 +35,23 @@ $(document).ready ->
     flag = $(this).attr('data-flag')
     $(flag).addClass('newTag-show')
     $('a[data-flag=' + flag + ']').addClass('newTag-selected')
+
+# project_follow
+
+  $('#followProject').on 'click',() ->
+    button = $(this)
+    button.attr "disabled", "true"
+    project_id = button.attr "data-project-id"
+    p_url = '/projects/'+project_id+'/follow'
+    $.ajax(
+      url: p_url,
+      type: 'POST',
+      dataType: 'json',
+      success: (result) ->
+        console.log("1")
+        $('#followedCount').text(result.count)
+        if result.flag == "add"
+          button.addClass("followed")
+        else if result.flag == "remove"
+          button.removeClass("followed")
+    )

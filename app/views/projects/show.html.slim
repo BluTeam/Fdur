@@ -30,8 +30,10 @@
                 a.glyphicon.glyphicon-tags.forks data-toggle='modal' data-target='#forkForm'
                 | &nbsp&nbsp#{ @project.forks_count }
               span.pull-right title="收藏" style="margin-right: 10px;"
-                a.glyphicon.glyphicon-heart.follows href="javascript:void(0)"
-                | &nbsp&nbsp#{ @project.follows.count }
+                a.glyphicon.glyphicon-heart.follows#followProject href="javascript:void(0)" data-project-id="#{@project.id}" class="#{"followed" if current_user.followed? @project}"
+                | &nbsp&nbsp
+                span#followedCount
+                  | #{ @project.follows.count }
       / JiaThis Button BEGIN
       - if @project.is_public?
         .jiathis_style_32x32

@@ -110,11 +110,11 @@ class ProjectsController < ApplicationController
   def follow
     if current_user.followed? @project
       Follow.ransack({user_id_eq: current_user.id, porject_id_eq: @project.id}).result.first.destroy!
+      render text: { count: @project.followed_count, flag: 'remove' }.to_json
     else
       @project.follows.create! user_id: current_user.id
+      render text: { count: @project.followed_count, flag: 'add' }.to_json
     end
-    flash[:success] = '收藏成功'
-    redirect_to @project
   end
 
   def comment

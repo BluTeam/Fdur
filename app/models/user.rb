@@ -70,6 +70,10 @@ class User < ActiveRecord::Base
     forked
   end
 
+  def followed? project
+    Follow.ransack({user_id_eq: self.id, porject_id_eq: project.id}).result.first
+  end
+
   private
 
   def set_default_sex

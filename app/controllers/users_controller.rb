@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!, only: [:detail, :detail_update]
   before_action :user_params, only: [:detail_update]
+  before_action :set_user, only: [:show]
 
   def detail
   end
@@ -17,8 +18,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @projects = find_user.projects.order(updated_at: :desc)
-    @user = find_user
+    redirect_to(action: :detail) if @user == current_user
+    @projects = @user.projects.order(updated_at: :desc)
   end
 
   private 
@@ -27,8 +28,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :sex, :birthday, :profession, :introduction, :address, :qq, :telephone, :avatar)
   end
 
-  def find_user
-    @user=User.where(id: params[:id]).first
+  def set_user
+    @user = User.where(id: params[:id]).first
   end
 
 end

@@ -11,9 +11,9 @@ $(document).ready ->
       if $(@).val() == ""
         $("#ImgPr_project").attr "src", project_image
     $("#project_image").uploadPreview({ Img: "ImgPr_project", Width: 300, Height: 300 });
-    $('[data-flag="milestone_image"]').change ->
-      if $(@).val()!=""
-        $("#milestone_imgbox").css "display","block"
-    $('[data-flag="milestone_image"]').uploadPreview({ Img: "ImgPr_milestone", Width: 300, Height: 300 });
+#    $('[data-flag="milestone_image"]').change ->
+#      if $(@).val()!=""
+#        $("#milestone_imgbox").css "display","block"
+#    $('[data-flag="milestone_image"]').uploadPreview({ Img: "ImgPr_milestone", Width: 300, Height: 300 });
 
   

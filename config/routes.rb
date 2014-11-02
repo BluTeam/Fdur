@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       patch :update_milestone
       patch :play_milestone
       post :return_milestone
+      post :follow
     end
   end
   resources :users, only: [:show] do

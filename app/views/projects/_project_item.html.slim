@@ -10,10 +10,16 @@
       = p.description
     .extra_padding.follow
       .row.extra_padding
-        span.pull-right title="拷贝"
+        - unless controller_name == "projects"
+          p.pull-left
+            a.avatar.strong href="#{user_path p.user}"
+              = image_tag p.user.avatar.small.url
+              | &nbsp&nbsp&nbsp
+              = p.user.not_nil_name
+        p.pull-right title="拷贝"
           span.forked.glyphicon.glyphicon-tags href="javascript:void(0)"
           | &nbsp&nbsp#{ p.forks_count }
-        span.pull-right title="收藏" style="margin-right: 10px;"
+        p.pull-right title="收藏" style="margin-right: 10px;"
           span.followed.glyphicon.glyphicon-heart href="javascript:void(0)"
           | &nbsp&nbsp#{ p.follows.count }
   - unless (last_milestone = p.milestones.order(updated_at: :desc).first).nil?

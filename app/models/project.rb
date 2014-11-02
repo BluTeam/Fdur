@@ -44,6 +44,9 @@ class Project < ActiveRecord::Base
   # TODO: 自定以validate，按用户权限来分上传限制
   validates :image, file_size: { maximum: 1.0.megabytes.to_i }
 
+  def followed_count
+    self.follows.count
+  end
 
   private
 
