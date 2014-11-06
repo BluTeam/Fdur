@@ -1,83 +1,83 @@
 .container.top_stand
   .col-xs-12.col-sm-8.col-md-8
     .user_info_pannel
-      ul.nav.nav-tabs#myTab role="tablist" 
-        li.active 
+      ul.nav.nav-pills.nav-justified role="tablist"
+        li.active role="presentation" 
           a href="#personal_info" role="tab" data-toggle="tab"
             | 个人资料
-        li
+        li role="presentation" 
           a href="#avatar" role="tab" data-toggle="tab"
             | 头像设置
-        li
-          a#safe href="#security_setting" role="tab" data-toggle="tab"
+        li role="presentation" 
+          a href="#security_setting" role="tab" data-toggle="tab"
             | 安全设置
       .info_content.tab-content
         .tab-pane.active#personal_info
           .title_line
-          p.title
+          p.big_title
             | 基本信息
           #info
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | 登录名
-              p.col-sm-10
+              p.col-sm-9.small_font
                 = current_user.email
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | 昵称
-              p.col-sm-10
+              p.col-sm-9.small_font
                 =current_user.name
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | 性别
-              p.col-sm-10
+              p.col-sm-9.small_font
                 =current_user.sex
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | 出生日期
-              p.col-sm-10
+              p.col-sm-9.small_font
                 =current_user.birthday
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | 职业介绍
-              p.col-sm-10.no-over
+              p.col-sm-9.no-over.small_font
                 =current_user.profession
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | 介绍自己
-              p.col-sm-10.no-over
+              p.col-sm-9.no-over.small_font
                 =current_user.introduction
           .title_line
-          p.title
+          p.big_title
             | 联系信息
           #info 
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | 所在地
-              p.col-sm-10.no-over
+              p.col-sm-9.no-over.small_font
                 =current_user.address
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | QQ
-              p.col-sm-10
+              p.col-sm-9.small_font
                 =current_user.qq
             .row.info_row
-              p.col-sm-2
+              p.col-sm-3.mid_font
                 | 手机号码
-              p.col-sm-10  
+              p.col-sm-9.small_font 
                 =current_user.telephone
             #button_row
-              a.btn.btn-info.pull-right data-toggle="modal" data-target="#editUserModal"
+              a.btn.btn-info.pull-right.strong data-toggle="modal" data-target="#editUserModal"
                 | 编辑
         .tab-pane#avatar
           .title_line
-          p.title
+          p.big_title
             | 修改头像
           .row#info.info_row
             .col-xs-12.col-sm-7.col-md-7
-              button class="btn btn-info" id="upload_btn"
+              button.strong class="btn btn-info" id="upload_btn"
                 | 本地照片
-              span.help-block
+              span.help-block.mid_font
                 | 你上传的头像将会自动生成三种尺寸头像，请注意中小尺寸的头像是否清晰。
               .img_content
                 .img_content_left.pull-left
@@ -99,33 +99,28 @@
             .col-xs-12.col-sm-1.col-md-1
             .col-xs-12.col-sm-4.col-md-4
               .upload_content
-                span.help-block
+                span.help-block.mid_font
                   | 仅支持jpg，jpeg，png格式图片(使用高质量图片，生成高清头像)
                 = form_for(current_user, url: detail_update_user_path(current_user), role: :form) do |u|
                   .form-group
                     = u.file_field :avatar, accept: 'image/png,image/gif,image/jpeg',style: "position:absolute; top:-300000px;"
-                  = u.submit "保存", class: "btn btn-info  btn-block ", style: "margin-top:160px;", disabled: "disabled",id: "save_btn"
+                  = u.submit "保存", class: "btn btn-info  btn-block strong", style: "margin-top:160px;", disabled: "disabled",id: "save_btn"
         .tab-pane#security_setting
           .title_line
-          p.title
+          p.big_title
             | 隐私设置
           #info
             .row.info_row
-              span.col-sm-6.col-xs-6.switch_span
-                | 个人信息是否可见
-              .col-sm-6.col-xs-6.switch
-                input type="checkbox" id="myswitch1" class="myswitch" checked="true"
-            .row.info_row
-              span.col-sm-6.col-xs-6.switch_span
+              span.col-sm-6.col-xs-6.switch_span.mid_font
                 | 好友信息是否可见
-              .col-sm-6.col-xs-6.switch
-                input type="checkbox" id="myswitch2" class="myswitch" checked="true"
+              .col-sm-6.col-xs-6.switch data-on="info"
+                input type="checkbox" id="myswitch" class="myswitch" checked="true"
           .title_line
-          p.title
+          p.big_title
             | 修改密码
           #info
             p.pull-right
-              a.btn.btn-info.pull-right data-toggle="modal" data-target="#passwordModal"
+              a.btn.btn-info.pull-right.strong data-toggle="modal" data-target="#passwordModal"
                 | 修改该密码
   .col-xs-12.col-sm-8.col-md-4
     #follow_content

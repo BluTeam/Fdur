@@ -23,7 +23,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top.header role="navigation"
         - else
           li style="margin-top:10px;"
 
-            = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;"
+            = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;", class: "img-circle"
             = link_to "#{current_user.email}",detail_users_path,style: "display:inline;"
           li
             = link_to '登出', destroy_user_session_path, class: :strong, method: :delete

@@ -5,8 +5,6 @@
     p.center.user_name
       - if @user.name =="" or @user.name.nil?
         span
-          | 用户
-        span
           = @user.email
       - else
         = @user.name
@@ -16,9 +14,9 @@
           | 这家伙很懒什么也没有留下～
       - else
         = @user.introduction
-    button type="button" class="btn btn-danger center"
+    button type="button" class="btn btn-danger center" style="margin-top:30px;"
       |＋关注
-  .mid_tag
+  .mynav
     .row 
       .col-xs-2.col-sm-3.col-md-3
       .col-xs-4.col-sm-3.col-md-3
@@ -35,106 +33,103 @@
           .col-sm-6
             - @projects.each_with_index do |p, index|
               -if index % 3 == 2
-                = render "project_item",p: p
+                = render "projects/project_item",p: p
           .col-sm-6
             - @projects.each_with_index do |p, index|
               -if index % 3 == 0
-                = render "project_item",p: p
+                = render "projects/project_item",p: p
         .col-md-4.col-sm-12.except_padding
           .col-md-12.col-sm-6
             - @projects.each_with_index do |p, index|
               -if index % 6 == 1
-                = render "project_item",p: p
+                = render "projects/project_item",p: p
           .col-md-12.col-sm-6
             - @projects.each_with_index do |p, index|
               -if index % 6 == 4
-                = render "project_item",p: p
+                = render "projects/project_item",p: p
     #personal_info.newTags-content
       .row
-        .col-xs-12.col-sm-4.col-md-4
-          #follow_box
-            .content_title
-              span
-                | 关注列表
-            .list_content
         .col-xs-12.col-sm-8.col-md-8
           #personal_box
             .title_line
-            p.title
+            p.big_title
               | 基本信息
             #info
               .row.info_row
-                p.col-sm-2
+                p.col-sm-3.mid_font
                   | 昵称
-                p.col-sm-10
+                p.col-sm-9
                   - if @user.name =="" or @user.name.nil?
-                    span
-                      | 用户
                     span
                       = @user.email
                   - else
                     = @user.name
               .row.info_row
-                p.col-sm-2
+                p.col-sm-3.mid_font
                   | 性别
-                p.col-sm-10
+                p.col-sm-9
                   =@user.sex
               .row.info_row
-                p.col-sm-2
+                p.col-sm-3.mid_font
                   | 出生日期
-                p.col-sm-10
+                p.col-sm-9
                   - if @user.birthday =="" or @user.birthday.nil?
                     span
                      | 保密
                   - else
                     = @user.birthday
               .row.info_row
-                p.col-sm-2
+                p.col-sm-3.mid_font
                   | 职业介绍
-                p.col-sm-10.no-over
+                p.col-sm-9.no-over
                   - if @user.profession =="" or @user.profession.nil?
                     span
                       | 这家伙很懒什么也没有留下～
                   - else
                     = @user.profession
               .row.info_row
-                p.col-sm-2
+                p.col-sm-3.mid_font
                   | 个人简介
-                p.col-sm-10.no-over
+                p.col-sm-9.no-over
                   - if @user.introduction =="" or @user.introduction.nil?
                     span
                       | 这家伙很懒什么也没有留下～
                   - else
                     = @user.introduction
             .title_line
-            p.title
+            p.big_title
               | 联系信息
             #info 
               .row.info_row
-                p.col-sm-2
+                p.col-sm-3.mid_font
                   | 所在地
-                p.col-sm-10.no-over
+                p.col-sm-9.no-over
                   - if @user.address =="" or @user.address.nil?
                     span
                      | 还未填写
                   - else
                     = @user.address
               .row.info_row
-                p.col-sm-2
+                p.col-sm-3.mid_font
                   | QQ
-                p.col-sm-10
+                p.col-sm-9
                   - if @user.qq =="" or @user.qq.nil?
                     span
                      | 还未填写
                   - else
                     = @user.qq
               .row.info_row
-                p.col-sm-2
+                p.col-sm-3.mid_font
                   | 手机号码
-                p.col-sm-10  
+                p.col-sm-9  
                   - if @user.telephone =="" or @user.telephone.nil?
                     span
                      | 还未填写
                   - else
                     = @user.telephone
-
+        .col-xs-12.col-sm-4.col-md-4
+          #follow_box
+            .content_title
+              span
+                | 关注列表
+            .list_content

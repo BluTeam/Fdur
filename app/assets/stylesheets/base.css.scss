@@ -165,7 +165,9 @@ ul {
   padding-top: 13px;
   padding-bottom: 11px;
   background-color: #56b7e3;
-  color: #ffffff;
+  color: #4a525c;
+  font-size: 16px;
+  font-weight: bold;
   box-shadow: 0 1px 2px 0 #ccc;
 }
 
@@ -176,15 +178,17 @@ ul {
   cursor: pointer;
   padding-top: 13px;
   padding-bottom: 11px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: #000000;
+  color: #4a525c;
+  font-size: 16px;
+  font-weight: bold;
   &:hover {
     text-decoration: none;
     padding-top: 13px;
     padding-bottom: 11px;
     background-color: #ffffff;
-    color: #000000;
+    color: #4a525c;
+    font-size: 16px;
+    font-weight: bold;
     border-bottom:2px solid #5bc0de; 
   }
   
@@ -205,7 +209,9 @@ ul {
   padding-top: 13px;
   padding-bottom: 11px;
   background-color: #ffffff;
-  color: #000000;
+  color: #4a525c;
+  font-size: 16px;
+  font-weight: bold;
   border-bottom:2px solid #5bc0de; 
 }
 

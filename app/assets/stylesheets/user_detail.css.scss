@@ -2,32 +2,35 @@ body[data-page="users-detail"],
 body[data-page="registrations-update"],
 body[data-page="users-show"]
 {
-  .user_info_pannel{
-    background-color: #ffffff;
+  .nav .active a{
+    background-color:#5bc0de;
   }
   .info_content{
-    border-left:1px solid #dddddd;
-    border-right:1px solid #dddddd;
-    border-bottom:1px solid #dddddd;
-    padding: 10px 40px 40px 40px;
+    padding: 0 20px 0 20px;
   }
-
   .title_line{
     border-top:1px solid #dddddd;
     margin:70px 0 0 70px;
   }
-  .title{
+  .big_title{
     margin:-14px;
     font-size: 20px;
+    color:#4a525c;  
+    font-weight: bold;
   }
   #info{
     margin-top:30px;
   }
   .info_row{
-  padding:10px;
+    padding:10px;
   } 
- .active{
-    background-color: #ffffff;
+  .mid_font{
+    font-size: 16px;
+    color:#4a525c;  
+    font-weight: bold;
+  }
+  .small_font{
+    color:#666666;  
   }
   .user_border {  
   border-radius: 2px;
@@ -60,6 +63,8 @@ body[data-page="users-show"]
     border-right:1px solid #46b8da;
     border-top:1px solid #46b8da;
     color:#ffffff;
+    font-size: 20px;
+    font-weight: bold;
     padding:10px;
   }
   .list_content{
@@ -79,25 +84,24 @@ body[data-page="users-show"]{
   background-image: linear-gradient(to bottom, #6cc0e7 0, #56b7e3 100%);
   background-repeat: repeat-x;
   color:white;
-}
+ }
+  .mynav{
+    background-color: #ffffff;
+    border:1px solid #dddddd;
+  }
   .user_name{
     font-size: 20px;
-  }
-  .mid_tag{
-    background-color:#ffffff;
-    border: 1px solid #dddddd;
+    padding:30px;
   }
   #main_page{
     background-color:#ffffff;
-    border: 1px solid #dddddd;
-    margin-top: 20px;
-  }
-  #personal_info{
     margin-top: 20px;
   }
   #personal_box{
     padding: 0 40px 40px 40px;
     background-color:#ffffff;
-    border:1px solid #dddddd;
+  }
+  #follow_box{
+    margin-top: 40px;
   }
 }

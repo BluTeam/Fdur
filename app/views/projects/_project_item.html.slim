@@ -13,7 +13,7 @@
         - unless controller_name == "projects"
           p.pull-left
             a.avatar.strong href="#{user_path p.user}"
-              = image_tag p.user.avatar.small.url
+              = image_tag p.user.avatar.small.url, style: "width:30px;height:30px;", class: "img-circle"
               | &nbsp&nbsp&nbsp
               = p.user.not_nil_name
         p.pull-right title="拷贝"
