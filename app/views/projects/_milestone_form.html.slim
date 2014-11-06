@@ -22,10 +22,11 @@
               = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
             .form_group
               = f.label '里程碑图片', for: :milestone_image
-                /br
-                /.thumbnail style="margin-bottom: 0;#{ "display: none;" if m.image.blank?}" id="milestone_imgbox"
-                /  = image_tag m.image.normal.url, style: "max-width: 300px; max-height: 300px",id: "ImgPr_milestone"
+              .thumbnail style="margin-bottom: 10px;#{ "display: none;" if m.image.blank?}"
+                = image_tag m.image.normal.url, style: "max-width: 300px; max-height: 300px", id: "ImgPr_milestone"
               = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control",data:{flag:"milestone_image"}
+            javascript:
+              $('[data-flag="milestone_image"]').uploadPreview({ Img: "ImgPr_milestone", Width: 300, Height: 300 });
           .modal-footer
             button type="button" class="btn btn-default strong" data-dismiss="modal"
               | 关 闭
@@ -47,11 +48,18 @@
                 = f.text_area :reflection, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
             .form_group
               = f.label '里程碑图片', for: :milestone_image
-              - unless m.image.blank?
-                br
-                  .thumbnail style="margin-bottom: 0"
-                    = image_tag m.image.normal.url, style: "max-width: 300px; max-height: 300px"
+              .thumbnail style="margin-bottom: 10px;#{ "display: none;" if m.image.blank?}"
+                = image_tag m.image.normal.url, style: "max-width: 300px; max-height: 300px", id: "ImgPr_milestone#{m.id}"
               = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control",data:{flag: "milestone_image"}
+            .checkbox style="color: red;letter-spacing: 1px"
+              label
+                = f.check_box :remove_image
+                | 删除图片
+
+
+
+            javascript:
+              $('[data-flag="milestone_image"]').uploadPreview({ Img: "ImgPr_milestone#{m.id}", Width: 300, Height: 300 });
           .modal-footer
             button type="button" class="btn btn-default strong" data-dismiss="modal"
               | 关 闭
