@@ -155,7 +155,7 @@ class ProjectsController < ApplicationController
     end
 
     def milestone_params
-      params.require(:milestone).permit(:name,:image,:state,:reflection,:description)
+      params.require(:milestone).permit(:name,:image,:state,:reflection,:description,:remove_image)
     end
 
     def classify_milestones_and_comments
