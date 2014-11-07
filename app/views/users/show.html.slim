@@ -3,18 +3,14 @@
     .img_box.center
       = image_tag @user.avatar.large.url, style: "width:180px;height:180px;", class: "img-circle"
     p.center.user_name
-      - if @user.name =="" or @user.name.nil?
-        span
-          = @user.email
-      - else
-        = @user.name
+      = @user.not_nil_name
     p.center
       - if @user.introduction =="" or @user.introduction.nil?
         span
           | 这家伙很懒什么也没有留下～
       - else
         = @user.introduction
-    button type="button" class="btn btn-danger center" style="margin-top:30px;"
+    button type="button" id="follow" class="btn btn-success btn-lg center strong" style="margin-top:30px;"
       |＋关注
   .mynav
     .row 
@@ -59,11 +55,7 @@
                 p.col-sm-3.mid_font
                   | 昵称
                 p.col-sm-9
-                  - if @user.name =="" or @user.name.nil?
-                    span
-                      = @user.email
-                  - else
-                    = @user.name
+                  = @user.not_nil_name
               .row.info_row
                 p.col-sm-3.mid_font
                   | 性别

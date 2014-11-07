@@ -51,9 +51,25 @@ class User < ActiveRecord::Base
   validates :sex, :inclusion => SEX_TYPES
   has_many :projects, dependent: :destroy
   has_many :follows, dependent: :destroy
+  
+  has_and_belongs_to_many :friends,
+    :class_name => "User",
+    :join_table => "user_follows",
+    :association_foreign_key => "add_id",
+    :foreign_key => "self_id"
 
   def not_nil_name
     self.name || self.email
+  end
+
+  def add_user user 
+    if not self.friends.include?(user)
+      self.friends << user 
+      return "follow"
+    else
+      self.friends.delete user
+      return "unfollow"
+    end
   end
 
   def fork_project o_project

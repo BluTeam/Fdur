@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :activities, only: [:index]
+  post '/userfollow', to: 'userfollow#follow'
   resources :projects do
     resource :milestones, only: [:destroy] do
       collection do
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show] do
     member do
-      patch :detail_update
+      patch :detail_update 
     end
     collection do
       get :detail

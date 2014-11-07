@@ -183,8 +183,7 @@ ul {
   font-weight: bold;
   &:hover {
     text-decoration: none;
-    padding-top: 13px;
-    padding-bottom: 11px;
+    padding:13px 14px 12px 14px;
     background-color: #ffffff;
     color: #4a525c;
     font-size: 16px;
@@ -206,8 +205,7 @@ ul {
 
 .newTag-selected {
   text-decoration: none;
-  padding-top: 13px;
-  padding-bottom: 11px;
+  padding:13px 14px 12px 14px;
   background-color: #ffffff;
   color: #4a525c;
   font-size: 16px;
