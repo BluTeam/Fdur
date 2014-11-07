@@ -10,8 +10,18 @@
           | 这家伙很懒什么也没有留下～
       - else
         = @user.introduction
-    button type="button" id="follow" class="btn btn-success btn-lg center strong" style="margin-top:30px;"
-      |＋关注
+    - if not @flag
+      a#follow type="button" class="btn btn-success btn-lg center strong" style="margin-top:30px;width:100px" href="#"
+        |＋ 关注
+    - else
+      .btn-group.center style="margin-top:30px;"
+        button type="button"  class="btn btn-danger btn-lg  strong dropdown-toggle" data-toggle="dropdown" style="width:100px" 
+          | 已关注  
+          span.caret
+        ul.dropdown-menu role="menu"
+          li#follow
+            a href="#1"
+              | 取消关注
   .mynav
     .row 
       .col-xs-2.col-sm-3.col-md-3

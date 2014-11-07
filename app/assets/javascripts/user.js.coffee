@@ -4,17 +4,12 @@ $(document).ready ->
       $.ajax({
         type: 'POST',
         url: "/userfollow" ,
+        async: true ,
         data: {id:"1"},
         datatype :"text",
-        success:(info)->
-                  if info=="follow"
-                    $("#follow").removeClass("btn-success")
-                    $("#follow").addClass("btn-danger")
-                    $("#follow").text "取消关注"
-                    $("#follow").blur()
-                  if info=="unfollow"
-                    $("#follow").removeClass("btn-danger")
-                    $("#follow").addClass("btn-success")
-                    $("#follow").text "＋关注"
-                    $("#follow").blur()
-      });
+        success: (info)->
+                   if info=="follow"
+                     $("#follow").text "关注中....." 
+                   if info=="unfollow"
+                     $(".btn-group button").text "取消关注中..."
+      }); 

@@ -90,6 +90,10 @@ class User < ActiveRecord::Base
     Follow.ransack({user_id_eq: self.id, porject_id_eq: project.id}).result.first
   end
 
+  def is_friends user
+    self.friends.include?(user)
+  end
+  
   private
 
   def set_default_sex
