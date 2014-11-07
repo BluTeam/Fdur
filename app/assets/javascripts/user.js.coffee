@@ -10,13 +10,12 @@ $(document).ready ->
       $.ajax({
         type: 'POST',
         url: "/userfollow" ,
-        async: true ,
+        async: false ,
         data: {id:"1"},
         datatype :"text",
         success: (info)->
                    if info =="follow"
                      $(".btn-group button").removeClass("disabled")
                    else
-                     $("#follow").removeClass("disabled")
-                     
+                     $("#follow").removeClass("disabled")             
       }); 
