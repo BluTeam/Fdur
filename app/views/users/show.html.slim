@@ -11,16 +11,16 @@
       - else
         = @user.introduction
     - if not @flag
-      a#follow type="button" class="btn btn-success btn-lg center strong" style="margin-top:30px;width:100px" href="#"
-        |＋ 关注
+      a#follow.btn.btn-success.btn-lg.center.strong type="button"  style="margin-top:30px;width:100px" href="#"
+        | + 关注
     - else
       .btn-group.center style="margin-top:30px;"
-        button type="button"  class="btn btn-danger btn-lg  strong dropdown-toggle" data-toggle="dropdown" style="width:100px" 
+        button.btn.btn-danger.btn-lg.strong.dropdown-toggle type="button" data-toggle="dropdown" style="width:100px" 
           | 已关注  
           span.caret
         ul.dropdown-menu role="menu"
-          li#follow
-            a href="#1"
+          li#follow.unfollow
+            a href="#"
               | 取消关注
   .mynav
     .row 
