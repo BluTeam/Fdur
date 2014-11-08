@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :fork, :follow, :comment, :update_milestone, :play_milestone, :return_milestone]
+  before_action :set_project, only: [:show, :preview,:fork, :follow, :comment, :update_milestone, :play_milestone, :return_milestone]
   before_action :set_current_project, only: [:update, :destroy, :create_milestone]
   before_action :comment_params, only: [:comment]
 
@@ -16,6 +16,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    classify_milestones_and_comments
+    @milestone = @project.milestones.build
+    redirect_to(action: :preview) unless current_user == @project.user
+  end
+
+  def preview
     classify_milestones_and_comments
     @milestone = @project.milestones.build
   end
