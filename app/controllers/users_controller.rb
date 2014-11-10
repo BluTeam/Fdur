@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def detail
+    @myfriends= current_user.myfriends
+    binding.pry
   end
 
   def detail_update

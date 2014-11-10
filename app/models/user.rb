@@ -93,6 +93,10 @@ class User < ActiveRecord::Base
   def is_friends user
     self.friends.include?(user)
   end
+
+  def myfriends 
+    self.friends
+  end
   
   private
 

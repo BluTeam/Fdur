@@ -128,5 +128,10 @@
         span
           | 关注列表
       .list_content
+        .list-group
+          - @myfriends.each do |f|
+            a.list-group-item href="#"
+              =f.email
+          end
 = render "users/user_form"
 = render "users/password_from"
