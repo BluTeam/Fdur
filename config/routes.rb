@@ -17,12 +17,13 @@ Rails.application.routes.draw do
       end
     end
     member do
-      post :fork
-      post :create_milestone
-      patch :update_milestone
-      patch :play_milestone
-      post :return_milestone
-      post :follow
+      get    :preview
+      post   :fork
+      post   :create_milestone
+      patch  :update_milestone
+      patch  :play_milestone
+      post   :return_milestone
+      post   :follow
     end
   end
   resources :users, only: [:show] do

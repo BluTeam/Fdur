@@ -15,22 +15,37 @@ module RenderMilestoneTreeHelper
       def render_node(h, options)
         @h, @options = h, options
         node = options[:node]
-        "
-          <li class='list-group-item #{ node.state }' data-node-id='#{ node.id }'>
-            <div class='item'>
-              <i class='handle'>
-                <span class='glyphicon glyphicon-th-list'></span>
-              </i>
-              <p class='title'>#{ show_link }</p>
-              #{ show_pic }
-              #{ show_description }
-              #{ show_reflection }
-              <p class='time'>更新时间： #{ node.updated_at.strftime("%y年%m月%d日 %H:%M") }</p>
-              #{ controls }
-            </div>
-            #{ children }
-          </li>
-        "
+        if options[:preview] = false
+          "
+            <li class='list-group-item #{ node.state }' data-node-id='#{ node.id }'>
+              <div class='item'>
+                <i class='handle'>
+                  <span class='glyphicon glyphicon-th-list'></span>
+                </i>
+                <p class='title'>#{ show_link }</p>
+                #{ show_pic }
+                #{ show_description }
+                #{ show_reflection }
+                <p class='time'>更新时间： #{ node.updated_at.strftime("%y年%m月%d日 %H:%M") }</p>
+                #{ controls }
+              </div>
+              #{ children }
+            </li>
+          "
+        else
+          "
+            <li class='list-group-item #{ node.state }' data-node-id='#{ node.id }'>
+              <div class='item'>
+                <p class='title'>#{ show_link }</p>
+                #{ show_pic }
+                #{ show_description }
+                #{ show_reflection }
+                <p class='time'>更新时间： #{ node.updated_at.strftime("%y年%m月%d日 %H:%M") }</p>
+              </div>
+              #{ children }
+            </li>
+          "
+        end
       end
 
       def show_pic

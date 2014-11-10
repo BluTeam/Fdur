@@ -12,18 +12,14 @@
             = @project.description
           .extra_padding.follow
             | &nbsp
-            span.pull-right title="删除"
-              a.glyphicon.glyphicon-remove.delete data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href="#{project_path @project}" rel='nofollow'
-            span.pull-right title="编辑" style="margin-right: 10px;"
-              a#new_project.glyphicon.glyphicon-pencil.edit data-toggle="modal" data-target="#newProjectModal"
-            span.pull-right.cut style="margin-right: 15px;"
-              | |
             span.pull-right title="拷贝" style="margin-right: 15px;"
-              span.forked.glyphicon.glyphicon-tags
+              a.glyphicon.glyphicon-tags.forks data-toggle='modal' data-target='#forkForm'
               | &nbsp&nbsp#{ @project.forks_count }
             span.pull-right title="收藏" style="margin-right: 10px;"
-              span.followed.glyphicon.glyphicon-heart
-              | &nbsp&nbsp#{ @project.follows.count }
+              a.glyphicon.glyphicon-heart.follows#followProject href="javascript:void(0)" data-project-id="#{@project.id}" class="#{"followed" if current_user.followed? @project}"
+              | &nbsp&nbsp
+              span#followedCount
+                | #{ @project.follows.count }
 
       / JiaThis Button BEGIN
       - if @project.is_public?
@@ -35,18 +31,18 @@
           a.jiathis_button_renren
           a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"
         javascript:
-          var jiathis_config={
+          var jiathis_config = {
             url: window.location.href,
-            summary:"#{@project.description}",
-            title:"小伙伴在 Beacon 分享了他的微计划 -- #{@project.name} ",
-            ralateuid:{
-              "tsina":"xcccccx"
+            summary: "#{@project.description}",
+            title: "小伙伴在 Beacon 分享了他的微计划 -- #{@project.name} ",
+            ralateuid: {
+              "tsina": "xcccccx"
             },
-            shortUrl:false,
-            hideMore:true
+            shortUrl: false,
+            hideMore: true
           }
         = javascript_include_tag 'http://v3.jiathis.com/code/jia.js', charset: 'utf-8', 'data-turbolinks-track' => false
-      / JiaThis Button END
+    / JiaThis Button END
 
     .col-md-8.col-sm-8.col-xs-12
       .milestones
@@ -67,10 +63,8 @@
                       | 已完成
                     a.Tags data-flag="#comments"
                       | 评 论
-              = milestone_tree @milestones
+              = milestone_tree @milestones, perview: true
               span.list-group-item.disabled
-                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                  | + 新建
           #undo.Tags-content
             ol.list-group.sortable_tree
               span.list-group-item.disabled
@@ -101,14 +95,7 @@
                     p.time
                       | 更新时间：
                       = m.updated_at.strftime("%y年%m月%d日 %H:%M")
-                    .controls
-                      a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}' title='编辑'
-                        span.glyphicon.glyphicon-pencil
-                      a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow' title='删除'
-                        span.glyphicon.glyphicon-remove
               span.list-group-item.disabled
-                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                  | + 新建
           #finished.Tags-content
             ol.list-group.sortable_tree
               span.list-group-item.disabled
@@ -143,14 +130,7 @@
                     p.time
                       | 更新时间：
                       = m.updated_at.strftime("%y年%m月%d日 %H:%M")
-                    .controls
-                      a#edit_milestone.edit data-toggle='modal' data-target='#editMilestoneModal#{m.id}' title='编辑'
-                        span.glyphicon.glyphicon-pencil
-                      a.delete data-method='delete' data-confirm="确定删除该里程碑?" href="#{project_milestones_path m.project, m}" rel='nofollow' title='删除'
-                        span.glyphicon.glyphicon-remove
               span.list-group-item.disabled
-                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                  | + 新建
           #comments.Tags-content
             ol.list-group
               span.list-group-item.disabled
@@ -167,11 +147,6 @@
                     a.Tags data-flag="#comments"
                       | 评 论
               span.list-group-item.disabled
-                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                  | + 新建
           - @milestones.each do |m|
-            = render "milestone_form", m: m
             = render "original_image", m: m
-            = render "milestone_play", m: m
-= render "milestone_form", m: @milestone
-= render "project_form", type: 'edit'
+  = render "fork_form", p: @project
