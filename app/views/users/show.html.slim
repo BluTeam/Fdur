@@ -11,17 +11,27 @@
       - else
         = @user.introduction
     - if not @flag
-      a#follow.btn.btn-success.btn-lg.center.strong type="button"  style="margin-top:30px;width:100px" href=""
+      a#follow.btn.btn-success.btn-lg.center.strong.follow type="button"  style="margin-top:30px;width:100px" href="javascript:void(0)"
         | + 关注
+      .btn-group.center style="display:none"
+        button.btn.btn-danger.btn-lg.strong.dropdown-toggle type="button" data-toggle="dropdown" style="width:100px" 
+          | 已关注  
+          span.caret
+        ul.dropdown-menu role="menu"
+          li#unfollow.follow
+            a href="javascript:void(0)"
+              | 取消关注
     - else
       .btn-group.center style="margin-top:30px;"
         button.btn.btn-danger.btn-lg.strong.dropdown-toggle type="button" data-toggle="dropdown" style="width:100px" 
           | 已关注  
           span.caret
         ul.dropdown-menu role="menu"
-          li#follow.unfollow
-            a href=""
+          li#unfollow.follow
+            a href="javascript:void(0)"
               | 取消关注
+      a#follow.btn.btn-success.btn-lg.center.strong.follow type="button"  style="display:none" href="javascript:void(0)"
+        | + 关注
   .mynav
     .row 
       .col-xs-2.col-sm-3.col-md-3
