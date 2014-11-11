@@ -1,4 +1,29 @@
 $(document).ready ->
+  tmp_max= $("#max_exp").text()
+  tmp_now= $("#exp").text()
+  per = ((tmp_now/tmp_max)*100).toString()+"%"
+  $(".progress-bar").attr "aria-valuemax", tmp_max
+  $(".progress-bar").attr "aria-valuenow", tmp_now
+  $(".progress-bar").css "width",per
+  $(".progress-bar").text tmp_now + "/" + tmp_max
+  $("#report_btn").click ->
+    $(@).attr "disabled", "disabled"
+    $(@).text "签到中..."
+    $.ajax({
+        type: 'get',
+        url: "/users/report" ,
+        async: false ,
+        datatype :"text",
+        success: (info)->
+               tmp = info.split("&")
+               tmp_per = (tmp[0]/tmp[2])*100.toString()+"%"
+               $("#level_name").text tmp[1]
+               $(".progress-bar").attr "aria-valuemax", tmp[2] 
+               $(".progress-bar").attr "aria-valuenow", tmp[0] 
+               $(".progress-bar").css "width",tmp_per
+               $(".progress-bar").text tmp[0] + "/" + tmp[2]
+               $("#report_btn").text "已签到"         
+    }); 
   if $('body').is('[data-page="users-show"]')
     $(".follow").click ->
       if $(@).attr("id")!="unfollow"
@@ -7,11 +32,12 @@ $(document).ready ->
       else
         $(".btn-group button").text "取消关注中..."
         $(".btn-group button").addClass("disabled")
+      tmp = $("#user_id").text()
       $.ajax({
         type: 'POST',
-        url: "/userfollow" ,
+        url: "/users/follow" ,
         async: false ,
-        data: {id:"1"},
+        data: "id="+tmp,
         datatype :"text",
         success: (info)->
                    if info =="follow"

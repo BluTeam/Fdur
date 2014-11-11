@@ -18,3 +18,38 @@ if Project.first.nil?
   project.milestones.create name: '《禁闭岛》'
 
 end
+
+Level.create(
+    :rank => 1,
+    :name =>"普通船员",
+    :exp => 10
+	)
+Level.create(
+    :rank => 2,
+    :name =>"大力水手",
+    :exp => 20
+	)
+Level.create(
+    :rank => 3,
+    :name =>"掌舵能手",
+    :exp => 30
+	)
+Level.create(
+    :rank => 4,
+    :name =>"船长",
+    :exp => 40
+	)
+Level.create(
+    :rank => 5,
+    :name =>"海上王者",
+    :exp => 50
+	)
+
+Action.create(
+    :name =>"签到",
+    :action_time => "2014-11-8"
+	)
+Action.create(
+    :name =>"新建项目",
+    :action_time => "2014-11-8"
+	)

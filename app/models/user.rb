@@ -29,6 +29,8 @@
 #  qq                     :string(255)
 #  telephone              :string(255)
 #  profession             :string(255)
+#  exp                    :integer          default(0)
+#  report_time            :datetime
 #
 # Indexes
 #
@@ -47,7 +49,7 @@ class User < ActiveRecord::Base
 
   before_validation :set_default_sex
 
-  SEX_TYPES=["保密","男","女"]
+  SEX_TYPES =["保密","男","女"]
   validates :sex, :inclusion => SEX_TYPES
   has_many :projects, dependent: :destroy
   has_many :follows, dependent: :destroy
@@ -69,6 +71,39 @@ class User < ActiveRecord::Base
     else
       self.friends.delete user
       return "unfollow"
+    end
+  end
+  
+  def add_exp1
+    if self.exp <=50
+      self.exp += 1
+      self.report_time = Time.new
+      self.save
+      back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s
+    else
+      self.save
+      back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s
+    end
+  end
+
+  def add_exp2 
+    if self.exp <=50
+      self.exp += 2
+      self.report_time = Time.new
+      self.save
+    else
+      self.save
+    end
+  end
+  def get_exp
+    self.exp
+  end
+
+  def sub_time?
+    if self.report_time.blank?
+      return true
+    else
+      Time.new - self.report_time > 60*60*24
     end
   end
 
@@ -97,11 +132,42 @@ class User < ActiveRecord::Base
   def myfriends 
     self.friends
   end
-  
+ 
+  def level
+    level1 = get_level 1 
+    level2 = get_level 2 
+    level3 = get_level 3
+    level4 = get_level 4
+    level5 = get_level 5 
+    if self.exp <= level1.exp 
+      level1
+    elsif self.exp > level1.exp && self.exp <=level2.exp
+      level2
+    elsif self.exp > level2.exp && self.exp <=level3.exp
+      level3
+    elsif self.exp > level3.exp && self.exp <=level4.exp
+      level4.exp 
+    elsif self.exp > level4.exp 
+      level5
+    end
+  end
+
+  def get_level_name
+    level.name
+  end
+
+  def get_max_exp
+    level.exp
+  end
+
   private
 
   def set_default_sex
     self.sex = "保密" if self.sex.nil?
   end
+
+  def get_level id
+    level = Level.where(id: id).first
+  end 
 
 end

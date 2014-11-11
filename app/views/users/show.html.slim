@@ -4,6 +4,8 @@
       = image_tag @user.avatar.large.url, style: "width:180px;height:180px;", class: "img-circle"
     p.center.user_name
       = @user.not_nil_name
+    p#user_id style="display:none"
+      = @user.id
     p.center
       - if @user.introduction =="" or @user.introduction.nil?
         span

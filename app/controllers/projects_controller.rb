@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects.order(updated_at: :desc)
     @project = current_user.projects.build project_params
     if @project.save
+      current_user.add_exp2 
       flash[:success] = '创建成功'
       redirect_to action: :index
     else

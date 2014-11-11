@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!, only: [:detail, :detail_update]
+  before_action :authenticate_user!, only: [:detail, :detail_update, :follow]
   before_action :user_params, only: [:detail_update]
   before_action :set_user, only: [:show]
 
@@ -23,12 +23,23 @@ class UsersController < ApplicationController
     @flag = current_user.is_friends @user 
     @projects = @user.projects.order(updated_at: :desc)
   end
+  
+  def report 
+    info = current_user.add_exp1
+    render :text => info 
+  end
+
+  def follow
+    info = current_user.add_user set_user
+    render :text => info  
+  end
 
   private 
 
   def user_params
     params.require(:user).permit(:name, :sex, :birthday, :profession, :introduction, :address, :qq, :telephone, :avatar)
   end
+
 
   def set_user
     @user = User.where(id: params[:id]).first

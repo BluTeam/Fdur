@@ -21,9 +21,25 @@ nav.navbar.navbar-inverse.navbar-fixed-top.header role="navigation"
           li
             = link_to '登录', new_user_session_path, class: :strong
         - else
-          li style="margin-top:10px;"
-
+          li style="padding:12px 8px 0 9px;"
             = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;", class: "img-circle"
-            = link_to "#{current_user.email}",detail_users_path,style: "display:inline;"
+            span#level_name style="color:#ffffff;padding-left:10px;"
+              = current_user.get_level_name
+            span#max_exp style="display:none" 
+              = current_user.get_max_exp
+            span#exp style="display:none"
+              = current_user.get_exp
+          li style="padding:10px 8px 0 9px;"
+            .progress style="width:180px;"
+              .progress-bar.progress-bar-info role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style=""
+                | 0
+          li style="padding:14px 8px 0 9px;"
+            = link_to "#{current_user.email}", detail_users_path, style: "display:inline;"
+            - if current_user.sub_time?
+                button#report_btn
+                  | 签到
+            - else
+                button disabled="disabled"
+                  | 已签到
           li
             = link_to '登出', destroy_user_session_path, class: :strong, method: :delete

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028081215) do
+ActiveRecord::Schema.define(version: 20141111031101) do
+
+  create_table "actions", force: true do |t|
+    t.string   "name"
+    t.datetime "action_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "activities", force: true do |t|
     t.integer  "project_id",         null: false
@@ -43,6 +50,14 @@ ActiveRecord::Schema.define(version: 20141028081215) do
 
   add_index "follows", ["project_id"], name: "index_follows_on_project_id", using: :btree
   add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
+
+  create_table "levels", force: true do |t|
+    t.integer  "rank"
+    t.string   "name"
+    t.integer  "exp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "milestones", force: true do |t|
     t.string   "name",        null: false
@@ -113,6 +128,8 @@ ActiveRecord::Schema.define(version: 20141028081215) do
     t.string   "qq"
     t.string   "telephone"
     t.string   "profession"
+    t.integer  "exp",                    default: 0
+    t.datetime "report_time"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

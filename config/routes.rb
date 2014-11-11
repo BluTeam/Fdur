@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   #devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :activities, only: [:index]
-  post '/userfollow', to: 'userfollow#follow'
   resources :projects do
     resource :milestones, only: [:destroy] do
       collection do
@@ -32,6 +31,8 @@ Rails.application.routes.draw do
     end
     collection do
       get :detail
+      post :follow
+      get :report
     end  
   end
   # Example of regular route:
