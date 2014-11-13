@@ -17,6 +17,7 @@ $(document).ready ->
         success: (info)->
                tmp = info.split("&")
                tmp_per = (tmp[0]/tmp[2])*100.toString()+"%"
+               $("#level_num").text tmp[3]
                $("#level_name").text tmp[1]
                $(".progress-bar").attr "aria-valuemax", tmp[2] 
                $(".progress-bar").attr "aria-valuenow", tmp[0] 

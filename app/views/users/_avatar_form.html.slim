@@ -1,0 +1,44 @@
+#editAvatarModal.modal.fade tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-header.user_border style="padding:12px;"
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true"
+            | &times;
+          span.sr-only
+            | Close
+        h4.modal-title#myModalLabel
+          | 修改头像
+      .modal-body
+	    .row.info_row
+            .col-xs-12.col-sm-7.col-md-7
+              button.strong.btn.btn-info id="upload_btn"
+                | 本地照片
+              span.help-block.strong
+                | 你上传的头像将会自动生成三种尺寸头像，请注意中小尺寸的头像是否清晰。
+              .img_content
+                .img_content_left.pull-left
+                  div
+                    = image_tag current_user.avatar.large.url, style: "width:180px;height:180px;", id: "ImgPr_large"
+                  span.help-block
+                    | 大尺寸头像，180×180像素
+                .img_content_right.pull-right
+                  .img_content_right_top style="width:60px"
+                    div
+                      = image_tag current_user.avatar.mid.url, style: "width:50px;height:50px;", id: "ImgPr_mid"
+                    span.help-block
+                    | 50×50(中)
+                  .img_content_right_bottom style="width:60px;display:block;margin-top:70px;"
+                    div
+                      = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;", id: "ImgPr_small"
+                    span.help-block
+                      | 30×30(小)
+            .col-xs-12.col-sm-1.col-md-1
+            .col-xs-12.col-sm-4.col-md-4
+              .upload_content
+                span.help-block.mid_font.strong
+                  | 仅支持jpg，jpeg，png格式图片(使用高质量图片，生成高清头像)
+                = form_for(current_user, url: detail_update_user_path(current_user), role: :form) do |u|
+                  .form-group
+                    = u.file_field :avatar, accept: 'image/png,image/gif,image/jpeg',style: "position:absolute; top:-300000px;"
+                  = u.submit "保存", class: "btn btn-info  btn-block strong", style: "margin-top:130px;", disabled: "disabled",id: "save_btn"    

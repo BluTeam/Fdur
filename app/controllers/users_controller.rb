@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     redirect_to(action: :detail) if @user == current_user
     @flag = current_user.is_friends @user 
     @projects = @user.projects.order(updated_at: :desc)
+    @myfriends= @user.myfriends
   end
   
   def report 

@@ -3,7 +3,7 @@ $(document).ready ->
     avatar_large=$("#ImgPr_large").attr("src")
     avatar_mid=$("#ImgPr_mid").attr("src")
     avatar_small=$("#ImgPr_small").attr("src")
-    $(".myswitch").bootstrapSwitch();
+    $("#list_content").perfectScrollbar();
     $("#user_qq")
     .keyup ->
       tmp =$(@).val()

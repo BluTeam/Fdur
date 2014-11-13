@@ -55,3 +55,13 @@ $(document).ready ->
         else if result.flag == "remove"
           button.removeClass("followed")
     )
+
+# back_top
+  $(window).scroll -> 
+         scrollValue=$(window).scrollTop();
+         if scrollValue > 1300 
+           $('div[class=scroll]').fadeIn()
+         else
+           $('div[class=scroll]').fadeOut();
+   $('#scroll').click ->
+     $("html,body").animate({scrollTop:0},200);

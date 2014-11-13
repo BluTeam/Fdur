@@ -1,137 +1,34 @@
 .container.top_stand
   .col-xs-12.col-sm-8.col-md-8
-    .user_info_pannel
-      ul.nav.nav-pills.nav-justified role="tablist"
-        li.active role="presentation" 
-          a href="#personal_info" role="tab" data-toggle="tab"
-            | 个人资料
-        li role="presentation" 
-          a href="#avatar" role="tab" data-toggle="tab"
-            | 头像设置
-        li role="presentation" 
-          a href="#security_setting" role="tab" data-toggle="tab"
-            | 安全设置
-      .info_content.tab-content
-        .tab-pane.active#personal_info
-          .title_line
-          p.big_title
-            | 基本信息
-          #info
-            .row.info_row
-              p.col-sm-3.mid_font
-                | 登录名
-              p.col-sm-9.small_font
-                = current_user.email
-            .row.info_row
-              p.col-sm-3.mid_font
-                | 昵称
-              p.col-sm-9.small_font
-                =current_user.name
-            .row.info_row
-              p.col-sm-3.mid_font
-                | 性别
-              p.col-sm-9.small_font
-                =current_user.sex
-            .row.info_row
-              p.col-sm-3.mid_font
-                | 出生日期
-              p.col-sm-9.small_font
-                =current_user.birthday
-            .row.info_row
-              p.col-sm-3.mid_font
-                | 职业介绍
-              p.col-sm-9.no-over.small_font
-                =current_user.profession
-            .row.info_row
-              p.col-sm-3.mid_font
-                | 介绍自己
-              p.col-sm-9.no-over.small_font
-                =current_user.introduction
-          .title_line
-          p.big_title
-            | 联系信息
-          #info 
-            .row.info_row
-              p.col-sm-3.mid_font
-                | 所在地
-              p.col-sm-9.no-over.small_font
-                =current_user.address
-            .row.info_row
-              p.col-sm-3.mid_font
-                | QQ
-              p.col-sm-9.small_font
-                =current_user.qq
-            .row.info_row
-              p.col-sm-3.mid_font
-                | 手机号码
-              p.col-sm-9.small_font 
-                =current_user.telephone
-            #button_row
-              a.btn.btn-info.pull-right.strong data-toggle="modal" data-target="#editUserModal"
-                | 编辑
-        .tab-pane#avatar
-          .title_line
-          p.big_title
-            | 修改头像
-          .row#info.info_row
-            .col-xs-12.col-sm-7.col-md-7
-              button.strong.btn.btn-info id="upload_btn"
-                | 本地照片
-              span.help-block.mid_font
-                | 你上传的头像将会自动生成三种尺寸头像，请注意中小尺寸的头像是否清晰。
-              .img_content
-                .img_content_left.pull-left
-                  div
-                    = image_tag current_user.avatar.large.url, style: "width:180px;height:180px;", id: "ImgPr_large"
-                  span.help-block
-                    | 大尺寸头像，180×180像素
-                .img_content_right.pull-right
-                  .img_content_right_top style="width:60px"
-                    div
-                      = image_tag current_user.avatar.mid.url, style: "width:50px;height:50px;", id: "ImgPr_mid"
-                    span.help-block
-                    | 50×50(中)
-                  .img_content_right_bottom style="width:60px;display:block;margin-top:70px;"
-                    div
-                      = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;", id: "ImgPr_small"
-                    span.help-block
-                      | 30×30(小)
-            .col-xs-12.col-sm-1.col-md-1
-            .col-xs-12.col-sm-4.col-md-4
-              .upload_content
-                span.help-block.mid_font
-                  | 仅支持jpg，jpeg，png格式图片(使用高质量图片，生成高清头像)
-                = form_for(current_user, url: detail_update_user_path(current_user), role: :form) do |u|
-                  .form-group
-                    = u.file_field :avatar, accept: 'image/png,image/gif,image/jpeg',style: "position:absolute; top:-300000px;"
-                  = u.submit "保存", class: "btn btn-info  btn-block strong", style: "margin-top:160px;", disabled: "disabled",id: "save_btn"
-        .tab-pane#security_setting
-          .title_line
-          p.big_title
-            | 隐私设置
-          #info
-            .row.info_row
-              span.col-sm-6.col-xs-6.switch_span.mid_font
-                | 好友信息是否可见
-              .col-sm-6.col-xs-6.switch data-on="info"
-                input type="checkbox" id="myswitch" class="myswitch" checked="true"
-          .title_line
-          p.big_title
-            | 修改密码
-          #info
-            p.pull-right
-              a.btn.btn-info.pull-right.strong data-toggle="modal" data-target="#passwordModal"
-                | 修改该密码
+    #main_pannel
+      .row
+        .col-xs-12.col-sm-6.col-md-5
+          .img_box.center
+            = image_tag current_user.avatar.large.url, style: "width:180px;height:180px;", class: "img-circle"
+        .col-xs-12.col-sm-6.col-md-7 style="padding-top:30px;"
+          span#level_num.strong style="padding:10px;color:white"
+              = current_user.get_level_num 
+          span#level_name.strong style="color:white"
+            = current_user.get_level_name
+          span#max_exp style="display:none" 
+            = current_user.get_max_exp
+          span#exp style="display:none"
+            = current_user.get_exp
+          .progress 
+            .progress-bar.progress-bar-info role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="padding:5px;"
+              | 0
+          .btn-group.btn-group-justified
+            a.btn.btn-info.strong data-toggle="modal" data-target="#editUserModal"
+                | 编辑信息
+            a.btn.btn-info.strong data-toggle="modal" data-target="#editAvatarModal"
+                | 头像设置
+            a.btn.btn-info.strong data-toggle="modal" data-target="#passwordModal"
+                | 修改密码
+    #info_pannel
+      = render "users/info_pannel", u: current_user
   .col-xs-12.col-sm-8.col-md-4
-    #follow_content
-      .content_title
-        span
-          | 关注列表
-      .list_content
-        .list-group
-          - @myfriends.each do |f|
-            a.list-group-item href="#"
-              =f.email
-          end
+    #follow_pannel
+      = render "users/follow_pannel"
 = render "users/user_form"
-= render "users/password_from"
+= render "users/password_form"
+= render "users/avatar_form"

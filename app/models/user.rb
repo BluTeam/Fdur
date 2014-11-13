@@ -79,10 +79,10 @@ class User < ActiveRecord::Base
       self.exp += 1
       self.report_time = Time.new
       self.save
-      back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s
+      back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s + "&" + get_level_num
     else
       self.save
-      back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s
+      back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s + "&" + get_level_num
     end
   end
 
@@ -158,6 +158,10 @@ class User < ActiveRecord::Base
 
   def get_max_exp
     level.exp
+  end
+
+  def get_level_num
+    "LEVEL  " + level.id.to_s
   end
 
   private
