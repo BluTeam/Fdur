@@ -10,6 +10,16 @@ GIT
       i18n
       polyamorous (~> 1.1)
 
+GIT
+  remote: git://github.com/codebrew/backbone-rails.git
+  revision: 2d98d7157767dc04b00cac3f822f9576283ba921
+  specs:
+    rails-backbone (1.1.2)
+      coffee-script
+      ejs
+      jquery-rails
+      railties
+
 PATH
   remote: vendor/the_sortable_tree-cut
   specs:
@@ -76,6 +86,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.2.1)
     hike (1.2.3)
@@ -203,6 +214,7 @@ DEPENDENCIES
   pry-nav
   pry-remote
   rails (= 4.1.4)
+  rails-backbone!
   ransack!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

@@ -1,5 +1,5 @@
 source 'http://ruby.taobao.org'
-
+# source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -49,6 +49,8 @@ gem 'annotate'
 
 gem 'awesome_nested_set'
 gem "the_sortable_tree", path: "vendor/the_sortable_tree-cut"
+
+gem 'rails-backbone', github: "codebrew/backbone-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

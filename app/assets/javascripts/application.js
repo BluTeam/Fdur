@@ -24,4 +24,9 @@
 //= require bootstrap-switch.min.js
 //= require uploadPreview.min.js
 //= require perfect-scrollbar.min.js
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/fdur
 //= require_tree .
