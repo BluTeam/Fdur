@@ -15,7 +15,7 @@ module RenderMilestoneTreeHelper
       def render_node(h, options)
         @h, @options = h, options
         node = options[:node]
-        if options[:preview] = false
+        if options[:preview].blank?
           "
             <li class='list-group-item #{ node.state }' data-node-id='#{ node.id }'>
               <div class='item'>
@@ -32,7 +32,7 @@ module RenderMilestoneTreeHelper
               #{ children }
             </li>
           "
-        else
+        elsif options[:preview] == true
           "
             <li class='list-group-item #{ node.state }' data-node-id='#{ node.id }'>
               <div class='item'>
