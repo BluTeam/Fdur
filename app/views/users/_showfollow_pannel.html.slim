@@ -3,29 +3,33 @@
     | 关注列表
 #list_content
   .list-group
-    - myfriends.each do |f|
-      .list-group-item
-        .row 
-          a href="#{user_path f}" 
-            = image_tag f.avatar.mid.url, style: "width:60px;height:60px;", class: "img-circle pull-left"
-            span.pull-right id="friends_info" 
-              p
-                =f.get_level_num 
-              p
-                =f.not_nil_name
-        .row style="margin-top:5px;"
-          - if f.get_last_update.nil?
-            span.pull-left
-              span
-                | 最近更新 ：
-              span id="last_update"
-                | 小伙伴最近没有更新哦～
-          - else
-            span.pull-left
-              span
-                | 最近更新 ：
-              span id="last_update"
-                = f.get_last_update 
-            a.pull-right href="#{project_path(f.get_last_update_id)}" style="margin-right:10px;"
-                | 查看
-    end
+    - if myfriends.blank?
+      .list-group-item style="background-color: #f1f1f1;color:black;font-size:15px;"
+        span.center 
+          | 他还没有好友哦～
+    - else
+      - myfriends.each do |f|
+        .list-group-item
+          .row 
+            a href="#{user_path f}" 
+              = image_tag f.avatar.mid.url, style: "width:60px;height:60px;", class: "img-circle pull-left"
+              span.pull-right id="friends_info" 
+                p
+                  =f.get_level_num 
+                p
+                  =f.not_nil_name
+          .row style="margin-top:5px;"
+            - if f.get_last_update.nil?
+              span.pull-left
+                span
+                  | 最近更新 ：
+                span id="last_update"
+                  | 小伙伴最近没有更新哦～
+            - else
+              span.pull-left
+                span
+                  | 最近更新 ：
+                span id="last_update"
+                  = f.get_last_update 
+              a.pull-right href="#{project_path(f.get_last_update_id)}" style="margin-right:10px;"
+                  | 查看
