@@ -22,5 +22,5 @@ class Comment < ActiveRecord::Base
 
   validates :project_id, presence: true
   validates :user_id, presence: true
-  validates :content, length: { maximum: 120 }
+  validates :content, length: { maximum: 150 }
 end

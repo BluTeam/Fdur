@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       patch  :play_milestone
       post   :return_milestone
       post   :follow
+      post   :comment, action: "post_comment"
+      get    :comment, action: "get_comments"
     end
   end
   resources :users, only: [:show] do

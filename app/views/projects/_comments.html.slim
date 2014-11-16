@@ -1,0 +1,6 @@
+div.Comments
+
+ul.list-group.NewComment.comment_ul
+javascript:
+  Fdur.Instance.app.start({comments: #{@project.comments.to_json.html_safe}});
+

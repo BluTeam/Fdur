@@ -15,6 +15,14 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
+
+//= require underscore
+//= require backbone
+//= require marionette/backbone.marionette
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/fdur
+
 //= require turbolinks
 
 //= require jquery.ui.nestedSortable
@@ -24,9 +32,4 @@
 //= require bootstrap-switch.min.js
 //= require uploadPreview.min.js
 //= require perfect-scrollbar.min.js
-//= require underscore
-//= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
-//= require backbone/fdur
 //= require_tree .

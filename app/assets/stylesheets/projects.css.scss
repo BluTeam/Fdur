@@ -16,6 +16,22 @@ body[data-page="projects-update_milestone"],
 body[data-page="projects-preview"],
 body[data-page="users-show"]
 {
+  .comment_ul {
+    margin-bottom: 0;
+  }
+
+  .NewComment {
+    li {
+      background-color: #4a525c;
+      border-radius: 0;
+    }
+  }
+
+  .Comments {
+    li {
+      border-radius: 0;
+    }
+  }
 
   #forkForm {
     .content {
@@ -136,6 +152,7 @@ body[data-page="projects-index"],
 body[data-page="projects-create"],
 body[data-page="users-show"]
 {
+
   .project {
     margin-bottom: 15px;
     box-shadow: 0 0 4px 0 #bbb;

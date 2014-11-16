@@ -1,9 +1,9 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :preview,:fork, :follow, :comment, :update_milestone, :play_milestone, :return_milestone]
+  before_action :set_project, only: [:show, :preview,:fork, :follow, :post_comment, :get_comments, :update_milestone, :play_milestone, :return_milestone]
   before_action :set_current_project, only: [:update, :destroy, :create_milestone]
-  before_action :comment_params, only: [:comment]
+  before_action :comment_params, only: [:post_comment]
 
   before_action :set_milestone, only: [:update_milestone, :play_milestone, :return_milestone]
   before_action :milestone_params, only: [:create_milestone, :update_milestone, :play_milestone]
@@ -124,18 +124,21 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def comment
-    comment = comment_params
-    comment[:project_id] = @project.id
-    comment[:user_id] = current_user.id
-    if Comment.create comment
-      flash[:success] = '评论成功'
-      classify_milestones_and_comments
-      render 'milestones/reload_milestones'
+  def post_comment
+    comment_p = comment_params
+    comment_p[:user_id] = current_user.id
+    @comment = @project.comments.build comment_p
+    if @comment.save!
+      flash.now[:success] = '评论成功'
+      render text: @comment.to_json
     else
       flash.now[:failed] = '评论失败'
-      render action: :show
+      render text: @comment.errors.to_json
     end
+  end
+
+  def get_comments
+    render text: @project.comments
   end
 
 

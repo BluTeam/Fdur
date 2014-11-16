@@ -135,18 +135,20 @@ ul {
 //Tags
 
 .Tags {
+  margin-right: 3px;
   text-decoration: none;
   cursor: pointer;
   padding-left: 10px;
   padding-right: 10px;
   color: #666666;
+  z-index: 10 !important;
   &:hover {
     text-decoration: none;
-    padding-top: 13px;
-    padding-bottom: 11px;
+    padding-top: 16px;
+    padding-bottom: 14px;
     background-color: #56b7e3;
     color: #f1f1f1;
-    box-shadow: 0 1px 2px 0 #ccc;
+    box-shadow: 0 1px 2px 0 #4a525c;
   }
 
 }
@@ -162,11 +164,11 @@ ul {
 }
 
 .Tag-selected {
-  padding-top: 13px;
-  padding-bottom: 11px;
+  padding-top: 16px;
+  padding-bottom: 14px;
   background-color: #56b7e3;
   color: #fff;
-  box-shadow: 0 1px 2px 0 #ccc;
+  box-shadow: 0 1px 2px 0 #4a525c;
 }
 
 //newTags
