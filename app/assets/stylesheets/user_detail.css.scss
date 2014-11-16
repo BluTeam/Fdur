@@ -23,7 +23,7 @@ body[data-page="users-show"]
     margin-top: 10px;
     padding:20px;
     border: 1px solid #dddddd;
-    background-color:white;
+    background-color:#f1f1f1;
   }
   .user_border {  
   border-radius: 2px;
@@ -48,7 +48,7 @@ body[data-page="users-show"]
     padding:20px;
   }
   #list_content{
-    height:400px;
+    height:737px;
     background-color:#ffffff;
     border-left:1px solid #dddddd;
     border-right:1px solid #dddddd;
@@ -56,10 +56,29 @@ body[data-page="users-show"]
     overflow:hidden;
     position: relative;
   }
+  .list-group .row{
+    margin-left: 6px;
+  }
+  .list-group{
+    font-size: 6px;
+    font-weight: bold;
+    color: #666666; 
+  }
+  .list-group a{
+    text-decoration:none;
+  }
   .list-group-item{
     border-radius:0;
     border-left:0;
     border-right:0;
+  }
+  #friends_info{
+    margin-right:180px;
+    padding-top:8px;
+    color:black;
+  }
+  .list-group-item:hover{
+    background-color: #f1f1f1
   }
   .glyphicon:hover{
     cursor:pointer;
@@ -72,18 +91,24 @@ body[data-page="users-show"]{
   background-repeat: repeat-x;
   color:white;
  }
+  #list_content{
+    height:505px;
+  }
   .mynav{
     background-color: #ffffff;
     border:1px solid #dddddd;
   }
   #main_page{
-    background-color:#ffffff;
-    margin-top: 20px;
+    margin-top: 30px;
+    background-color: #ffffff;
   }
   #follow_box{
-    margin-top: 20px;
+    margin-top: 30px;
+  }
+  #friends_info{
+    margin-right:150px;
   }
   #info_box{
-    margin-top: 20px;
+    margin-top: 30px;
   }
 }

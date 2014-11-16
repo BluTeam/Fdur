@@ -48,7 +48,7 @@
   div
     #main_page.newTags-content.newTag-show
       .row
-        .col-md-8.col-sm-12.except_padding.top_stand
+        .col-md-8.col-sm-12.except_padding
           .col-sm-6
             - @projects.each_with_index do |p, index|
               -if index % 3 == 2
@@ -73,6 +73,6 @@
             = render "users/showinfo_pannel", u: @user
         .col-xs-12.col-sm-4.col-md-4
           #follow_box
-            = render "users/follow_pannel"
+            = render "users/showfollow_pannel", myfriends: @myfriends
 .scroll#scroll style="display:none;"
   | 回到顶部

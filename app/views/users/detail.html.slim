@@ -28,7 +28,7 @@
       = render "users/info_pannel", u: current_user
   .col-xs-12.col-sm-8.col-md-4
     #follow_pannel
-      = render "users/follow_pannel"
+      = render "users/follow_pannel", myfriends: @myfriends
 = render "users/user_form"
 = render "users/password_form"
 = render "users/avatar_form"

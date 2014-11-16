@@ -6,7 +6,8 @@ body[data-page="passwords-edit"],
 body[data-page="passwords-create"],
 body[data-page="passwords-update"],
 body[data-page="confirmations-new"],
-body[data-page="confirmations-create"],{
+body[data-page="confirmations-create"],
+body[data-page="confirmations-show"]{
   background-image: image-url("boat.jpg");
   background-repeat: repeat;
 
