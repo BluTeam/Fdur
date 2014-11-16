@@ -33,6 +33,11 @@ $(document).ready ->
         $("#save_btn").attr "disabled", "disabled"
       else
         $("#save_btn").removeAttr("disabled")
+    if $("#last_update").text().toString().length > 20
+       tmp = $("#last_update").text()
+       tmp = tmp.toString().substr(0,20)
+       tmp = tmp + "..."
+       $("#last_update").text tmp
   if $('body').is('[data-page="registrations-update"]')
     $('a#safe').click()
     $('[data-target="#passwordModal"]').click()

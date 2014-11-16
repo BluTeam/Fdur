@@ -26,8 +26,8 @@
                   });
                 });  
           .form-group
-            = u.label '职业介绍', for: :user_profession
-            = u.text_area :profession, maxlength: 100, placeholder: "最多输入80个字符", class: "form-control", autocomplete: :off     
+            = u.label '个人简介', for: :user_profession
+            = u.text_area :profession, maxlength: 100, placeholder: "最多输入100个字符", class: "form-control", autocomplete: :off     
           .form-group
             = u.label '一句话介绍自己', for: :user_introduction
             = u.text_area :introduction, maxlength: 50, placeholder: "最多输入50个字符", class: "form-control", autocomplete: :off 

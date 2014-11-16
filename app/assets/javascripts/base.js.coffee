@@ -59,10 +59,10 @@ $(document).ready ->
 # back_top
 
   $(window).scroll -> 
-    scrollValue=$(window).scrollTop();
-    if scrollValue > 1300
-      $('div[class=scroll]').fadeIn()
-    else
-      $('div[class=scroll]').fadeOut()
+   scrollValue=$(window).scrollTop();
+   if scrollValue > 1000 
+     $('div[class=scroll]').fadeIn()
+   else
+     $('div[class=scroll]').fadeOut();
    $('#scroll').click ->
      $("html,body").animate({scrollTop:0},200);

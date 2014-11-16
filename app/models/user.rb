@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   
   def add_exp1
     if self.exp <=50
-      self.exp += 1
+      self.exp += 5
       self.report_time = Time.new
       self.save
       back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s + "&" + get_level_num
@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
 
   def add_exp2 
     if self.exp <=50
-      self.exp += 2
+      self.exp += 1
       self.report_time = Time.new
       self.save
     else
