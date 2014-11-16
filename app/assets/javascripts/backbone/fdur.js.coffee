@@ -22,4 +22,5 @@ window.Fdur =
     Models: {}
     Collections: {}
     Views: {}
+    Others: {}
   }

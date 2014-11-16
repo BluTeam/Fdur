@@ -1,6 +1,7 @@
 div.Comments
 
 ul.list-group.NewComment.comment_ul
+
 javascript:
-  Fdur.Instance.app.start({comments: #{@project.comments.to_json.html_safe}});
+  Fdur.Instance.app.start({comments: #{@project.comments.to_json.html_safe}, user_name: "#{current_user.name.to_s}", user_avatar: "#{current_user.avatar.small.url.to_s}", project_id: "#{@project.id.to_s}"});
 
