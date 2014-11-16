@@ -5,7 +5,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def detail
-    @myfriends= current_user.myfriends
+    @myfriends = current_user.myfriends
+    @total_num= current_user.projects.count
+    @open_num = current_user.projects.where(state: "open").count
+    @finish_num = current_user.projects.where(state: "finished").count  
   end
 
   def detail_update
@@ -21,7 +24,7 @@ class UsersController < ApplicationController
   def show
     redirect_to(action: :detail) if @user == current_user
     @flag = current_user.is_friends @user 
-    @projects = @user.projects.order(updated_at: :desc)
+    @projects = @user.projects.where(is_public: true).order(updated_at: :desc)
     @myfriends= @user.myfriends
   end
   

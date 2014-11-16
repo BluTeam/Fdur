@@ -41,4 +41,4 @@
                 = form_for(current_user, url: detail_update_user_path(current_user), role: :form) do |u|
                   .form-group
                     = u.file_field :avatar, accept: 'image/png,image/gif,image/jpeg',style: "position:absolute; top:-300000px;"
-                  = u.submit "保存", class: "btn btn-info  btn-block strong", style: "margin-top:130px;", disabled: "disabled",id: "save_btn"    
+                  = u.submit "保存", class: "btn btn-info  btn-block strong", style: "margin-top:140px;", disabled: "disabled",id: "save_btn"    

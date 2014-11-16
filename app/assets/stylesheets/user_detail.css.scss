@@ -9,9 +9,13 @@ body[data-page="users-show"]
   }
   .progress{
     width:100%;
-    height:30px;
+    height:20px;
     margin-top:5px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+  }
+  .btn-group a{
+    padding-top:10px;
+    padding-bottom:10px; 
   }
   .info_row{
     padding:10px;
@@ -24,6 +28,26 @@ body[data-page="users-show"]
     padding:20px;
     border: 1px solid #dddddd;
     background-color:#f1f1f1;
+  }
+  #report_pannel{
+    padding: 16px 50px 16px 50px;
+    border: 1px solid #dddddd;
+    background-color: #4a525c;
+    color: white;
+  }
+  #report .btn{
+    margin-top: 6px;
+    width:130px;
+  }
+  #date
+  {
+    margin-left: 20px;
+  }
+  #finish_num{
+    margin-top: 14px;
+  }
+  #follow_pannel{
+    margin-top: 10px;
   }
   .user_border {  
   border-radius: 2px;
@@ -73,6 +97,7 @@ body[data-page="users-show"]
     border-right:0;
   }
   #friends_info{
+    width:80px;
     margin-right:180px;
     padding-top:8px;
     color:black;
@@ -104,9 +129,6 @@ body[data-page="users-show"]{
   }
   #follow_box{
     margin-top: 30px;
-  }
-  #friends_info{
-    margin-right:150px;
   }
   #info_box{
     margin-top: 30px;

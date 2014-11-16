@@ -5,7 +5,7 @@
         .col-xs-12.col-sm-6.col-md-5
           .img_box.center
             = image_tag current_user.avatar.large.url, style: "width:180px;height:180px;", class: "img-circle"
-        .col-xs-12.col-sm-6.col-md-7 style="padding-top:30px;"
+        .col-xs-12.col-sm-6.col-md-7 style="padding-top:40px;"
           span#level_num.strong style="padding:10px;color:white"
               = current_user.get_level_num 
           span#level_name.strong style="color:white"
@@ -15,10 +15,10 @@
           span#exp style="display:none"
             = current_user.get_exp
           .progress 
-            .progress-bar.progress-bar-info role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="padding:5px;"
+            .progress-bar.progress-bar-success role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="padding:1px;"
               | 0
-          .btn-group.btn-group-justified
-            a.btn.btn-info.strong data-toggle="modal" data-target="#editUserModal"
+          .btn-group.btn-group-justified 
+            a.btn.btn-info.strong data-toggle="modal" data-target="#editUserModal" 
                 | 编辑信息
             a.btn.btn-info.strong data-toggle="modal" data-target="#editAvatarModal"
                 | 头像设置
@@ -27,6 +27,36 @@
     #info_pannel
       = render "users/info_pannel", u: current_user
   .col-xs-12.col-sm-8.col-md-4
+    #report_pannel
+      .row
+        #report.pull-left
+          #date
+            span style="font-size:26px;"
+              = current_user.get_week
+            span
+              = current_user.get_date
+          - if current_user.sub_time?
+              button#report_btn.btn.btn-success.strong
+                | 签到
+          - else
+              button#report_btn.btn.btn-success.strong disabled="disabled"
+                | 已签到
+        #finish_num.pull-right
+          #num
+            span
+              | Project总数：
+            span
+              = @total_num
+          #num
+            span
+              | 已完成：
+            span
+              = @finish_num
+          #num
+            span
+              | 未完成：
+            span style="color:red;"
+              = @open_num
     #follow_pannel
       = render "users/follow_pannel", myfriends: @myfriends
 = render "users/user_form"

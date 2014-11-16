@@ -26,12 +26,5 @@ nav.navbar.navbar-inverse.navbar-fixed-top.header role="navigation"
               = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;", class: "img-circle"
               span style="padding:12px;"
                 = current_user.email
-          li style="padding:12px 8px 0 9px;"
-            - if current_user.sub_time?
-                button#report_btn
-                  | 签到
-            - else
-                button disabled="disabled"
-                  | 已签到
           li
             = link_to '登出', destroy_user_session_path, class: :strong, method: :delete

@@ -14,11 +14,18 @@
               p
                 =f.not_nil_name
         .row style="margin-top:5px;"
-          span.pull-left
-            span
-              | 最近更新 ：
-            span id="last_update"
-              = f.projects.order(updated_at: :desc).first.milestones.order(updated_at: :desc).first.title
-          a.pull-right href="#{project_path(f.projects.order(updated_at: :desc).first.id)}" style="margin-right:10px;"
-            | 查看
+          - if f.get_last_update.nil?
+            span.pull-left
+              span
+                | 最近更新 ：
+              span id="last_update"
+                | 小伙伴最近没有更新哦～
+          - else
+            span.pull-left
+              span
+                | 最近更新 ：
+              span id="last_update"
+                = f.get_last_update 
+            a.pull-right href="#{project_path(f.get_last_update_id)}" style="margin-right:10px;"
+                | 查看
     end

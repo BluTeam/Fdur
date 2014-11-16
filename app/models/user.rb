@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   
   def add_exp1
     if self.exp <=50
-      self.exp += 5
+      self.exp += 1
       self.report_time = Time.new
       self.save
       back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s + "&" + get_level_num
@@ -86,17 +86,49 @@ class User < ActiveRecord::Base
     end
   end
 
-  def add_exp2 
-    if self.exp <=50
-      self.exp += 1
-      self.report_time = Time.new
-      self.save
-    else
-      self.save
-    end
+  # def add_exp2 
+  #   if self.exp <=50
+  #     self.exp += 1
+  #     self.report_time = Time.new
+  #     self.save
+  #   else
+  #     self.save
+  #   end
+  # end
+
+  def get_last_update 
+    self.projects.where(is_public: true).order(updated_at: :desc).first.milestones.order(updated_at: :desc).first.title
   end
+  
+  def get_last_update_id 
+    self.projects.where(is_public: true).order(updated_at: :desc).first.id
+  end
+
   def get_exp
     self.exp
+  end
+
+  def get_date
+    Time.new.strftime('%m.%d') 
+  end
+
+  def get_week
+    tmp = Time.new.strftime('%w')
+    if tmp = "0"
+      "周日"
+    elsif tmp = "1"
+      "周一"
+    elsif tmp = "2"
+      "周二"
+    elsif tmp = "3"
+      "周三"
+    elsif tmp = "4"
+      "周四"
+    elsif tmp = "5"
+      "周五"
+    else
+      "周六"
+    end  
   end
 
   def sub_time?
@@ -106,6 +138,7 @@ class User < ActiveRecord::Base
       Time.new - self.report_time > 60*60*24
     end
   end
+  
 
   def fork_project o_project
     forked = nil
