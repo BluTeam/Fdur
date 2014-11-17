@@ -19,11 +19,11 @@
               | 0
           .btn-group.btn-group-justified 
             a.btn.btn-info.strong data-toggle="modal" data-target="#editUserModal" 
-                | 编辑信息
+              | 编辑信息
             a.btn.btn-info.strong data-toggle="modal" data-target="#editAvatarModal"
-                | 头像设置
+              | 头像设置
             a.btn.btn-info.strong data-toggle="modal" data-target="#passwordModal"
-                | 修改密码
+              | 修改密码
     #info_pannel
       = render "users/info_pannel", u: current_user
   .col-xs-12.col-sm-8.col-md-4
@@ -36,11 +36,11 @@
             span
               = get_date
           - if current_user.sub_time?
-              button#report_btn.btn.btn-success.strong
-                | 签到
+            button#report_btn.btn.btn-success.strong
+              | 签到
           - else
-              button#report_btn.btn.btn-success.strong disabled="disabled"
-                | 已签到
+            button#report_btn.btn.btn-success.strong disabled="disabled"
+              | 已签到
         #finish_num.pull-right
           #num
             span

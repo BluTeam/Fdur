@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!, only: [:detail, :detail_update, :follow, :report, :show]
+  before_action :authenticate_user!
   before_action :user_params, only: [:detail_update]
   before_action :set_user, only: [:show]
+  before_action :set_friends_date, only: [:detail, :detail_update]
 
   def detail
-    @myfriends = current_user.friends
-    @total_num= current_user.projects.count
-    @open_num = current_user.projects.where(state: "open").count
-    @finish_num = current_user.projects.where(state: "finished").count  
+
   end
 
   def detail_update
@@ -38,7 +36,14 @@ class UsersController < ApplicationController
     render :text => info  
   end
 
-  private 
+  private
+
+  def set_friends_date
+    @myfriends = current_user.friends
+    @total_num= current_user.projects.count
+    @open_num = current_user.projects.where(state: "open").count
+    @finish_num = current_user.projects.where(state: "finished").count
+  end
 
   def user_params
     params.require(:user).permit(:name, :sex, :birthday, :profession, :introduction, :address, :qq, :telephone, :avatar)

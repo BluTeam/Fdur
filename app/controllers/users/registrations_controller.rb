@@ -15,7 +15,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with resource, location: after_update_path_for(resource)
     else
       clean_up_passwords resource
-      # binding.pry
+      @myfriends = current_user.friends
+      @total_num= current_user.projects.count
+      @open_num = current_user.projects.where(state: "open").count
+      @finish_num = current_user.projects.where(state: "finished").count
       render "users/detail"
     end
   end
