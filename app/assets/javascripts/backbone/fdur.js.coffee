@@ -6,15 +6,21 @@
 #= require_tree ./views/composite
 #= require_tree ./views/layout
 #= require_tree ./routers
+#= require ./init
 
 window.Fdur =
   Models: {}
   Collections: {}
   Routers: {}
   Views: {
-    Collections: {}
+    Collection: {}
     Composite: {}
     Item: {}
     Layout: {}
   }
-  Instance: {}
+  Instance: {
+    Models: {}
+    Collections: {}
+    Views: {}
+    Others: {}
+  }

@@ -32,12 +32,17 @@
         = last_milestone.updated_at.strftime("%y年%m月%d日 %H:%M")
   .comments
     - unless p.comments.blank?
-      - p.comments.order(created_at: :desc).limit(5).each do |c|
+      - p.comments.order(created_at: :desc).limit(5).order(created_at: :asc).each do |c|
         p.comment
-          = c.content
+          span.pull-left
+            = image_tag c.user.avatar.small.url, class: "img-circle", style: "height: 15px; width: 15px;", title: "#{c.user.name}"
+          span.pull-left.hidden-sm style='padding: 2px'
+            = c.user.name + " : "
+          span style='display:inline-block; padding: 2px'
+            = c.content
     - else
-      p.comment
+      p.comment.row
         | 暂无评论
     p.all_comments
-      a.btn.btn-info.btn-xs.public
-          | 查看全部
+      a.btn.btn-info.btn-xs.public href="#{project_path(p.id)}"
+        | 查看全部

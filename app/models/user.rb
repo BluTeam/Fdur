@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
     return {user_exp: self.exp.to_s , level_name: level.name , level_exp: level.exp.to_s, level_num: ("LEVEL"+level.id.to_s)}
   end
 
-  # def add_exp2 
+  # def add_exp2
   #   if self.exp <=50
   #     self.exp += 1
   #     self.report_time = Time.new
@@ -131,25 +131,9 @@ class User < ActiveRecord::Base
   end
  
   def level
-    # level1 = get_level 1 
-    # level2 = get_level 2 
-    # level3 = get_level 3
-    # level4 = get_level 4
-    # level5 = get_level 5 
-    # if self.exp <= level1.exp 
-    #   level1
-    # elsif self.exp > level1.exp && self.exp <=level2.exp
-    #   level2
-    # elsif self.exp > level2.exp && self.exp <=level3.exp
-    #   level3
-    # elsif self.exp > level3.exp && self.exp <=level4.exp
-    #   level4.exp 
-    # elsif self.exp > level4.exp 
-    #   level5
-    # end
-    Level.all.each_with_index do |level,index|
+    Level.all.each do |level|
       if self.exp <= level.exp
-        return level 
+        return level
         break
       end
     end
@@ -160,9 +144,5 @@ class User < ActiveRecord::Base
   def set_default_sex
     self.sex = "保密" if self.sex.nil?
   end
-
-  # def get_level id
-  #   Level.where(id: id).first
-  # end 
 
 end

@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!
   before_action :user_params, only: [:detail_update]
-  before_action :set_user, only: [:show]
   before_action :set_friends_date, only: [:detail, :detail_update]
+  before_action :set_user, only: [:show, :user_json]
 
   def detail
 
@@ -24,6 +24,11 @@ class UsersController < ApplicationController
     @flag = current_user.is_friends @user 
     @projects = @user.projects.where(is_public: true).order(updated_at: :desc)
     @myfriends= @user.friends.sort_by {|u| u.projects.where(is_public: true).order(updated_at: :desc).first.updated_at}.reverse
+  end
+
+  def user_json
+    hash = {user_name: @user.name, user_avatar: @user.avatar.small.url}
+    render text: hash.to_json
   end
   
   def report 

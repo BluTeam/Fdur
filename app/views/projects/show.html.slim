@@ -152,7 +152,7 @@
                 a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
                   | + 新建
           #comments.Tags-content
-            ol.list-group
+            ul.list-group
               span.list-group-item.disabled
                 .row
                   .pull-left.extra_padding.hidden-xs
@@ -166,9 +166,7 @@
                       | 已完成
                     a.Tags data-flag="#comments"
                       | 评 论
-              span.list-group-item.disabled
-                a.btn.btn-info.strong#new_milestone data-toggle='modal' data-target='#editMilestoneModal'
-                  | + 新建
+              = render "comments"
           - @milestones.each do |m|
             = render "milestone_form", m: m
             = render "original_image", m: m
