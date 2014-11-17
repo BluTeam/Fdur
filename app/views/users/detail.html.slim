@@ -32,9 +32,9 @@
         #report.pull-left
           #date
             span style="font-size:26px;"
-              = current_user.get_week
+              = get_week
             span
-              = current_user.get_date
+              = get_date
           - if current_user.sub_time?
               button#report_btn.btn.btn-success.strong
                 | 签到

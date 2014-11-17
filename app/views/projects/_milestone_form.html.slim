@@ -16,7 +16,7 @@
               = f.label '标题', for: :milestone_name
               span.nil
                 | *
-              = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80
+              = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80, required: "required"
             .form-group
               = f.label '描述', for: :milestone_description
               = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off
@@ -38,7 +38,7 @@
               = f.label '标题', for: :milestone_name
               span.nil
                 | *
-              = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80
+              = f.text_field :name, autofocus: true, placeholder: "Project Name", class: "form-control", autocomplete: :off, maxlength: 80, required: "required"
             .form-group
               = f.label '描述', for: :milestone_description
               = f.text_area :description, placeholder: "Description", class: "form-control", rows: 5, autocomplete: :off

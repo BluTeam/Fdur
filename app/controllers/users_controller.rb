@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!, only: [:detail, :detail_update, :follow, :report]
+  before_action :authenticate_user!, only: [:detail, :detail_update, :follow, :report, :show]
   before_action :user_params, only: [:detail_update]
   before_action :set_user, only: [:show]
 
   def detail
-    @myfriends = current_user.myfriends
+    @myfriends = current_user.friends
     @total_num= current_user.projects.count
     @open_num = current_user.projects.where(state: "open").count
     @finish_num = current_user.projects.where(state: "finished").count  
