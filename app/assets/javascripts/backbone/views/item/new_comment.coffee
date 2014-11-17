@@ -13,10 +13,10 @@ class Fdur.Views.Item.NewComment extends Backbone.Marionette.ItemView
 
   save: () ->
 
-    @model.attributes.user_name = Fdur.Instance.Others.user_name
-    @model.attributes.user_avatar = Fdur.Instance.Others.user_avatar
+    @model.set('user_name', Fdur.Instance.Others.user_name)
+    @model.set('user_avatar', Fdur.Instance.Others.user_avatar)
     date = new Date
-    @model.attributes.created_at = date.pattern("yyyy年MM月dd日 HH:mm")
+    @model.set('created_at', date.pattern("yyyy年MM月dd日 HH:mm"))
     @collection = Fdur.Instance.Collections.comments
     @collection.url = "/projects/#{Fdur.Instance.Others.project_id}/comment"
     @collection.fetch()

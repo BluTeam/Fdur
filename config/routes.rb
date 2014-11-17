@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show] do
     member do
+      get :user_json
       patch :detail_update 
     end
     collection do

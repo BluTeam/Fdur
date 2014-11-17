@@ -95,6 +95,7 @@ class User < ActiveRecord::Base
       self.save
     end
   end
+
   def get_exp
     self.exp
   end
