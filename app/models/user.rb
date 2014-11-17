@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
       self.report_time = Time.new
     end
     self.save
-    hash = {user_exp: self.exp.to_s , level_name: level.name , level_exp: level.exp.to_s, level_num: "LEVEL" + level.id.to_s}
+    return {user_exp: self.exp.to_s , level_name: level.name , level_exp: level.exp.to_s, level_num: ("LEVEL"+level.id.to_s)}
   end
 
   # def add_exp2 

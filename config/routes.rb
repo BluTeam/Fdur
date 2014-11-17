@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     collection do
       get :detail
       post :follow
-      get :report
+      post :report
     end  
   end
   # Example of regular route:

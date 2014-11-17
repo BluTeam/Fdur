@@ -11,10 +11,10 @@ $(document).ready ->
       $(@).attr "disabled", "disabled"
       $(@).text "签到中..."
       $.ajax({
-        type: 'get',
+        type: 'POST',
         url: "/users/report" ,
         async: false ,
-        datatype: "JSON",
+        dataType: "JSON",
         success: (info)->
           tmp1 = parseInt(info.user_exp)
           tmp2 = parseInt(info.level_exp)
@@ -23,7 +23,7 @@ $(document).ready ->
           $("#level_name").text info.level_name
           $(".progress-bar").attr "aria-valuemax", info.level_exp
           $(".progress-bar").attr "aria-valuenow", info.user_exp
-          $(".progress-bar").css "width",tmp_per
+          $(".progress-bar").css "width", tmp_per
           $(".progress-bar").text info.user_exp + "/" + info.level_exp
           $("#report_btn").text "已签到"
       });
