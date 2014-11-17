@@ -10,11 +10,11 @@
             = image_tag f.avatar.mid.url, style: "width:60px;height:60px;", class: "img-circle pull-left"
             span.pull-right id="friends_info" 
               p
-                =f.get_level_num 
+                ="LEVEL" + f.level.id.to_s
               p 
                 =f.not_nil_name
         .row style="margin-top:5px;"
-          - if f.get_last_update.nil?
+          - if f.get_last_project.nil?
             span.pull-left
               span
                 | 最近更新 ：
@@ -25,8 +25,8 @@
               span
                 | 最近更新 ：
               span id="last_update"
-                = f.get_last_update 
-            a.pull-right href="#{project_path(f.get_last_update_id)}" style="margin-right:10px;"
+                = f.get_last_project.name
+            a.pull-right href="#{project_path(f.get_last_project.id)}" style="margin-right:10px;"
                 | 查看
     .list-group-item style="background-color: #f1f1f1"
       a.center.strong href="#{activities_path}" style="color:black"

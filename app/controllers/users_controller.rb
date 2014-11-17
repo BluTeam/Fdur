@@ -28,7 +28,8 @@ class UsersController < ApplicationController
   
   def report 
     info = current_user.add_exp1
-    render :text => info 
+    binding.pry
+    render :text => info.to_json
   end
 
   def follow

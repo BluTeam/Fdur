@@ -78,12 +78,9 @@ class User < ActiveRecord::Base
     if self.exp <=50
       self.exp += 1
       self.report_time = Time.new
-      self.save
-      back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s + "&" + get_level_num
-    else
-      self.save
-      back_str = self.exp.to_s + "&" + get_level_name + '&' + get_max_exp.to_s + "&" + get_level_num
     end
+    self.save
+    hash = {user_exp: self.exp.to_s , level_name: level.name , level_exp: level.exp.to_s, level_num: "LEVEL" + level.id.to_s}
   end
 
   # def add_exp2 
@@ -96,25 +93,18 @@ class User < ActiveRecord::Base
   #   end
   # end
 
-  def get_last_update 
-    self.projects.where(is_public: true).order(updated_at: :desc).first.milestones.order(updated_at: :desc).first.title
+  def get_last_project
+    self.projects.where(is_public: true).order(updated_at: :desc).first
   end
   
-  def get_last_update_id 
-    self.projects.where(is_public: true).order(updated_at: :desc).first.id
-  end
-
-  def get_exp
-    self.exp
-  end
 
   def sub_time?
     if self.report_time.blank?
       return true
     else
-      tmp1 = Time.new.strftime("%Y-%m-%d")
-      tmp2 = self.report_time.strftime("%Y-%m-%d")
-      tmp1 != tmp2
+      tmp1 = Date.today.beginning_of_day
+      tmp2 = self.report_time
+      tmp1 > tmp2
     end
   end
 
@@ -141,34 +131,28 @@ class User < ActiveRecord::Base
   end
  
   def level
-    level1 = get_level 1 
-    level2 = get_level 2 
-    level3 = get_level 3
-    level4 = get_level 4
-    level5 = get_level 5 
-    if self.exp <= level1.exp 
-      level1
-    elsif self.exp > level1.exp && self.exp <=level2.exp
-      level2
-    elsif self.exp > level2.exp && self.exp <=level3.exp
-      level3
-    elsif self.exp > level3.exp && self.exp <=level4.exp
-      level4.exp 
-    elsif self.exp > level4.exp 
-      level5
+    # level1 = get_level 1 
+    # level2 = get_level 2 
+    # level3 = get_level 3
+    # level4 = get_level 4
+    # level5 = get_level 5 
+    # if self.exp <= level1.exp 
+    #   level1
+    # elsif self.exp > level1.exp && self.exp <=level2.exp
+    #   level2
+    # elsif self.exp > level2.exp && self.exp <=level3.exp
+    #   level3
+    # elsif self.exp > level3.exp && self.exp <=level4.exp
+    #   level4.exp 
+    # elsif self.exp > level4.exp 
+    #   level5
+    # end
+    Level.all.each_with_index do |level,index|
+      if self.exp <= level.exp
+        return level 
+        break
+      end
     end
-  end
-
-  def get_level_name
-    level.name
-  end
-
-  def get_max_exp
-    level.exp
-  end
-
-  def get_level_num
-    "LEVEL  " + level.id.to_s
   end
 
   private
@@ -177,8 +161,8 @@ class User < ActiveRecord::Base
     self.sex = "保密" if self.sex.nil?
   end
 
-  def get_level id
-    level = Level.where(id: id).first
-  end 
+  # def get_level id
+  #   Level.where(id: id).first
+  # end 
 
 end
