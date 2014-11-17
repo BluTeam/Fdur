@@ -167,8 +167,9 @@ body[data-page="users-show"]
     }
 
     &:active {
-      margin-top: 0;
-      margin-bottom: 15px;
+      margin-top: -5px;
+      margin-bottom: 20px;
+      box-shadow: 1px 3px 15px 0 rgb(170, 170, 170);
     }
 
     .new_project {
