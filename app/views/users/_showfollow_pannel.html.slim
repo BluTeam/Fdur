@@ -4,8 +4,8 @@
 #list_content
   .list-group
     - if myfriends.blank?
-      .list-group-item style="background-color: #f1f1f1;color:black;font-size:15px;"
-        span.center 
+      .list-group-item style="background-color: #f1f1f1;"
+        span.center.strong
           | 他还没有好友哦～
     - else
       - myfriends.each do |f|

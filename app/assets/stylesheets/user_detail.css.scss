@@ -43,8 +43,8 @@ body[data-page="users-show"]
   {
     margin-left: 20px;
   }
-  #finish_num{
-    margin-top: 14px;
+  #num{
+    padding:6px;
   }
   #follow_pannel{
     margin-top: 10px;
@@ -72,7 +72,7 @@ body[data-page="users-show"]
     padding:20px;
   }
   #list_content{
-    height:737px;
+    height:602px;
     background-color:#ffffff;
     border-left:1px solid #dddddd;
     border-right:1px solid #dddddd;

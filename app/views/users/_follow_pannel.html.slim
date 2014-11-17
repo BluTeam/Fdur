@@ -11,7 +11,7 @@
             span.pull-right id="friends_info" 
               p
                 =f.get_level_num 
-              p
+              p 
                 =f.not_nil_name
         .row style="margin-top:5px;"
           - if f.get_last_update.nil?
@@ -29,7 +29,7 @@
             a.pull-right href="#{project_path(f.get_last_update_id)}" style="margin-right:10px;"
                 | 查看
     .list-group-item style="background-color: #f1f1f1"
-      a.center href="#{activities_path}" style="color:black;font-size:15px;"
+      a.center.strong href="#{activities_path}" style="color:black"
         span
           | 去动态页面寻找更多的小伙伴吧
         span.glyphicon.glyphicon-arrow-right style="padding-left:10px;"

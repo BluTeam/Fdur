@@ -112,7 +112,9 @@ class User < ActiveRecord::Base
     if self.report_time.blank?
       return true
     else
-      Time.new - self.report_time > 60*60*24
+      tmp1 = Time.new.strftime("%Y-%m-%d")
+      tmp2 = self.report_time.strftime("%Y-%m-%d")
+      tmp1 != tmp2
     end
   end
 
