@@ -32,7 +32,7 @@
         = last_milestone.updated_at.strftime("%y年%m月%d日 %H:%M")
   .comments
     - unless p.comments.blank?
-      - p.comments.order(created_at: :desc).limit(5).each do |c|
+      - p.comments.order(created_at: :asc).limit(5).each do |c|
         p.comment
           = c.content
     - else

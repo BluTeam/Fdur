@@ -146,7 +146,7 @@
                       | 已完成
                     a.Tags data-flag="#comments"
                       | 评 论
-              span.list-group-item.disabled
+              = render "comments"
           - @milestones.each do |m|
             = render "original_image", m: m
   = render "fork_form", p: @project
