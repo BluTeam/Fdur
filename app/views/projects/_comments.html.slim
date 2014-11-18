@@ -2,7 +2,7 @@ div.Comments
 
 ul.list-group.NewComment.comment_ul
 
-/i#marionette comments="#{@project.comments.to_json.html_safe}" user_name="#{current_user.name}" user_avatar="#{current_user.avatar.small.url}" project_id="#{@project.id}" style="display: none"
+i#marionette comments="#{@project.comments.to_json.to_json}" user_name="#{current_user.name}" user_avatar="#{current_user.avatar.small.url}" project_id="#{@project.id}" style="display: none"
 
-javascript:
-  Fdur.Instance.app.start({comments: #{@project.comments.to_json.html_safe}, user_name: "#{current_user.name}", user_avatar: "#{current_user.avatar.small.url.to_s}", project_id: "#{@project.id.to_s}"});
+/script type="text/javascript" data-turbolinks-eval=false
+/  | Fdur.Instance.app.start({comments: #{@project.comments.to_json.html_safe}, user_name: "#{current_user.name}", user_avatar: "#{current_user.avatar.small.url.to_s}", project_id: "#{@project.id.to_s}"});

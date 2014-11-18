@@ -6,7 +6,7 @@
 #= require_tree ./views/composite
 #= require_tree ./views/layout
 #= require_tree ./routers
-#= require ./init
+##= require ./init
 
 window.Fdur =
   Models: {}
