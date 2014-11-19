@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
     :foreign_key => "self_id"
 
   def not_nil_name
-    self.name || self.email
+    self.name.blank? ? self.email : self.name
   end
 
   def add_user user 

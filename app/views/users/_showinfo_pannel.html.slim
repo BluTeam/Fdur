@@ -3,7 +3,10 @@
 	p.col-sm-3.strong
 	  | 昵称
 	p.col-sm-9.small_font
-	  = u.not_nil_name
+	  - if u.name.blank?
+	    | ta还没有昵称呢～
+	  - else 
+	    = u.name
   .row.info_row
 	p.col-sm-3.strong
 	  | 性别
