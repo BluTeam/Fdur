@@ -12,15 +12,9 @@ class Fdur.Views.Item.NewComment extends Backbone.Marionette.ItemView
     "submit #new-comment": "save"
 
   save: () ->
-
-    @model.set('user_name', Fdur.Instance.Others.user_name)
-    @model.set('user_avatar', Fdur.Instance.Others.user_avatar)
-    date = new Date
-    @model.set('created_at', date.pattern("yyyy年MM月dd日 HH:mm"))
-    @collection = Fdur.Instance.Collections.comments
-    @collection.url = "/projects/#{Fdur.Instance.Others.project_id}/comment"
-    @collection.fetch()
+    this.collection = Fdur.Instance.Views.comments_index.collection
     @collection.create(@model.toJSON())
+    @collection.fetch()
     this.$("#content").val("")
     return false
 

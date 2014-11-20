@@ -8,21 +8,16 @@ $(document).ready ->
         comments: ".Comments"
         newComment: ".NewComment"
 
-      Fdur.Instance.Collections.comments = new Fdur.Collections.CommentsCollection(options.comments)
-      Fdur.Instance.Views.comments_index = new Fdur.Views.Composite.CommentsList({collection: Fdur.Instance.Collections.comments})
-      Fdur.Instance.Views.comments_new = new Fdur.Views.Item.NewComment()
-
-      Fdur.Instance.Others.user_name = options.user_name
-      Fdur.Instance.Others.user_avatar = options.user_avatar
       Fdur.Instance.Others.project_id = options.project_id
+
+      Fdur.Instance.Views.comments_index = new Fdur.Views.Composite.CommentsList()
+      Fdur.Instance.Views.comments_new = new Fdur.Views.Item.NewComment()
 
       viewApp.comments.show(Fdur.Instance.Views.comments_index)
       viewApp.newComment.show(Fdur.Instance.Views.comments_new)
 
     Fdur.Instance.app = viewApp
-    _comments = $.parseJSON($('#marionette').attr('comments'))
-    _comments = $.parseJSON(_comments)
-    Fdur.Instance.app.start({comments: _comments, user_name: $('#marionette').attr('user_name'), user_avatar: $('#marionette').attr('user_avatar'), project_id: $('#marionette').attr('project_id')});
+    Fdur.Instance.app.start(project_id: $('#marionette').attr('project_id'));
   #---------------------------
 
   if $('body').is('[data-page="projects-create"]')
