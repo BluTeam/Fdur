@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       post :report
     end  
   end
+  get '/terms', to: 'extra#terms'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

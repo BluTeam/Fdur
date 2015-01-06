@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     redirect_to(action: :detail) if @user == current_user
     @flag = current_user.is_friends @user 
     @projects = @user.projects.where(is_public: true).order(updated_at: :desc)
-    @myfriends= @user.friends.sort_by {|u| u.projects.where(is_public: true).order(updated_at: :desc).first.updated_at}.reverse
+    @myfriends= @user.friends
   end
 
   def user_json
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   private
 
   def set_friends_date
-    @myfriends = current_user.friends.sort_by {|u| u.projects.where(is_public: true).order(updated_at: :desc).first.updated_at}.reverse   
+    @myfriends = current_user.friends
     @total_num= current_user.projects.count
     @open_num = current_user.projects.where(state: "open").count
     @finish_num = current_user.projects.where(state: "finished").count

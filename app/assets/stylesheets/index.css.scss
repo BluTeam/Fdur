@@ -1,0 +1,60 @@
+body[data-page="home-index"]{
+  .mar_top{
+    margin-top: 20px;
+  }
+  .mar_left{
+    margin-left: 15px;
+  }
+  .pad_top{
+    padding:30px 0;
+  }
+  .top_box{
+  	height:520px;
+  	width:100%;
+  }
+  .top_box img{
+  	position: absolute;
+  	top:51px;
+  	width:100%;
+  	height:540px;
+  	z-index: -1;   
+  }
+  .theme_box{
+    margin-top:100px;
+    padding:20px;
+    color:white;
+  }
+  .big_font{
+    font-size: 38px;
+    font-weight: bold;
+  }
+  .small_font{
+  	font-size: 20px;
+    font-weight: bold;
+  }
+  .mid_font{
+    font-size: 30px;
+    font-weight: bold;
+  }
+  #register_btn{
+    width:200px;
+  }
+  .title{
+    text-align: center;
+    padding:30px;
+    background-color: #F6F6F6;
+
+  }
+  #content_box2{
+    background-color: #F6F6F6;
+    border: 1px solid #dddddd;
+  }
+  .example_img{
+    width:380px;
+    height:300px;
+  }
+  .mid_box{
+    width:100%;
+  }
+
+}
