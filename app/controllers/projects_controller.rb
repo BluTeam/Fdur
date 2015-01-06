@@ -138,7 +138,10 @@ class ProjectsController < ApplicationController
   end
 
   def get_comments
-    render text: @project.comments
+    @comments = @project.comments
+    respond_to do |format|
+      format.json
+    end
   end
 
 
