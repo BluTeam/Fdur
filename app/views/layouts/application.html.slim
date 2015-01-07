@@ -9,6 +9,8 @@ html lang="#{I18n.locale.to_s}"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    meta content="个人计划,计划管理,读书笔记,记录,分享,解决拖延症,自媒体平台" name="keywords"
+    meta content="Beacon是一个供大家制定计划，管理计划，分享计划，拷贝计划的工具平台，同时也是一个创新的社交平台和自媒体平台" name="description"
 
   body data-page="#{controller_name}-#{action_name}"
     = render "layouts/header"
