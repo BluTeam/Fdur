@@ -1,27 +1,53 @@
 .container-home
-  .photo-frame
-    .container-fuild
-      = image_tag "beacon.jpg"
-
-  .beacon-title
-    .container
-      h1
-        b
-          | Beacon
-      h3
-        b
-          | 分享你的计划，记录你的航向；更精彩的航程，从这里开始。
-      - unless user_signed_in?
-        a.btn.btn-success.strong href="#{new_user_session_path}"
-          | 登 录
-      /a.btn.btn-info    href="#{new_registration_path(resource_name)}"
-      /  | 注册
-      span.box
-      a.btn.btn-info.strong href="#{activities_path}"
-        | 开始使用
+  = render "dmax"
   .container
     .projects
-      .col-md-4.col-sm-12
-        .project
-          .thumbnail.no_bottom
-
+      .container
+        .col-md-6.col-sm-12
+          .project
+            .thumbnail.no_bottom
+              = image_tag "part1.png", style: "height: 400px"
+            .description
+              .title.public
+                | &nbsp个性'微计划'
+              .de_content
+                p.strong
+                  | 创建公开微计划，享你所想。
+                p.strong
+                  | 创建私有微计划，录你所思。
+        .col-md-6.col-sm-12
+          .project
+            .thumbnail.no_bottom
+              = image_tag "part2.png", style: "height: 400px"
+            .description
+              .title.public
+                | &nbsp计划'里程碑'
+              .de_content
+                p.strong
+                  | 社交式目标管理方案。
+                p.strong
+                  | 分享心得，把握计划进度。
+        .col-md-6.col-sm-12
+          .project
+            .thumbnail.no_bottom
+              = image_tag "part3.png", style: "height: 300px"
+            .description
+              .title.public style="top: 258px"
+                | &nbsp收藏、拷贝、评论
+              .de_content
+                p.strong
+                  | 发现新奇的计划，尽情收藏。
+                p.strong
+                  | 相互讨论，学习，进步。
+        .col-md-6.col-sm-12
+          .project
+            .thumbnail.no_bottom
+              = image_tag "part4.png", style: "height: 300px"
+            .description
+              .title.public style="top: 258px"
+                | &nbsp分享到社交网络
+              .de_content
+                p.strong
+                  | 让更多人见证Beacon。
+                p.strong
+                  | 让更多人携手Beacon。

@@ -1,0 +1,20 @@
+.photo-frame
+  .container-fuild
+    = image_tag "beacon.jpg"
+
+  .beacon-title
+    .container
+      h1
+        b
+          | Beacon
+      h3
+        b
+          | 分享你的计划，记录你的航向；更精彩的航程，从这里开始。
+      - unless user_signed_in?
+        a.btn.btn-success.strong href="#{new_user_session_path}"
+          | 登 录
+      /a.btn.btn-info    href="#{new_registration_path(resource_name)}"
+      /  | 注册
+      span.box
+      a.btn.btn-info.strong href="#{activities_path}"
+        | 开始使用

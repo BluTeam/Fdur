@@ -1,10 +1,11 @@
-body[data-page="home-index"]
+body[data-page="home-index"],
+body[data-page="home-term"]
 {
   .container-home {
     width: 100%;
     overflow-x: hidden;
     max-width: 1920px;
-    height: 100%;
+    min-height: 1400px;
     overflow-y: hidden;
     margin: 0 auto;
   }
@@ -25,7 +26,7 @@ body[data-page="home-index"]
   .beacon-title {
     padding-bottom: 30px;
     position: absolute;
-    top: 180px;
+    top: 130px;
     width: 100%;
     max-width: 1920px;
     color: #333;
@@ -37,6 +38,10 @@ body[data-page="home-index"]
     }
     a.btn-success { margin-right: 20px }
   }
+  .projects {
+    position: absolute;
+    top: 540px;
+  }
   .project {
     margin-bottom: 15px;
     box-shadow: 0 0 4px 0 #bbb;
@@ -44,23 +49,59 @@ body[data-page="home-index"]
     color: #FDFDFD;
     @include lazy_tansition(margin, 0.2s);
 
-    &:hover {
-      margin-top: -5px;
-      margin-bottom: 20px;
-      box-shadow: 1px 3px 15px 0 rgb(170, 170, 170);
-    }
+    .description {
+      background-color: $projdect_shadow;
+      padding-top: 3px;
+      padding-bottom: 3px;
 
-    &:active {
-      margin-top: -5px;
-      margin-bottom: 20px;
-      box-shadow: 1px 3px 15px 0 rgb(170, 170, 170);
-    }
+      @include project_link;
 
+      .title {
+        position: absolute;
+        top: 358px;
+        width: 97%;
+        margin-left: -1%;
+        box-shadow: 0 1px 2px 0 $projdect_shadow;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 10px;
+        line-height: 2.4;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 9999999;
+      }
+
+      .de_content {
+        background-color: $projdect_shadow;
+        word-break: keep-all;
+        white-space: pre-wrap;
+        text-align: justify;
+        font-size: 13px;
+        padding: 15px 15px 5px 15px;
+      }
+    }
     .no_bottom {
-      background-color: #f1f1f1;
+//      background-color: #f1f1f1;
       border: none;
       padding: 0;
       margin-bottom: 0;
     }
+  }
+}
+
+body[data-page="home-term"] {
+  .container-home {
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 1920px;
+    min-height: 2000px;
+    overflow-y: hidden;
+    margin: 0 auto;
+  }
+  p.content {
+    word-break: keep-all;
+    white-space: pre-wrap;
+    font-size: 13px;
   }
 }
