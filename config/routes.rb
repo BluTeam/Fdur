@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: "home#index"
   get :term, to: "home#term"
+  get :about, to: "home#about"
+
 
   #resources :users
   #devise_for :users, controllers: { sessions: 'users/sessions' }
@@ -15,6 +17,9 @@ Rails.application.routes.draw do
       collection do
         post :rebuild
       end
+    end
+    collection do
+      get :collection
     end
     member do
       get    :preview

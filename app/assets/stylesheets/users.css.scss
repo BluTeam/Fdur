@@ -11,6 +11,10 @@ body[data-page="confirmations-show"]{
   background-image: image-url("boat.jpg");
   background-repeat: repeat;
 
+  .panel {
+   @include opacity_filter(96);
+  }
+
   .top-stand {
     margin-top: 80px;
 

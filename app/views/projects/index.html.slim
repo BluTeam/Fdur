@@ -1,4 +1,17 @@
-.container.top_stand
+.container
+  .page_title
+    .container
+      .row
+        .pull-left
+          h3
+            | 我的微计划
+        .pull-right.hidden-xs
+          a.strong data-flag="all" href="#{projects_path(type: :all)}"
+            | 全 部
+          a.strong data-flag="public" href="#{projects_path(type: :public)}"
+            | 公 开
+          a.strong data-flag="private" href="#{projects_path(type: :private)}"
+            | 私 有
   .row
     .col-md-8.col-sm-12
       .row

@@ -27,6 +27,12 @@ $(document).ready ->
     backbone_engine()
   if $('body').is('[data-page="projects-index"]')
     $("#project_image").uploadPreview({ Img: "ImgPr_project", Width: 300, Height: 300 });
+    type = location.href.match(/\S+\?type=(\S+)/)
+    unless _.isUndefined(type[1])
+      if type[1] == 'public' || type[1] == 'private'
+        $("[data-flag=#{ type[1] }]").addClass('selected')
+      else
+        $("[data-flag='all']").addClass('selected')
   if $('body').is('[data-page="projects-show"]')
     backbone_engine()
     project_image = $("#ImgPr_project").attr("src")

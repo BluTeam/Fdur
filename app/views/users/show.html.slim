@@ -2,7 +2,7 @@
   .top_box
     .img_box.center
       = image_tag @user.avatar.large.url, style: "width:180px;height:180px;", class: "img-circle"
-    h3.center style="padding:30px;" 
+    h3.center style="padding: 15px;"
       = @user.not_nil_name
     p#user_id style="display:none"
       = @user.id
@@ -39,10 +39,10 @@
     .row 
       .col-xs-2.col-sm-3.col-md-3
       .col-xs-4.col-sm-3.col-md-3
-        a.newTags.center.newTag-selected data-flag="#main_page"
-          | 他的主页
+        a.newTags.center.strong.newTag-selected data-flag="#main_page"
+          | 微计划
       .col-xs-4.col-sm-3.col-md-3 
-        a.newTags.center data-flag="#personal_info"
+        a.newTags.center.strong data-flag="#personal_info"
           | 个人资料
       .col-xs-2.col-sm-3.col-md-3
   div

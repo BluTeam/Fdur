@@ -1,0 +1,28 @@
+.container
+  .page_title
+    .container
+      .row
+        h3
+          | 我的收藏
+  .row
+    .col-md-8.col-sm-12
+      .row
+        .col-sm-6
+          - @projects.each_with_index do |p, index|
+            -if index % 3 == 0
+              = render "project_item",p: p
+        .col-sm-6
+          - @projects.each_with_index do |p, index|
+            -if index % 3 == 1
+              = render "project_item",p: p
+    .col-md-4.col-sm-12
+      .row
+        .col-md-12.col-sm-6
+          - @projects.each_with_index do |p, index|
+            -if index % 6 == 2
+              = render "project_item",p: p
+        .col-md-12.col-sm-6
+          - @projects.each_with_index do |p, index|
+            -if index % 6 == 5
+              = render "project_item",p: p
+

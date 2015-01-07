@@ -4,4 +4,7 @@ class HomeController < ApplicationController
 
   def term
   end
+
+  def about
+  end
 end

@@ -13,7 +13,7 @@ class Fdur.Views.Item.NewComment extends Backbone.Marionette.ItemView
 
   save: () ->
     this.collection = Fdur.Instance.Views.comments_index.collection
-    @collection.create(@model.toJSON())
+    @collection.create(@model.toJSON(),wait: true)
     @collection.fetch()
     this.$("#content").val("")
     return false

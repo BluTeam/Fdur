@@ -1,5 +1,6 @@
 body[data-page="home-index"],
-body[data-page="home-term"]
+body[data-page="home-term"],
+body[data-page="home-about"]
 {
   .container-home {
     width: 100%;
@@ -17,10 +18,13 @@ body[data-page="home-term"]
     max-width: 1920px;
     height: 468px;
     overflow: hidden;
+    .btn {
+      padding: 6px 25px;
+    }
     img {
       margin-top: -460px;
     }
-    z-index: -100;
+    z-index: 0;
 //    @include lazy_blur;
   }
   .beacon-title {
@@ -30,7 +34,7 @@ body[data-page="home-term"]
     width: 100%;
     max-width: 1920px;
     color: #333;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.55);
     z-index: 10px;
     h1 { font-size: 38px; margin-bottom: 20px }
     a {
@@ -96,6 +100,21 @@ body[data-page="home-term"] {
     overflow-x: hidden;
     max-width: 1920px;
     min-height: 2000px;
+    overflow-y: hidden;
+    margin: 0 auto;
+  }
+  p.content {
+    word-break: keep-all;
+    white-space: pre-wrap;
+    font-size: 13px;
+  }
+}
+
+body[data-page="home-about"] {
+  .container-home {
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 1920px;
     overflow-y: hidden;
     margin: 0 auto;
   }

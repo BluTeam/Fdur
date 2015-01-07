@@ -16,6 +16,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top.header role="navigation"
         - if user_signed_in?
           li class="#{ "active" if (controller_name == 'projects' && action_name == 'index')}"
             = link_to '微计划', projects_path, class: :strong
+          li class="#{ "active" if (controller_name == 'projects' && action_name == 'collection')}"
+            = link_to '收藏', collection_projects_path, class: :strong
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           li

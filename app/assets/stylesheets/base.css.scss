@@ -81,6 +81,7 @@ ul {
   margin-bottom: 0;
   border-right: none;
   border-left: none;
+  border-bottom: none;
 }
 
 .strong {
@@ -139,6 +140,30 @@ ul {
   height: 60px;
 }
 
+.page_title {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+
+  .pull-right {
+    margin-right: 40px;
+    margin-top: 15px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #4a525c;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    &:hover {
+      border-bottom: 2px solid #5bc0de;
+    }
+  }
+  .selected {
+    border-bottom: 2px solid #5bc0de;
+  }
+}
+
 //Tags
 
 .Tags {
@@ -186,16 +211,14 @@ ul {
   padding-top: 13px;
   padding-bottom: 11px;
   color: #4a525c;
-  font-size: 16px;
+//  font-size: 16px;
   font-weight: bold;
   &:hover {
     text-decoration: none;
     padding:13px 18px 12px 18px;
     background-color: #ffffff;
     color: #4a525c;
-    font-size: 16px;
-    font-weight: bold;
-    border-bottom:2px solid #5bc0de; 
+    border-bottom:2px solid #5bc0de;
   }
   
 }
@@ -215,9 +238,7 @@ ul {
   padding:13px 18px 12px 18px;
   background-color: #ffffff;
   color: #4a525c;
-  font-size: 16px;
-  font-weight: bold;
-  border-bottom:2px solid #5bc0de; 
+  border-bottom:2px solid #5bc0de;
 }
 
 .no-over{

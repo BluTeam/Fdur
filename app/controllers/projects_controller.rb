@@ -10,8 +10,19 @@ class ProjectsController < ApplicationController
 
   # projects
 
+  def collection
+    @projects = current_user.followed_projects
+  end
+
   def index
-    @projects = current_user.projects.order(updated_at: :desc)
+    unless params[:type].blank?
+      if params[:type] == 'public'
+        q={is_public_true: 1}
+      elsif params[:type] == 'private'
+        q={is_public_false: 1}
+      end
+    end
+    @projects = current_user.projects.ransack(q).result.order(updated_at: :desc)
     @project = current_user.projects.build
   end
 

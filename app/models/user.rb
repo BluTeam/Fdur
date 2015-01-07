@@ -139,6 +139,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def followed_projects
+    Project.ransack({follows_user_id_eq: self.id}).result
+  end
+
   private
 
   def set_default_sex

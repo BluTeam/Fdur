@@ -37,7 +37,7 @@
           span.pull-left
             = image_tag c.user.avatar.small.url, class: "img-circle", style: "height: 15px; width: 15px;", title: "#{c.user.name}"
           span.pull-left.hidden-sm style='padding: 2px'
-            = c.user.name + " : "
+            = c.user.not_nil_name + " : "
           span style='display:inline-block; padding: 2px'
             = c.content
     - else
