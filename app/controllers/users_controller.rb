@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def user_json
-    hash = {user_name: @user.name, user_avatar: @user.avatar.small.url}
+    hash = {user_name: @user.name, user_avatar: @user.avatar_url(:small)}
     render text: hash.to_json
   end
   

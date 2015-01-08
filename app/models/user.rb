@@ -143,6 +143,15 @@ class User < ActiveRecord::Base
     Project.ransack({follows_user_id_eq: self.id}).result
   end
 
+  def avatar_url type
+    unless type.blank?
+      type = '-' + type.to_s
+      avatar.nil? ? avatar.url : avatar.url + type
+    else
+      avatar.url
+    end
+  end
+
   private
 
   def set_default_sex

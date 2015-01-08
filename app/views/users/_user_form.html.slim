@@ -3,7 +3,7 @@
     .modal-content
       .modal-header.user_border
         #avatar_img.center.img_box
-          = image_tag current_user.avatar.large.url ,style: "width:130px;height:130px;", class: "img-circle"
+          = image_tag current_user.avatar_url(:large) ,style: "width:130px;height:130px;", class: "img-circle"
       = form_for(current_user, url: detail_update_user_path(current_user), role: :form) do |u|
         .modal-body 
           .form-group

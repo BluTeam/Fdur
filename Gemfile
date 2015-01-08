@@ -39,6 +39,8 @@ group :development do
   gem 'pry-nav'
 end
 
+gem 'carrierwave-qiniu'
+
 gem 'devise'
 
 gem 'slim-rails'

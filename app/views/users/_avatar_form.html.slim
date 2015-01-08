@@ -19,18 +19,18 @@
               .img_content
                 .img_content_left.pull-left
                   div
-                    = image_tag current_user.avatar.large.url, style: "width:180px;height:180px;", id: "ImgPr_large"
+                    = image_tag current_user.avatar_url(:large), style: "width:180px;height:180px;", id: "ImgPr_large"
                   span.help-block
                     | 大尺寸头像，180×180像素
                 .img_content_right.pull-right
                   .img_content_right_top style="width:60px"
                     div
-                      = image_tag current_user.avatar.mid.url, style: "width:50px;height:50px;", id: "ImgPr_mid"
+                      = image_tag current_user.avatar_url(:mid), style: "width:50px;height:50px;", id: "ImgPr_mid"
                     span.help-block
                     | 50×50(中)
                   .img_content_right_bottom style="width:60px;display:block;margin-top:70px;"
                     div
-                      = image_tag current_user.avatar.small.url, style: "width:30px;height:30px;", id: "ImgPr_small"
+                      = image_tag current_user.avatar_url(:small), style: "width:30px;height:30px;", id: "ImgPr_small"
                     span.help-block
                       | 30×30(小)
             .col-xs-12.col-sm-1.col-md-1

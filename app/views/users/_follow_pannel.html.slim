@@ -7,7 +7,7 @@
       .list-group-item
         .row 
           a href="#{user_path f}" 
-            = image_tag f.avatar.mid.url, style: "width:60px;height:60px;", class: "img-circle pull-left"
+            = image_tag f.avatar_url(:mid), style: "width:60px;height:60px;", class: "img-circle pull-left"
             span.pull-right id="friends_info" 
               p
                 = "LEVEL" + f.level.id.to_s

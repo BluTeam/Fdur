@@ -1,7 +1,7 @@
 .container
   .top_box
     .img_box.center
-      = image_tag @user.avatar.large.url, style: "width:180px;height:180px;", class: "img-circle"
+      = image_tag @user.avatar_url(:large), style: "width:180px;height:180px;", class: "img-circle"
     h3.center style="padding: 15px;"
       = @user.not_nil_name
     p#user_id style="display:none"

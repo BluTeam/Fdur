@@ -4,7 +4,7 @@
       .row
         .col-xs-12.col-sm-6.col-md-5
           .img_box.center
-            = image_tag current_user.avatar.large.url, style: "width:180px;height:180px;", class: "img-circle"
+            = image_tag current_user.avatar_url(:large), style: "width:180px;height:180px;", class: "img-circle"
         .col-xs-12.col-sm-6.col-md-7 style="padding-top:40px;"
           span#level_num.strong style="padding:10px;color:white"
               = "LEVEL" + current_user.level.id.to_s

@@ -8,7 +8,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :qiniu
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -30,15 +30,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :large do
-    process :resize_to_fit => [180, 180]
-  end
-  version :mid do
-    process :resize_to_fit => [50, 50]
-  end
-  version :small do
-    process :resize_to_fit => [30, 30]
-  end
+  # version :large do
+  #   process :resize_to_fit => [180, 180]
+  # end
+  # version :mid do
+  #   process :resize_to_fit => [50, 50]
+  # end
+  # version :small do
+  #   process :resize_to_fit => [30, 30]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
