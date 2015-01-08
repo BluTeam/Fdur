@@ -45,6 +45,15 @@ class Milestone < ActiveRecord::Base
     self.name
   end
 
+  def image_url type
+    unless type.blank?
+      type = '-' + type.to_s
+      image.file.nil? ? image.url : image.url + type
+    else
+      image.url
+    end
+  end
+
   private
 
   def set_default_information

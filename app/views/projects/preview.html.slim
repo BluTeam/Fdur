@@ -4,22 +4,29 @@
       /TODO: 返回错误时，通过地址传参，弹出窗口
       .project
         .thumbnail.no_bottom
-          = image_tag @project.image.normal.url, alt: "/support-loading.gif"
+          = image_tag @project.image_url(:normal), alt: "/support-loading.gif"
         .description
           .title class="#{@project.is_public ? "public" : "private"}"
             = @project.name
           .de_content
             = @project.description
           .extra_padding.follow
-            | &nbsp
-            span.pull-right title="拷贝" style="margin-right: 15px;"
-              a.glyphicon.glyphicon-tags.forks data-toggle='modal' data-target='#forkForm'
-              | &nbsp&nbsp#{ @project.forks_count }
-            span.pull-right title="收藏" style="margin-right: 10px;"
-              a.glyphicon.glyphicon-heart.follows#followProject href="javascript:void(0)" data-project-id="#{@project.id}" class="#{"followed" if current_user.followed? @project}"
-              | &nbsp&nbsp
-              span#followedCount
-                | #{ @project.follows.count }
+            .row
+              span.pull-left style="margin-left:15px"
+                a.avatar.strong href="#{user_path @project.user}"
+                  = image_tag @project.user.avatar_url(:small), style: "width:30px;height:30px;", class: "img-circle"
+                  | &nbsp&nbsp&nbsp
+                  = @project.user.not_nil_name
+              | &nbsp
+
+              span.pull-right title="拷贝" style="margin-right: 15px;"
+                a.glyphicon.glyphicon-tags.forks data-toggle='modal' data-target='#forkForm'
+                | &nbsp&nbsp#{ @project.forks_count }
+              span.pull-right title="收藏" style="margin-right: 10px;"
+                a.glyphicon.glyphicon-heart.follows#followProject href="javascript:void(0)" data-project-id="#{@project.id}" class="#{"followed" if current_user.followed? @project}"
+                | &nbsp&nbsp
+                span#followedCount
+                  | #{ @project.follows.count }
 
       / JiaThis Button BEGIN
       - if @project.is_public?
@@ -87,7 +94,7 @@
                       = m.title
                     - unless m.image.blank?
                       p
-                        = image_tag m.image.small.url
+                        = image_tag m.image_url(:exsmall)
                     - unless m.description.blank?
                       p.milestone_description
                         | 描述：
@@ -118,7 +125,7 @@
                       = m.title
                     - unless m.image.blank?
                       p
-                        = image_tag m.image.small.url
+                        = image_tag m.image_url(:exsmall)
                     - unless m.description.blank?
                       p.milestone_description
                         | 描述：

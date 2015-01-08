@@ -81,6 +81,20 @@ body[data-page="users-show"]
       font-weight: bold;
       line-height: 2;
 
+      a.avatar {
+        display: inline-block;
+        text-decoration: none;
+        max-width: 190px;
+        color: #ffffff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        &:hover {
+          color: lightblue;
+        }
+      }
+
       .followed {
         color: #F08080 !important;
       }

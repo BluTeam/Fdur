@@ -48,6 +48,15 @@ class Project < ActiveRecord::Base
     self.follows.count
   end
 
+  def image_url type
+    unless type.blank?
+      type = '-' + type.to_s
+      image.file.nil? ? image.url : image.url + type
+    else
+      image.url
+    end
+  end
+
   private
 
   def add_default_information
@@ -60,6 +69,7 @@ class Project < ActiveRecord::Base
       self.milestones.create name: "创建新计划--#{self.name}", state: 'finished'
     end
   end
+
 
   # def file_size
   #   if image.file.size.to_f/(1000*1000) > user.upload_limit.to_f

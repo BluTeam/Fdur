@@ -51,7 +51,7 @@ module RenderMilestoneTreeHelper
       def show_pic
         node = options[:node]
         unless node.image.blank?
-          "<p class='milestone_img'><img title='查看原图' src='#{ node.image.small.url }' alt='/support-loading.gif'  id='original' data-toggle='modal' data-target='#imageOriginalModal#{node.id}'></p>"
+          "<p class='milestone_img'><img title='查看原图' src='#{ node.image_url(:exsmall) }' alt='/support-loading.gif'  id='original' data-toggle='modal' data-target='#imageOriginalModal#{node.id}'></p>"
         end
       end
 

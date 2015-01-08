@@ -35,6 +35,7 @@ class ProjectsController < ApplicationController
   def preview
     classify_milestones_and_comments
     @milestone = @project.milestones.build
+    redirect_to(action: :show) if current_user == @project.user
   end
 
   def create
@@ -51,6 +52,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    # binding.pry
     if @project.update(project_params)
       flash[:success] = '修改成功'
       redirect_to action: :show

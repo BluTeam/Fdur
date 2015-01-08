@@ -17,7 +17,7 @@ ol.list-group.sortable_tree
         p.milestone_description
           = m.description
         p
-          = image_tag m.image.small.url
+          = image_tag m.image_url(:exsmall)
         p.time
           = m.updated_at.strftime("%y/%m/%d %X")
         .controls

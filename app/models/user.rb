@@ -112,7 +112,7 @@ class User < ActiveRecord::Base
     forked = nil
     self.transaction do
       forked = self.projects.build name: o_project.name, description: o_project.description, is_public: :false
-      forked.image = o_project.image
+      # forked.image = o_project.image
       o_project.milestones.each do |m|
         f_m = forked.milestones.new name: m.name, description: m.description, state: 'undo'
         f_m.image = m.image
@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
   def avatar_url type
     unless type.blank?
       type = '-' + type.to_s
-      avatar.nil? ? avatar.url : avatar.url + type
+      avatar.file.nil? ? avatar.url : avatar.url + type
     else
       avatar.url
     end

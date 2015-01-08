@@ -7,7 +7,7 @@ class MilestoneUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :qiniu
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -30,13 +30,13 @@ class MilestoneUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :normal do
-    process :resize_to_fit => [360, 480]
-  end
-
-  version :small do
-    process :resize_to_fit => [200, 200]
-  end
+  # version :normal do
+  #   process :resize_to_fit => [360, 480]
+  # end
+  #
+  # version :small do
+  #   process :resize_to_fit => [200, 200]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -46,8 +46,11 @@ class MilestoneUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    if original_filename
+      @name ||= SecureRandom.uuid.gsub("-","")
+      "#{@name}#{File.extname(original_filename).downcase}"
+    end
+  end
 
 end

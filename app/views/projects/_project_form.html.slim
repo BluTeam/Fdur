@@ -26,7 +26,7 @@
             = f.label '标题图片', for: :project_image
             br
             .thumbnail
-              = image_tag @project.image.normal.url, style: "max-width: 300px; max-height: 300px",id: "ImgPr_project"
+              = image_tag @project.image_url(:normal), style: "max-width: 300px; max-height: 300px",id: "ImgPr_project"
             = f.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: "form-control"
           .radio
             label

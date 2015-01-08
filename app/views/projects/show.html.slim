@@ -4,7 +4,7 @@
       /TODO: 返回错误时，通过地址传参，弹出窗口
       .project
         .thumbnail.no_bottom
-          = image_tag @project.image.normal.url, alt: "/support-loading.gif"
+          = image_tag @project.image_url(:normal), alt: "/support-loading.gif"
         .description
           .title class="#{@project.is_public ? "public" : "private"}"
             = @project.name
@@ -93,7 +93,7 @@
                       = m.title
                     - unless m.image.blank?
                       p
-                        = image_tag m.image.small.url
+                        = image_tag m.image_url(exsmall)
                     - unless m.description.blank?
                       p.milestone_description
                         | 描述：
@@ -131,7 +131,7 @@
                       = m.title
                     - unless m.image.blank?
                       p
-                        = image_tag m.image.small.url
+                        = image_tag m.image_url(:exsmall)
                     - unless m.description.blank?
                       p.milestone_description
                         | 描述：
