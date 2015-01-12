@@ -93,7 +93,7 @@
                       = m.title
                     - unless m.image.blank?
                       p
-                        = image_tag m.image_url(exsmall)
+                        = image_tag m.image_url(:exsmall)
                     - unless m.description.blank?
                       p.milestone_description
                         | 描述：
